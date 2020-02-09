@@ -1,8 +1,9 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import EmployeeContext from "../../context/employee/employeeContext";
+
 const EmployeeForm = () => {
     const employeeContext = useContext(EmployeeContext);
-    const { addEmployee } = employeeContext;
+    const { addEmployee, fetchTokens, tokens } = employeeContext;
 
     const [employee, setEmployee] = useState({
         first_name: "",
@@ -16,6 +17,9 @@ const EmployeeForm = () => {
 
     const { first_name, last_name, c_number, phone_number, image } = employee;
 
+    useEffect(() => {
+        fetchTokens();
+    }, []);
     // Adding file to the state
     const imageUploadHandler = e => {
         setEmployee({ ...employee, image: e.target.files[0] });
@@ -111,10 +115,11 @@ const EmployeeForm = () => {
                 <div className="form__group" style={{ width: "100%" }}>
                     <label htmlFor="token_number">Token number</label>
                     <select onChange={onChange} id="token_id" name="token_id">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="6">5</option>
+                        {tokens.map(token => (
+                            <option value={token.token_number}>
+                                {token.token_number}
+                            </option>
+                        ))}
                     </select>
                 </div>
             </div>

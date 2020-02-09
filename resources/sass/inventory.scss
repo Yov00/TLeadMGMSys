@@ -1,0 +1,30 @@
+.inventoryWrapper {
+    margin-top: 200px;
+    width: 100%;
+}
+
+.inventory {
+    align-items: center;
+    font-size: 20px;
+    flex-direction: column;
+    border-spacing: 5px;
+    width: 60%;
+    //@extend
+}
+.inventory td,
+th {
+    padding: 5px 0;
+    text-align: center;
+    border-radius: 5px;
+}
+.inventory td {
+    background-color: lightgray;
+}
+.inventory th {
+    background-color: #251e21;
+    color: white;
+}
+.tr__hoverable:hover {
+    opacity: 0.5;
+    cursor: pointer;
+}

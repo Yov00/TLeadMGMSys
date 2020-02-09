@@ -1,12 +1,14 @@
 import React, { useContext, useEffect } from "react";
 import EmployeeItem from "./EmployeeItem";
 import EmployeeContext from "../../context/employee/employeeContext";
-
+import Spinner from "../layout/Spinner";
 const Employee = () => {
     const employeeContext = useContext(EmployeeContext);
-    const { employees, fetchAllEmployees } = employeeContext;
+    const { employees, fetchAllEmployees, loading } = employeeContext;
+
     useEffect(() => {
-        fetchAllEmployees();
+        setTimeout(() => fetchAllEmployees(), 1000);
+
         // eslint-disable-next-line
     }, []);
 
@@ -18,20 +20,17 @@ const Employee = () => {
         ) : (
             <h3>There are no employees...</h3>
         );
-    return (
-        <div className="employeeWrapepr ease_in">
-            <h1
-                className="ease_in"
-                style={{
-                    fontSize: "40px",
-                    display: "inline-block",
-                    width: "100%"
-                }}
-            >
-                Employees
-            </h1>
+    if (loading)
+        return (
+            <div className="employees ">
+                <Spinner />
+            </div>
+        );
 
-            {allEmployees}
+    return (
+        <div className="employees ease_in">
+            <h1 className="ease_in">EMPLOYEES</h1>
+            <div className="employeeWrapepr">{allEmployees}</div>
         </div>
     );
 };

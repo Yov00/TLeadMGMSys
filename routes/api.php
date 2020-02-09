@@ -26,3 +26,6 @@ Route::delete('/item/{id}/delete','ItemsController@delete');
 // Employees
 Route::get('/employees','EmployeesController@index');
 Route::post('/employees/create','EmployeesController@create');
+
+// Tokens
+Route::get('/tokens','TokensController@index');

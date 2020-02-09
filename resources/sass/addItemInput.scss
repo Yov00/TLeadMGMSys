@@ -1,0 +1,22 @@
+.AddItemInput {
+    width: 60%;
+    padding: 0 10px;
+    margin: 0px auto;
+    animation-name: fly_in;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+.AddItemInput input {
+    padding: 20px;
+    height: 60px;
+    font-size: 20px;
+    columns: #333;
+}
+
+.AddItemInput input[type="text"] {
+    width: 60%;
+}
+.AddItemInput input[type="number"] {
+    width: 20%;
+    margin-left: 5px;
+}

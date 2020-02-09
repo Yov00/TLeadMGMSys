@@ -1,0 +1,11 @@
+.spinner {
+    width: 100px;
+    height: 100px;
+    margin: 0px auto;
+    border-radius: 50%;
+    border: 15px solid #333;
+    border-top: 15px solid tomato;
+    animation-name: rotate;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+}

@@ -55934,7 +55934,7 @@ module.exports = function(module) {
 /*!*******************************!*\
   !*** ./resources/js/Types.js ***!
   \*******************************/
-/*! exports provided: ADD_INVENTORY_ITEM, REMOVE_INVENTORY_ITEM, CHECKOUT_INVENTORY_ITEM, GET_ITEMS, GET_EMPLOYEES, ADD_EMPLOYEE */
+/*! exports provided: ADD_INVENTORY_ITEM, REMOVE_INVENTORY_ITEM, CHECKOUT_INVENTORY_ITEM, GET_ITEMS, GET_EMPLOYEES, ADD_EMPLOYEE, GET_TOKENS, SET_LOADING */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -55945,6 +55945,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_ITEMS", function() { return GET_ITEMS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_EMPLOYEES", function() { return GET_EMPLOYEES; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADD_EMPLOYEE", function() { return ADD_EMPLOYEE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_TOKENS", function() { return GET_TOKENS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SET_LOADING", function() { return SET_LOADING; });
 // Inventory
 var ADD_INVENTORY_ITEM = "ADD_INVENTORY_ITEM";
 var REMOVE_INVENTORY_ITEM = "REMOVE_INVENTORY_ITEM";
@@ -55952,7 +55954,11 @@ var CHECKOUT_INVENTORY_ITEM = "CHECKOUT_INVENTORY_ITEM";
 var GET_ITEMS = "GET_ITEMS"; // Employees
 
 var GET_EMPLOYEES = "GET_EMPLOYEES";
-var ADD_EMPLOYEE = "ADD_EMPLOYEE";
+var ADD_EMPLOYEE = "ADD_EMPLOYEE"; // Tokens
+
+var GET_TOKENS = "GET_TOKENS"; // Loading...
+
+var SET_LOADING = "SET_LOADING";
 
 /***/ }),
 
@@ -56121,6 +56127,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _EmployeeItem__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EmployeeItem */ "./resources/js/components/employee/EmployeeItem.js");
 /* harmony import */ var _context_employee_employeeContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../context/employee/employeeContext */ "./resources/js/context/employee/employeeContext.js");
+/* harmony import */ var _layout_Spinner__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../layout/Spinner */ "./resources/js/components/layout/Spinner.js");
+
 
 
 
@@ -56128,9 +56136,12 @@ __webpack_require__.r(__webpack_exports__);
 var Employee = function Employee() {
   var employeeContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_employee_employeeContext__WEBPACK_IMPORTED_MODULE_2__["default"]);
   var employees = employeeContext.employees,
-      fetchAllEmployees = employeeContext.fetchAllEmployees;
+      fetchAllEmployees = employeeContext.fetchAllEmployees,
+      loading = employeeContext.loading;
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    fetchAllEmployees(); // eslint-disable-next-line
+    setTimeout(function () {
+      return fetchAllEmployees();
+    }, 1000); // eslint-disable-next-line
   }, []);
   var allEmployees = employees.length > 0 ? employees.map(function (employee, index) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_EmployeeItem__WEBPACK_IMPORTED_MODULE_1__["default"], {
@@ -56138,16 +56149,16 @@ var Employee = function Employee() {
       key: index
     });
   }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "There are no employees...");
+  if (loading) return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "employees "
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_layout_Spinner__WEBPACK_IMPORTED_MODULE_3__["default"], null));
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "employeeWrapepr ease_in"
+    className: "employees ease_in"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-    className: "ease_in",
-    style: {
-      fontSize: "40px",
-      display: "inline-block",
-      width: "100%"
-    }
-  }, "Employees"), allEmployees);
+    className: "ease_in"
+  }, "EMPLOYEES"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "employeeWrapepr"
+  }, allEmployees));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Employee);
@@ -56185,7 +56196,9 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var EmployeeForm = function EmployeeForm() {
   var employeeContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_employee_employeeContext__WEBPACK_IMPORTED_MODULE_1__["default"]);
-  var addEmployee = employeeContext.addEmployee;
+  var addEmployee = employeeContext.addEmployee,
+      fetchTokens = employeeContext.fetchTokens,
+      tokens = employeeContext.tokens;
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
     first_name: "",
@@ -56204,7 +56217,10 @@ var EmployeeForm = function EmployeeForm() {
       last_name = employee.last_name,
       c_number = employee.c_number,
       phone_number = employee.phone_number,
-      image = employee.image; // Adding file to the state
+      image = employee.image;
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    fetchTokens();
+  }, []); // Adding file to the state
 
   var imageUploadHandler = function imageUploadHandler(e) {
     setEmployee(_objectSpread({}, employee, {
@@ -56315,15 +56331,11 @@ var EmployeeForm = function EmployeeForm() {
     onChange: onChange,
     id: "token_id",
     name: "token_id"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-    value: "1"
-  }, "1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-    value: "2"
-  }, "2"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-    value: "3"
-  }, "3"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-    value: "6"
-  }, "5")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, tokens.map(function (token) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+      value: token.token_number
+    }, token.token_number);
+  })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "form__group",
     style: {
       width: "100%"
@@ -56579,6 +56591,29 @@ var Navbar = function Navbar() {
 
 /***/ }),
 
+/***/ "./resources/js/components/layout/Spinner.js":
+/*!***************************************************!*\
+  !*** ./resources/js/components/layout/Spinner.js ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var Spinner = function Spinner() {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "spinner"
+  });
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Spinner);
+
+/***/ }),
+
 /***/ "./resources/js/context/employee/EmployeeState.js":
 /*!********************************************************!*\
   !*** ./resources/js/context/employee/EmployeeState.js ***!
@@ -56619,7 +56654,9 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var EmployeeState = function EmployeeState(props) {
   var initialState = {
-    employees: []
+    employees: [],
+    tokens: [],
+    loading: true
   };
 
   var _useReducer = Object(react__WEBPACK_IMPORTED_MODULE_1__["useReducer"])(_empoyeeReducer__WEBPACK_IMPORTED_MODULE_3__["default"], initialState),
@@ -56668,59 +56705,97 @@ var EmployeeState = function EmployeeState(props) {
     return function fetchAllEmployees() {
       return _ref.apply(this, arguments);
     };
+  }(); // Get Tokens
+
+
+  var fetchTokens =
+  /*#__PURE__*/
+  function () {
+    var _ref2 = _asyncToGenerator(
+    /*#__PURE__*/
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+      var res;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              try {
+                res = axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("api/tokens");
+                dispatch({
+                  type: _Types__WEBPACK_IMPORTED_MODULE_5__["GET_TOKENS"],
+                  payload: res.data
+                });
+              } catch (err) {
+                console.log(err.response);
+              }
+
+            case 1:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
+    }));
+
+    return function fetchTokens() {
+      return _ref2.apply(this, arguments);
+    };
   }(); // Create New Employee
 
 
   var addEmployee =
   /*#__PURE__*/
   function () {
-    var _ref2 = _asyncToGenerator(
+    var _ref3 = _asyncToGenerator(
     /*#__PURE__*/
-    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(employee) {
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(employee) {
       var config, res;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
         while (1) {
-          switch (_context2.prev = _context2.next) {
+          switch (_context3.prev = _context3.next) {
             case 0:
               console.log(employee.image);
               config = {
                 "Content-Type": "application/json"
               };
-              _context2.prev = 2;
-              _context2.next = 5;
+              _context3.prev = 2;
+              _context3.next = 5;
               return axios__WEBPACK_IMPORTED_MODULE_4___default.a.post("/api/employees/create", employee, config);
 
             case 5:
-              res = _context2.sent;
+              res = _context3.sent;
               dispatch({
                 type: _Types__WEBPACK_IMPORTED_MODULE_5__["ADD_EMPLOYEE"],
                 payload: res.data
               });
-              _context2.next = 12;
+              _context3.next = 12;
               break;
 
             case 9:
-              _context2.prev = 9;
-              _context2.t0 = _context2["catch"](2);
-              console.log(JSON.stringify(_context2.t0.response));
+              _context3.prev = 9;
+              _context3.t0 = _context3["catch"](2);
+              console.log(JSON.stringify(_context3.t0.response));
 
             case 12:
             case "end":
-              return _context2.stop();
+              return _context3.stop();
           }
         }
-      }, _callee2, null, [[2, 9]]);
+      }, _callee3, null, [[2, 9]]);
     }));
 
     return function addEmployee(_x) {
-      return _ref2.apply(this, arguments);
+      return _ref3.apply(this, arguments);
     };
   }();
 
   return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_employeeContext__WEBPACK_IMPORTED_MODULE_2__["default"].Provider, {
     value: {
       employees: state.employees,
+      loading: state.loading,
+      tokens: state.tokens,
       fetchAllEmployees: fetchAllEmployees,
+      fetchTokens: fetchTokens,
       addEmployee: addEmployee
     }
   }, props.children);
@@ -56776,7 +56851,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   switch (action.type) {
     case _Types__WEBPACK_IMPORTED_MODULE_0__["GET_EMPLOYEES"]:
       return _objectSpread({}, state, {
-        employees: action.payload
+        employees: action.payload,
+        loading: false
+      });
+
+    case _Types__WEBPACK_IMPORTED_MODULE_0__["GET_TOKENS"]:
+      return _objectSpread({}, state, {
+        tokens: action.payload
       });
 
     case _Types__WEBPACK_IMPORTED_MODULE_0__["ADD_EMPLOYEE"]:
