@@ -22,7 +22,7 @@ class CreateEmployeesTable extends Migration
             $table->boolean('active')->default(true);
             $table->string('phone_number')->nullable();
             $table->string('image')->nullable();
-            $table->string('token_id')->nullable();
+            $table->integer('token_id')->nullable();
             $table->timestamps();
             
         });

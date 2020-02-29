@@ -17,17 +17,17 @@ class EmployeesController extends Controller
        
        
          
-         $image = $request->image[0]->store('employees');
+         $image = $request->image->store('employees');
            
     
         $Employee = Employee::create([
-            'first_name'=>'asta la vista',
-            'last_name'=>'baby',
-            'phone_number'=>'999999',
-            'job_title'=>'Kur pacha',
-            'c_number'=>'046',
+            'first_name'=>$request->first_name,
+            'last_name'=>$request->last_name,
+            'phone_number'=>$request->phone_number,
+            'job_title'=>$request->job_title,
+            'c_number'=>$request->c_number,
+            'image'=>$image,
             'token_id'=>1,
-            'image'=>$image
         ]);
 
         return response()->json($Employee);

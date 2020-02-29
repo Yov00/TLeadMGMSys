@@ -20,5 +20,8 @@ Route::get('/employees', function () {
 Route::get('/employeeForm', function () {
     return view('welcome');
 });
+Route::get('/arrivedItems', function () {
+    return view('welcome');
+});
 
-Route::get('/testen','ItemsController@index');
+Route::get('/arrived','ItemsController@arrived');

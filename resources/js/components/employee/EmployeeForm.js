@@ -15,25 +15,40 @@ const EmployeeForm = () => {
         token_id: ""
     });
 
-    const { first_name, last_name, c_number, phone_number, image } = employee;
+    const {
+        first_name,
+        last_name,
+        c_number,
+        phone_number,
+        image,
+        job_title
+    } = employee;
 
     useEffect(() => {
         fetchTokens();
     }, []);
     // Adding file to the state
     const imageUploadHandler = e => {
-        setEmployee({ ...employee, image: e.target.files[0] });
-
-        console.warn(employee.image);
+        const file = e.target.files[0];
+        setEmployee({ ...employee, image: file });
     };
 
-    const onChange = e =>
+    const onChange = e => {
         setEmployee({ ...employee, [e.target.name]: e.target.value });
+    };
 
     const onSubmit = e => {
         e.preventDefault();
+        const employeeInfo = new FormData();
 
-        addEmployee(employee);
+        employeeInfo.append("first_name", first_name);
+        employeeInfo.append("last_name", last_name);
+        employeeInfo.append("c_number", c_number);
+        employeeInfo.append("image", image);
+        employeeInfo.append("job_title", job_title);
+        employeeInfo.append("phone_number", phone_number);
+        employeeInfo.append("token_id", token_id);
+        addEmployee(employeeInfo);
 
         setEmployee({
             first_name: "",
@@ -116,7 +131,7 @@ const EmployeeForm = () => {
                     <label htmlFor="token_number">Token number</label>
                     <select onChange={onChange} id="token_id" name="token_id">
                         {tokens.map(token => (
-                            <option value={token.token_number}>
+                            <option key={token.id} value={token.token_number}>
                                 {token.token_number}
                             </option>
                         ))}

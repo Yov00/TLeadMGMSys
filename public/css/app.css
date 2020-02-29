@@ -33,6 +33,11 @@
   padding-right: 0px;
 }
 
+.navbar:hover .navbar__arrow {
+  opacity: 0;
+  right: -5px;
+}
+
 .navbar li {
   height: 80px;
   display: -webkit-box;
@@ -74,6 +79,30 @@
   width: 80px;
 }
 
+.navbar__arrow {
+  position: absolute;
+  width: 20px;
+  height: 60px;
+  font-size: 20px;
+  background-color: #333;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+          align-items: center;
+  top: 50%;
+  right: 5px;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.arrived_items {
+  display: none;
+}
+
 .inventoryWrapper {
   margin-top: 200px;
   width: 100%;
@@ -112,8 +141,7 @@ th {
 }
 
 .AddItemInput {
-  width: 60%;
-  padding: 0 10px;
+  width: 100%;
   margin: 0px auto;
   -webkit-animation-name: fly_in;
           animation-name: fly_in;
@@ -130,6 +158,11 @@ th {
   -webkit-columns: #333;
      -moz-columns: #333;
           columns: #333;
+  border: 1px solid gray;
+}
+
+.AddItemInput input:focus {
+  box-shadow: 0 0 5px #666 inset;
 }
 
 .AddItemInput input[type=text] {
@@ -267,30 +300,6 @@ select {
           animation-fill-mode: forwards;
 }
 
-@-webkit-keyframes rotate {
-  from {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-  }
-
-  to {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
-  }
-}
-
-@keyframes rotate {
-  from {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-  }
-
-  to {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
-  }
-}
-
 @-webkit-keyframes fly_in {
   from {
     opacity: 0;
@@ -321,19 +330,117 @@ select {
   }
 }
 
+@-webkit-keyframes rotate {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(359deg);
+            transform: rotate(359deg);
+  }
+}
+
+@keyframes rotate {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(359deg);
+            transform: rotate(359deg);
+  }
+}
+
+@-webkit-keyframes rotate1 {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(-725deg);
+            transform: rotate(-725deg);
+  }
+}
+
+@keyframes rotate1 {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(-725deg);
+            transform: rotate(-725deg);
+  }
+}
+
+@-webkit-keyframes rotate2 {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(-360deg);
+            transform: rotate(-360deg);
+  }
+}
+
+@keyframes rotate2 {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(-360deg);
+            transform: rotate(-360deg);
+  }
+}
+
 .spinner {
-  width: 100px;
-  height: 100px;
-  margin: 0px auto;
-  border-radius: 50%;
-  border: 15px solid #333;
-  border-top: 15px solid tomato;
-  -webkit-animation-name: rotate;
-          animation-name: rotate;
-  -webkit-animation-duration: 1s;
-          animation-duration: 1s;
-  -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
+  width: 50px;
+  height: 50px;
+  background-color: #1f1c1c;
+  opacity: 0.6;
+  margin: 300px auto;
+  -webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;
+  animation: sk-rotateplane 1.2s infinite ease-in-out;
+}
+
+@-webkit-keyframes sk-rotateplane {
+  0% {
+    -webkit-transform: perspective(120px);
+  }
+
+  50% {
+    -webkit-transform: perspective(120px) rotateY(180deg);
+  }
+
+  100% {
+    -webkit-transform: perspective(120px) rotateY(180deg) rotateX(180deg);
+  }
+}
+
+@keyframes sk-rotateplane {
+  0% {
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+  }
+
+  50% {
+    transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+  }
+
+  100% {
+    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+  }
 }
 
 .employees {
@@ -346,8 +453,11 @@ select {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  -webkit-box-pack: center;
-          justify-content: center;
+}
+
+.employee_image {
+  width: 100%;
+  max-height: 150px;
 }
 
 .employeeForm {
@@ -382,5 +492,240 @@ html {
 
 .main__content {
   width: 100%;
+}
+
+.invoiceModal__wrapper {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+          align-items: center;
+  z-index: 200;
+}
+
+.invoiceModal {
+  width: 60%;
+  position: relative;
+  margin-top: -300px;
+  max-width: 800px;
+  background-color: white;
+  padding: 60px;
+  border-radius: 10px;
+}
+
+.invoiceModal__header {
+  text-align: center;
+  font-size: 30px;
+  border-bottom: 1px solid gray;
+}
+
+.invoiceModal__body {
+  padding: 20px 0;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  -webkit-box-align: center;
+          align-items: center;
+}
+
+.invoiceModal__body div {
+  display: -webkit-box;
+  display: flex;
+  margin: 10px 0;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  font-size: 20px;
+  width: 80%;
+}
+
+.invoiceModal__body div label {
+  font-weight: bold;
+}
+
+.invoiceModal__body div input {
+  padding: 10px;
+  font-size: 20px;
+  width: 100%;
+  border: 1px solid gray;
+}
+
+.invoiceModal__body div input:focus {
+  box-shadow: 0 0 5px #666 inset;
+}
+
+.invoiceModal__footer {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  -webkit-box-align: center;
+          align-items: center;
+  padding-top: 40px;
+}
+
+.invoiceModal__footer form {
+  width: 80%;
+}
+
+.add_invoice_button {
+  width: 100%;
+  border: none;
+  padding: 10px 0;
+  font-weight: bold;
+  background-color: #333;
+  color: white;
+  cursor: pointer;
+}
+
+.close_modal {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+  font-weight: bold;
+  background-color: #333;
+  color: white;
+  cursor: pointer;
+}
+
+.validationError {
+  background-color: tomato;
+  color: white;
+  font-size: 13px;
+  font-weight: bold;
+  width: 100%;
+  padding: 10px 20px;
+  -webkit-animation-name: fade_in;
+          animation-name: fade_in;
+  -webkit-animation-duration: 0.4s;
+          animation-duration: 0.4s;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes fade_in {
+  0% {
+    opacity: 0;
+    height: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade_in {
+  0% {
+    opacity: 0;
+    height: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.bance_wrapper {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+.balance {
+  padding: 20px;
+  background-color: #251e21;
+  color: white;
+  font-weight: bold;
+  border-radius: 10px;
+  font-size: 20px;
+}
+
+.balance span {
+  font-size: 12px;
+}
+
+.balance .button {
+  display: inline;
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+.balance .button:hover {
+  color: goldenrod;
+}
+
+.add_balance {
+  padding: 15px 20px;
+  font-size: 20px;
+  position: absolute;
+  bottom: 60px;
+  white-space: nowrap;
+  background-color: #251e21;
+  color: white;
+  font-weight: bold;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  -webkit-animation: ease_up 0.2s linear 1 forwards;
+          animation: ease_up 0.2s linear 1 forwards;
+}
+
+.add_balance input {
+  width: 130px;
+  height: 40px;
+  border: none;
+  overflow: hidden;
+  font-size: 17px;
+  padding: 5px 10px;
+}
+
+.add_balance button {
+  height: 40px;
+  width: 40px;
+  margin-left: 10px;
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+  background-color: orange;
+  color: white;
+  font-weight: bold;
+}
+
+@-webkit-keyframes ease_up {
+  from {
+    margin-left: 300px;
+    opacity: 0;
+  }
+
+  to {
+    margin-left: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes ease_up {
+  from {
+    margin-left: 300px;
+    opacity: 0;
+  }
+
+  to {
+    margin-left: 0;
+    opacity: 1;
+  }
 }
 

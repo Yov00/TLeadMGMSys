@@ -1,0 +1,68 @@
+.bance_wrapper {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+.balance {
+    padding: 20px;
+    background-color: #251e21;
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+    font-size: 20px;
+    span {
+        font-size: 12px;
+    }
+    .button {
+        display: inline;
+        margin-left: 20px;
+        cursor: pointer;
+
+        &:hover {
+            color: goldenrod;
+        }
+    }
+}
+.add_balance {
+    padding: 15px 20px;
+    font-size: 20px;
+    position: absolute;
+    bottom: 60px;
+    white-space: nowrap;
+    background-color: #251e21;
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    input {
+        width: 130px;
+        height: 40px;
+        border: none;
+        overflow: hidden;
+        font-size: 17px;
+        padding: 5px 10px;
+    }
+    button {
+        height: 40px;
+        width: 40px;
+        margin-left: 10px;
+        cursor: pointer;
+        border: none;
+        border-radius: 10px;
+        background-color: orange;
+        color: white;
+        font-weight: bold;
+    }
+
+    animation: ease_up 0.2s linear 1 forwards;
+}
+@keyframes ease_up {
+    from {
+        margin-left: 300px;
+        opacity: 0;
+    }
+    to {
+        margin-left: 0;
+        opacity: 1;
+    }
+}

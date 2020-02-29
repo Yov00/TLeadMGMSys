@@ -1,6 +1,5 @@
 .AddItemInput {
-    width: 60%;
-    padding: 0 10px;
+    width: 100%;
     margin: 0px auto;
     animation-name: fly_in;
     animation-duration: 1s;
@@ -11,6 +10,10 @@
     height: 60px;
     font-size: 20px;
     columns: #333;
+    border: 1px solid gray;
+    &:focus {
+        box-shadow: 0 0 5px #666 inset;
+    }
 }
 
 .AddItemInput input[type="text"] {

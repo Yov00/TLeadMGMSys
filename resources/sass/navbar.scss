@@ -23,6 +23,10 @@
     left: 0;
     padding-right: 0px;
 }
+.navbar:hover .navbar__arrow {
+    opacity: 0;
+    right: -5px;
+}
 .navbar li {
     height: 80px;
     display: flex;
@@ -44,6 +48,7 @@
     // border-bottom: 1px solid white;
     // border-top: 1px solid white;
 }
+
 .nav__link {
     display: flex;
     justify-content: center;
@@ -58,4 +63,22 @@
 }
 .main__navbar {
     width: 80px;
+}
+.navbar__arrow {
+    position: absolute;
+    width: 20px;
+    height: 60px;
+    font-size: 20px;
+    background-color: #333;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 50%;
+    right: 5px;
+    transition: 0.2s;
+}
+
+.arrived_items {
+    display: none;
 }

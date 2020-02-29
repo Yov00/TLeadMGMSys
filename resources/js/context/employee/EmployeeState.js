@@ -27,7 +27,7 @@ const EmployeeState = props => {
     // Get Tokens
     const fetchTokens = async () => {
         try {
-            const res = axios.get("api/tokens");
+            const res = await axios.get("api/tokens");
             dispatch({
                 type: GET_TOKENS,
                 payload: res.data

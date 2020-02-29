@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import EmployeeItem from "./EmployeeItem";
 import EmployeeContext from "../../context/employee/employeeContext";
 import Spinner from "../layout/Spinner";
+
 const Employee = () => {
     const employeeContext = useContext(EmployeeContext);
     const { employees, fetchAllEmployees, loading } = employeeContext;
@@ -18,7 +19,7 @@ const Employee = () => {
                 return <EmployeeItem employee={employee} key={index} />;
             })
         ) : (
-            <h3>There are no employees...</h3>
+            <h3 className="employeeWrapepr">There are no employees...</h3>
         );
     if (loading)
         return (
@@ -29,7 +30,7 @@ const Employee = () => {
 
     return (
         <div className="employees ease_in">
-            <h1 className="ease_in">EMPLOYEES</h1>
+            <h1>EMPLOYEES</h1>
             <div className="employeeWrapepr">{allEmployees}</div>
         </div>
     );

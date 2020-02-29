@@ -55934,7 +55934,7 @@ module.exports = function(module) {
 /*!*******************************!*\
   !*** ./resources/js/Types.js ***!
   \*******************************/
-/*! exports provided: ADD_INVENTORY_ITEM, REMOVE_INVENTORY_ITEM, CHECKOUT_INVENTORY_ITEM, GET_ITEMS, GET_EMPLOYEES, ADD_EMPLOYEE, GET_TOKENS, SET_LOADING */
+/*! exports provided: ADD_INVENTORY_ITEM, REMOVE_INVENTORY_ITEM, CHECKOUT_INVENTORY_ITEM, GET_ITEMS, SHOW_MODAL, ARRIVED_ITEMS, GET_EMPLOYEES, ADD_EMPLOYEE, GET_TOKENS, SET_LOADING, ADD_INVOICE, GET_BALANCE, UPDATE_BALANCE */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -55943,22 +55943,34 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_INVENTORY_ITEM", function() { return REMOVE_INVENTORY_ITEM; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CHECKOUT_INVENTORY_ITEM", function() { return CHECKOUT_INVENTORY_ITEM; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_ITEMS", function() { return GET_ITEMS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SHOW_MODAL", function() { return SHOW_MODAL; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ARRIVED_ITEMS", function() { return ARRIVED_ITEMS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_EMPLOYEES", function() { return GET_EMPLOYEES; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADD_EMPLOYEE", function() { return ADD_EMPLOYEE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_TOKENS", function() { return GET_TOKENS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SET_LOADING", function() { return SET_LOADING; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADD_INVOICE", function() { return ADD_INVOICE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_BALANCE", function() { return GET_BALANCE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPDATE_BALANCE", function() { return UPDATE_BALANCE; });
 // Inventory
 var ADD_INVENTORY_ITEM = "ADD_INVENTORY_ITEM";
 var REMOVE_INVENTORY_ITEM = "REMOVE_INVENTORY_ITEM";
 var CHECKOUT_INVENTORY_ITEM = "CHECKOUT_INVENTORY_ITEM";
-var GET_ITEMS = "GET_ITEMS"; // Employees
+var GET_ITEMS = "GET_ITEMS";
+var SHOW_MODAL = "SHOW_MODAL";
+var ARRIVED_ITEMS = "ARRIVED_ITEMS"; // Employees
 
 var GET_EMPLOYEES = "GET_EMPLOYEES";
 var ADD_EMPLOYEE = "ADD_EMPLOYEE"; // Tokens
 
 var GET_TOKENS = "GET_TOKENS"; // Loading...
 
-var SET_LOADING = "SET_LOADING";
+var SET_LOADING = "SET_LOADING"; // Invoice
+
+var ADD_INVOICE = "ADD_INVOICE"; // Balance
+
+var GET_BALANCE = "GET_BALANCE";
+var UPDATE_BALANCE = "UPDATE_BALACNE";
 
 /***/ }),
 
@@ -56037,8 +56049,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _inventory_Inventory__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./inventory/Inventory */ "./resources/js/components/inventory/Inventory.js");
 /* harmony import */ var _employee_Employee__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./employee/Employee */ "./resources/js/components/employee/Employee.js");
 /* harmony import */ var _employee_EmployeeForm__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./employee/EmployeeForm */ "./resources/js/components/employee/EmployeeForm.js");
-/* harmony import */ var _context_inventory_InventoryState__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../context/inventory/InventoryState */ "./resources/js/context/inventory/InventoryState.js");
-/* harmony import */ var _context_employee_EmployeeState__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../context/employee/EmployeeState */ "./resources/js/context/employee/EmployeeState.js");
+/* harmony import */ var _inventory_ArrivedItems__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./inventory/ArrivedItems */ "./resources/js/components/inventory/ArrivedItems.js");
+/* harmony import */ var _context_inventory_InventoryState__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../context/inventory/InventoryState */ "./resources/js/context/inventory/InventoryState.js");
+/* harmony import */ var _context_employee_EmployeeState__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../context/employee/EmployeeState */ "./resources/js/context/employee/EmployeeState.js");
+/* harmony import */ var _context_balance_BalanceState__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../context/balance/BalanceState */ "./resources/js/context/balance/BalanceState.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -56067,6 +56081,8 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
+
 var Index =
 /*#__PURE__*/
 function (_Component) {
@@ -56081,7 +56097,7 @@ function (_Component) {
   _createClass(Index, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_context_inventory_InventoryState__WEBPACK_IMPORTED_MODULE_7__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_context_employee_EmployeeState__WEBPACK_IMPORTED_MODULE_8__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_context_inventory_InventoryState__WEBPACK_IMPORTED_MODULE_8__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_context_balance_BalanceState__WEBPACK_IMPORTED_MODULE_10__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_context_employee_EmployeeState__WEBPACK_IMPORTED_MODULE_9__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "main"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "main__navbar"
@@ -56093,13 +56109,17 @@ function (_Component) {
         component: _inventory_Inventory__WEBPACK_IMPORTED_MODULE_4__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
         exact: true,
+        path: "/arrivedItems",
+        component: _inventory_ArrivedItems__WEBPACK_IMPORTED_MODULE_7__["default"]
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
+        exact: true,
         path: "/employees",
         component: _employee_Employee__WEBPACK_IMPORTED_MODULE_5__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
         exact: true,
         path: "/employeeForm",
         component: _employee_EmployeeForm__WEBPACK_IMPORTED_MODULE_6__["default"]
-      })))))));
+      }))))))));
     }
   }]);
 
@@ -56111,6 +56131,112 @@ function (_Component) {
 if (document.getElementById("root")) {
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Index, null), document.getElementById("root"));
 }
+
+/***/ }),
+
+/***/ "./resources/js/components/balance/Balance.js":
+/*!****************************************************!*\
+  !*** ./resources/js/components/balance/Balance.js ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _context_balance_balanceContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../context/balance/balanceContext */ "./resources/js/context/balance/balanceContext.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+var Balance = function Balance() {
+  var balanceContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_balance_balanceContext__WEBPACK_IMPORTED_MODULE_1__["default"]);
+  var balance = balanceContext.balance,
+      fetchBalance = balanceContext.fetchBalance,
+      updateBalance = balanceContext.updateBalance; // STATE
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      showAddBalance = _useState2[0],
+      setShowAddBlanace = _useState2[1];
+
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
+      _useState4 = _slicedToArray(_useState3, 2),
+      addedAmount = _useState4[0],
+      setAddedAmmount = _useState4[1];
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    fetchBalance();
+    console.log(balance);
+  }, []);
+
+  var showAddBalanceHandler = function showAddBalanceHandler() {
+    setShowAddBlanace(!showAddBalance);
+  };
+
+  var _onChange = function onChange(e) {
+    setAddedAmmount(e.target.value);
+  };
+
+  var onSubmit = function onSubmit(e) {
+    e.preventDefault();
+
+    var newBalance = _objectSpread({}, balance);
+
+    newBalance.ammount += parseFloat(addedAmount);
+    updateBalance(newBalance);
+    setAddedAmmount("");
+  };
+
+  var addBalance = showAddBalance ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    onSubmit: onSubmit,
+    className: "add_balance"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    onChange: function onChange(e) {
+      return _onChange(e);
+    },
+    type: "number",
+    name: "add_ammount",
+    value: addedAmount,
+    placeholder: "0"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    type: "submit"
+  }, "+")) : "";
+  var addOrRemoveIcon = !showAddBalance ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    onClick: function onClick() {
+      return showAddBalanceHandler();
+    },
+    className: "fas fa-plus-circle"
+  }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    onClick: function onClick() {
+      return showAddBalanceHandler();
+    },
+    className: "fas fa-minus-circle"
+  });
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "bance_wrapper"
+  }, addBalance, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "balance"
+  }, "Balance: ", balance.ammount, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "BGN"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "button"
+  }, addOrRemoveIcon)));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Balance);
 
 /***/ }),
 
@@ -56148,15 +56274,15 @@ var Employee = function Employee() {
       employee: employee,
       key: index
     });
-  }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "There are no employees...");
+  }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+    className: "employeeWrapepr"
+  }, "There are no employees...");
   if (loading) return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "employees "
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_layout_Spinner__WEBPACK_IMPORTED_MODULE_3__["default"], null));
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "employees ease_in"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-    className: "ease_in"
-  }, "EMPLOYEES"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "EMPLOYEES"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "employeeWrapepr"
   }, allEmployees));
 };
@@ -56217,25 +56343,34 @@ var EmployeeForm = function EmployeeForm() {
       last_name = employee.last_name,
       c_number = employee.c_number,
       phone_number = employee.phone_number,
-      image = employee.image;
+      image = employee.image,
+      job_title = employee.job_title;
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     fetchTokens();
   }, []); // Adding file to the state
 
   var imageUploadHandler = function imageUploadHandler(e) {
+    var file = e.target.files[0];
     setEmployee(_objectSpread({}, employee, {
-      image: e.target.files[0]
+      image: file
     }));
-    console.warn(employee.image);
   };
 
   var onChange = function onChange(e) {
-    return setEmployee(_objectSpread({}, employee, _defineProperty({}, e.target.name, e.target.value)));
+    setEmployee(_objectSpread({}, employee, _defineProperty({}, e.target.name, e.target.value)));
   };
 
   var onSubmit = function onSubmit(e) {
     e.preventDefault();
-    addEmployee(employee);
+    var employeeInfo = new FormData();
+    employeeInfo.append("first_name", first_name);
+    employeeInfo.append("last_name", last_name);
+    employeeInfo.append("c_number", c_number);
+    employeeInfo.append("image", image);
+    employeeInfo.append("job_title", job_title);
+    employeeInfo.append("phone_number", phone_number);
+    employeeInfo.append("token_id", token_id);
+    addEmployee(employeeInfo);
     setEmployee({
       first_name: "",
       last_name: "",
@@ -56333,6 +56468,7 @@ var EmployeeForm = function EmployeeForm() {
     name: "token_id"
   }, tokens.map(function (token) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+      key: token.id,
       value: token.token_number
     }, token.token_number);
   })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -56381,12 +56517,16 @@ var EmployeeItem = function EmployeeItem(_ref) {
   var first_name = employee.first_name,
       last_name = employee.last_name,
       c_number = employee.c_number,
-      job_title = employee.job_title;
+      job_title = employee.job_title,
+      image = employee.image;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "card"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "card__header"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+  }, image ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "employee_image",
+    src: "storage/" + image
+  }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     src: "https://www.journalofaccountancy.com/content/dam/jofa/issues/2015/jul/shaylynn-fuller.jpg"
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "card__body"
@@ -56483,6 +56623,67 @@ var AddItemInput = function AddItemInput() {
 
 /***/ }),
 
+/***/ "./resources/js/components/inventory/ArrivedItems.js":
+/*!***********************************************************!*\
+  !*** ./resources/js/components/inventory/ArrivedItems.js ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _context_inventory_inventoryContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../context/inventory/inventoryContext */ "./resources/js/context/inventory/inventoryContext.js");
+/* harmony import */ var _layout_Spinner__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../layout/Spinner */ "./resources/js/components/layout/Spinner.js");
+
+
+
+
+var ArrivedItems = function ArrivedItems() {
+  var inventoryContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_inventory_inventoryContext__WEBPACK_IMPORTED_MODULE_1__["default"]);
+  var arrived_items = inventoryContext.arrived_items,
+      fetchAllArrivedItems = inventoryContext.fetchAllArrivedItems,
+      loading = inventoryContext.loading;
+  var id = arrived_items.id,
+      name = arrived_items.name,
+      quantity = arrived_items.quantity,
+      deleted_at = arrived_items.deleted_at;
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    fetchAllArrivedItems();
+  }, []);
+
+  if (loading) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_layout_Spinner__WEBPACK_IMPORTED_MODULE_2__["default"], null);
+  }
+
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+    className: "inventory ease_in inventoryWrapper"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+    style: {
+      backgroundColor: "white",
+      color: "#333",
+      fontSize: "40px",
+      padding: "20px 0",
+      textAlign: "left"
+    },
+    colSpan: "4"
+  }, "Arrived Items")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Name"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Quantity"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Arrived on"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Price"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, arrived_items.length > 0 ? arrived_items.sort().map(function (item) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+      className: "tr__hoverable",
+      key: item.id
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.quantity), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.deleted_at ? item.deleted_at.slice(0, 10) : ""), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+      className: "flex__space_evenly"
+    }, item.invoice != null ? item.invoice.ammount + "$" : ""));
+  }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+    colSpan: "4"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "No arrived items...")))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (ArrivedItems);
+
+/***/ }),
+
 /***/ "./resources/js/components/inventory/Inventory.js":
 /*!********************************************************!*\
   !*** ./resources/js/components/inventory/Inventory.js ***!
@@ -56496,6 +56697,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _context_inventory_inventoryContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../context/inventory/inventoryContext */ "./resources/js/context/inventory/inventoryContext.js");
 /* harmony import */ var _AddItemForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AddItemForm */ "./resources/js/components/inventory/AddItemForm.js");
+/* harmony import */ var _InventoryItems__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./InventoryItems */ "./resources/js/components/inventory/InventoryItems.js");
+/* harmony import */ var _balance_Balance__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../balance/Balance */ "./resources/js/components/balance/Balance.js");
+/* harmony import */ var _invoice_InvoiceModal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../invoice/InvoiceModal */ "./resources/js/components/invoice/InvoiceModal.js");
+/* harmony import */ var _layout_Spinner__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../layout/Spinner */ "./resources/js/components/layout/Spinner.js");
+
+
+
+
 
 
 
@@ -56504,45 +56713,232 @@ var Inventory = function Inventory() {
   var inventoryContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_inventory_inventoryContext__WEBPACK_IMPORTED_MODULE_1__["default"]);
   var items = inventoryContext.items,
       fetchAllItems = inventoryContext.fetchAllItems,
-      removeItem = inventoryContext.removeItem;
+      showModalHandler = inventoryContext.showModalHandler,
+      showModal = inventoryContext.showModal,
+      item = inventoryContext.item,
+      loading = inventoryContext.loading;
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     fetchAllItems(); // eslint-disable-next-line
   }, []);
+
+  if (loading) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_layout_Spinner__WEBPACK_IMPORTED_MODULE_6__["default"], null);
+  }
+
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "inventoryWrapper"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-    className: "ease_in",
-    style: {
-      fontSize: "40px"
-    }
-  }, "Inventory"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AddItemForm__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
-    className: "inventory ease_in"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Name"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Quantity"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Submitted date"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Manage"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, items.length > 0 ? items.map(function (item) {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-      className: "tr__hoverable",
-      key: item.id
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.quantity), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.created_at), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-      className: "flex__space_evenly"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-      type: "button",
-      className: "btn__light",
-      value: "arrived"
-    })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-      onSubmit: function onSubmit(e) {
-        e.preventDefault();
-        removeItem(item.id);
-      }
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-      type: "submit",
-      value: "Delete",
-      className: "btn__dark"
-    })))));
-  }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
-    colSpan: "4"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "There are no inventory items..."))))));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_invoice_InvoiceModal__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    item: item,
+    show: showModal,
+    showHandler: showModalHandler
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_InventoryItems__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    items: items
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_balance_Balance__WEBPACK_IMPORTED_MODULE_4__["default"], null));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Inventory);
+
+/***/ }),
+
+/***/ "./resources/js/components/inventory/InventoryItems.js":
+/*!*************************************************************!*\
+  !*** ./resources/js/components/inventory/InventoryItems.js ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _AddItemForm__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AddItemForm */ "./resources/js/components/inventory/AddItemForm.js");
+/* harmony import */ var _context_inventory_inventoryContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../context/inventory/inventoryContext */ "./resources/js/context/inventory/inventoryContext.js");
+
+
+
+
+var InventoryItems = function InventoryItems(_ref) {
+  var items = _ref.items;
+  var inventoryContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_inventory_inventoryContext__WEBPACK_IMPORTED_MODULE_2__["default"]);
+  var showModalHandler = inventoryContext.showModalHandler;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+    className: "inventory ease_in"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+    colSpan: "4",
+    style: {
+      backgroundColor: "white",
+      color: "#333",
+      textAlign: "left",
+      fontSize: "40px"
+    }
+  }, "Inventory")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+    colSpan: "4",
+    style: {
+      backgroundColor: "white",
+      color: "#333",
+      textAlign: "left"
+    }
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AddItemForm__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Name"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Quantity"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Submitted date"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Manage"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, items.length > 0 ? items.sort().map(function (item) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+      className: "tr__hoverable",
+      key: item.id
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.quantity), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.created_at.slice(0, 10)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+      className: "flex__space_evenly"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      type: "submit",
+      className: "btn__light",
+      value: "arrived",
+      onClick: function onClick() {
+        return showModalHandler(item);
+      }
+    }))));
+  }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+    colSpan: "4"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "There are no inventory items...")))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (InventoryItems);
+
+/***/ }),
+
+/***/ "./resources/js/components/invoice/InvoiceModal.js":
+/*!*********************************************************!*\
+  !*** ./resources/js/components/invoice/InvoiceModal.js ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _context_inventory_inventoryContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../context/inventory/inventoryContext */ "./resources/js/context/inventory/inventoryContext.js");
+/* harmony import */ var _context_balance_balanceContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../context/balance/balanceContext */ "./resources/js/context/balance/balanceContext.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+var InvoiceModal = function InvoiceModal(props) {
+  var item = props.item,
+      show = props.show,
+      showHandler = props.showHandler;
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
+    number: 0,
+    ammount: 0,
+    item_id: 0
+  }),
+      _useState2 = _slicedToArray(_useState, 2),
+      invoice = _useState2[0],
+      setInvoice = _useState2[1];
+
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
+      _useState4 = _slicedToArray(_useState3, 2),
+      validation_errors = _useState4[0],
+      setValidation_errors = _useState4[1];
+
+  var inventoryContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_inventory_inventoryContext__WEBPACK_IMPORTED_MODULE_1__["default"]);
+  var balanceContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_balance_balanceContext__WEBPACK_IMPORTED_MODULE_2__["default"]);
+  var createInvoice = inventoryContext.createInvoice,
+      removeItem = inventoryContext.removeItem;
+  var updateBalance = balanceContext.updateBalance,
+      balance = balanceContext.balance;
+  var name = item.name,
+      id = item.id;
+
+  var onChange = function onChange(e) {
+    setInvoice(_objectSpread({}, invoice, _defineProperty({}, e.target.name, e.target.value)));
+  };
+
+  var onSubmit = function onSubmit(e) {
+    e.preventDefault();
+    var valRegex = /^[0-9]+(\.[0-9]+)+$/;
+
+    if (invoice.ammount) {
+      createInvoice(invoice);
+      removeItem(invoice.item_id);
+
+      var newBalance = _objectSpread({}, balance);
+
+      var newBalanceInfo = new FormData();
+      newBalance.ammount -= parseFloat(invoice.ammount);
+      updateBalance(newBalance);
+      showHandler({});
+      setInvoice({
+        number: 0,
+        ammount: 0,
+        item_id: 0
+      });
+    } else {
+      setValidation_errors("Please add an ammount");
+    }
+  };
+
+  var setInvoiceIdOnLoad = function setInvoiceIdOnLoad() {
+    if (invoice.item_id <= 0) {
+      setInvoice({
+        item_id: item.id
+      });
+    }
+  };
+
+  if (!show) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
+  }
+
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "invoiceModal__wrapper"
+  }, setInvoiceIdOnLoad(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "invoiceModal"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "close_modal",
+    onClick: function onClick() {
+      return showHandler({});
+    }
+  }, "X"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "invoiceModal__header"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Invoice Details")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "invoiceModal__body"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, id + ": " + name.toUpperCase())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Number"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    name: "number",
+    type: "number",
+    onChange: onChange,
+    placeholder: "Invoice number..."
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Ammount"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "number",
+    name: "ammount",
+    min: "1",
+    max: "12",
+    onChange: onChange,
+    placeholder: "Paid ammount...",
+    required: true
+  })), validation_errors && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "validationError"
+  }, validation_errors)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "invoiceModal__footer"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    onSubmit: onSubmit
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    type: "submit",
+    className: "add_invoice_button"
+  }, "Add Invoice")))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (InvoiceModal);
 
 /***/ }),
 
@@ -56564,11 +56960,22 @@ __webpack_require__.r(__webpack_exports__);
 var Navbar = function Navbar() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
     className: "navbar"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "navbar__arrow"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fas fa-arrow-right"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     className: "nav__link",
     to: "/"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
     className: "fas fa-tv"
+  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+    className: "arrived_items"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    className: "nav__link",
+    to: "/arrivedItems"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fas fa-truck"
   }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     className: "nav__link",
     to: "/employees"
@@ -56578,7 +56985,7 @@ var Navbar = function Navbar() {
     className: "nav__link",
     to: "/employeeForm"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-    className: "fas fa-terminal"
+    "class": "fas fa-user-plus"
   }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     className: "nav__link",
     to: "/employees"
@@ -56611,6 +57018,211 @@ var Spinner = function Spinner() {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Spinner);
+
+/***/ }),
+
+/***/ "./resources/js/context/balance/BalanceState.js":
+/*!******************************************************!*\
+  !*** ./resources/js/context/balance/BalanceState.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _balanceContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./balanceContext */ "./resources/js/context/balance/balanceContext.js");
+/* harmony import */ var _balanceReducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./balanceReducer */ "./resources/js/context/balance/balanceReducer.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _Types__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../Types */ "./resources/js/Types.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+var BalanceState = function BalanceState(props) {
+  var initialState = {
+    balance: 0
+  };
+
+  var _useReducer = Object(react__WEBPACK_IMPORTED_MODULE_1__["useReducer"])(_balanceReducer__WEBPACK_IMPORTED_MODULE_3__["default"], initialState),
+      _useReducer2 = _slicedToArray(_useReducer, 2),
+      state = _useReducer2[0],
+      dispatch = _useReducer2[1];
+
+  var fetchBalance =
+  /*#__PURE__*/
+  function () {
+    var _ref = _asyncToGenerator(
+    /*#__PURE__*/
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+      var res;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.prev = 0;
+              _context.next = 3;
+              return axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("/api/balance");
+
+            case 3:
+              res = _context.sent;
+              dispatch({
+                type: _Types__WEBPACK_IMPORTED_MODULE_5__["GET_BALANCE"],
+                payload: res.data
+              });
+              _context.next = 10;
+              break;
+
+            case 7:
+              _context.prev = 7;
+              _context.t0 = _context["catch"](0);
+              console.log(_context.t0.response);
+
+            case 10:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, null, [[0, 7]]);
+    }));
+
+    return function fetchBalance() {
+      return _ref.apply(this, arguments);
+    };
+  }(); // Update Balance
+
+
+  var updateBalance =
+  /*#__PURE__*/
+  function () {
+    var _ref2 = _asyncToGenerator(
+    /*#__PURE__*/
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(balance) {
+      var config, res;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              console.log(balance);
+              config = {
+                headers: {
+                  "Content-Type": "application/json"
+                }
+              };
+              _context2.prev = 2;
+              _context2.next = 5;
+              return axios__WEBPACK_IMPORTED_MODULE_4___default.a.put("/api/balance/" + balance.id + "/update", balance, config);
+
+            case 5:
+              res = _context2.sent;
+              dispatch({
+                type: _Types__WEBPACK_IMPORTED_MODULE_5__["UPDATE_BALANCE"],
+                payload: res.data
+              });
+              _context2.next = 12;
+              break;
+
+            case 9:
+              _context2.prev = 9;
+              _context2.t0 = _context2["catch"](2);
+              console.error(_context2.t0);
+
+            case 12:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2, null, [[2, 9]]);
+    }));
+
+    return function updateBalance(_x) {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+
+  return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_balanceContext__WEBPACK_IMPORTED_MODULE_2__["default"].Provider, {
+    value: {
+      balance: state.balance,
+      fetchBalance: fetchBalance,
+      updateBalance: updateBalance
+    }
+  }, props.children);
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (BalanceState);
+
+/***/ }),
+
+/***/ "./resources/js/context/balance/balanceContext.js":
+/*!********************************************************!*\
+  !*** ./resources/js/context/balance/balanceContext.js ***!
+  \********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+var balanceContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["createContext"])();
+/* harmony default export */ __webpack_exports__["default"] = (balanceContext);
+
+/***/ }),
+
+/***/ "./resources/js/context/balance/balanceReducer.js":
+/*!********************************************************!*\
+  !*** ./resources/js/context/balance/balanceReducer.js ***!
+  \********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Types */ "./resources/js/Types.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+/* harmony default export */ __webpack_exports__["default"] = (function (state, action) {
+  switch (action.type) {
+    case _Types__WEBPACK_IMPORTED_MODULE_0__["GET_BALANCE"]:
+      return _objectSpread({}, state, {
+        balance: action.payload
+      });
+
+    case _Types__WEBPACK_IMPORTED_MODULE_0__["UPDATE_BALANCE"]:
+      return _objectSpread({}, state, {
+        balance: action.payload
+      });
+
+    default:
+      break;
+  }
+});
 
 /***/ }),
 
@@ -56719,22 +57331,30 @@ var EmployeeState = function EmployeeState(props) {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
-              try {
-                res = axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("api/tokens");
-                dispatch({
-                  type: _Types__WEBPACK_IMPORTED_MODULE_5__["GET_TOKENS"],
-                  payload: res.data
-                });
-              } catch (err) {
-                console.log(err.response);
-              }
+              _context2.prev = 0;
+              _context2.next = 3;
+              return axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("api/tokens");
 
-            case 1:
+            case 3:
+              res = _context2.sent;
+              dispatch({
+                type: _Types__WEBPACK_IMPORTED_MODULE_5__["GET_TOKENS"],
+                payload: res.data
+              });
+              _context2.next = 10;
+              break;
+
+            case 7:
+              _context2.prev = 7;
+              _context2.t0 = _context2["catch"](0);
+              console.log(_context2.t0.response);
+
+            case 10:
             case "end":
               return _context2.stop();
           }
         }
-      }, _callee2);
+      }, _callee2, null, [[0, 7]]);
     }));
 
     return function fetchTokens() {
@@ -56887,9 +57507,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _inventoryContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./inventoryContext */ "./resources/js/context/inventory/inventoryContext.js");
 /* harmony import */ var _inventoryReducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./inventoryReducer */ "./resources/js/context/inventory/inventoryReducer.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _Types__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../Types */ "./resources/js/Types.js");
+/* harmony import */ var _components_invoice_InvoiceModal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/invoice/InvoiceModal */ "./resources/js/components/invoice/InvoiceModal.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _Types__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../Types */ "./resources/js/Types.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -56910,10 +57531,16 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var InventoryState = function InventoryState(props) {
   var initialState = {
     items: [],
-    current: null
+    arrived_items: [],
+    current: null,
+    showModal: false,
+    item: {},
+    invoices: [],
+    loading: true
   };
 
   var _useReducer = Object(react__WEBPACK_IMPORTED_MODULE_1__["useReducer"])(_inventoryReducer__WEBPACK_IMPORTED_MODULE_3__["default"], initialState),
@@ -56935,12 +57562,12 @@ var InventoryState = function InventoryState(props) {
             case 0:
               _context.prev = 0;
               _context.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("/api/items");
+              return axios__WEBPACK_IMPORTED_MODULE_5___default.a.get("/api/items");
 
             case 3:
               res = _context.sent;
               dispatch({
-                type: _Types__WEBPACK_IMPORTED_MODULE_5__["GET_ITEMS"],
+                type: _Types__WEBPACK_IMPORTED_MODULE_6__["GET_ITEMS"],
                 payload: res.data
               });
               _context.next = 10;
@@ -56962,64 +57589,59 @@ var InventoryState = function InventoryState(props) {
     return function fetchAllItems() {
       return _ref.apply(this, arguments);
     };
+  }(); // Get All Arrived Items
+
+
+  var fetchAllArrivedItems =
+  /*#__PURE__*/
+  function () {
+    var _ref2 = _asyncToGenerator(
+    /*#__PURE__*/
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+      var res;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              _context2.prev = 0;
+              _context2.next = 3;
+              return axios__WEBPACK_IMPORTED_MODULE_5___default.a.get("/api/arrivedItems");
+
+            case 3:
+              res = _context2.sent;
+              dispatch({
+                type: _Types__WEBPACK_IMPORTED_MODULE_6__["ARRIVED_ITEMS"],
+                payload: res.data
+              });
+              _context2.next = 10;
+              break;
+
+            case 7:
+              _context2.prev = 7;
+              _context2.t0 = _context2["catch"](0);
+              console.log(_context2.t0.message + "Arrived Items");
+
+            case 10:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2, null, [[0, 7]]);
+    }));
+
+    return function fetchAllArrivedItems() {
+      return _ref2.apply(this, arguments);
+    };
   }(); // ADD Item
 
 
   var addItem =
   /*#__PURE__*/
   function () {
-    var _ref2 = _asyncToGenerator(
-    /*#__PURE__*/
-    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(item) {
-      var config, res;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
-        while (1) {
-          switch (_context2.prev = _context2.next) {
-            case 0:
-              config = {
-                headers: {
-                  "Content-Type": "application/json"
-                }
-              };
-              _context2.prev = 1;
-              _context2.next = 4;
-              return axios__WEBPACK_IMPORTED_MODULE_4___default.a.post("/api/items/create", item, config);
-
-            case 4:
-              res = _context2.sent;
-              dispatch({
-                type: _Types__WEBPACK_IMPORTED_MODULE_5__["ADD_INVENTORY_ITEM"],
-                payload: res.data
-              });
-              _context2.next = 11;
-              break;
-
-            case 8:
-              _context2.prev = 8;
-              _context2.t0 = _context2["catch"](1);
-              console.log(_context2.t0.response.msg + "AddingUser");
-
-            case 11:
-            case "end":
-              return _context2.stop();
-          }
-        }
-      }, _callee2, null, [[1, 8]]);
-    }));
-
-    return function addItem(_x) {
-      return _ref2.apply(this, arguments);
-    };
-  }(); // Remove Item
-
-
-  var removeItem =
-  /*#__PURE__*/
-  function () {
     var _ref3 = _asyncToGenerator(
     /*#__PURE__*/
-    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(id) {
-      var config;
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(item) {
+      var config, res;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
         while (1) {
           switch (_context3.prev = _context3.next) {
@@ -57031,41 +57653,152 @@ var InventoryState = function InventoryState(props) {
               };
               _context3.prev = 1;
               _context3.next = 4;
-              return axios__WEBPACK_IMPORTED_MODULE_4___default.a["delete"]("/api/item/" + id + "/delete");
+              return axios__WEBPACK_IMPORTED_MODULE_5___default.a.post("/api/items/create", item, config);
 
             case 4:
+              res = _context3.sent;
               dispatch({
-                type: _Types__WEBPACK_IMPORTED_MODULE_5__["REMOVE_INVENTORY_ITEM"],
-                payload: id
+                type: _Types__WEBPACK_IMPORTED_MODULE_6__["ADD_INVENTORY_ITEM"],
+                payload: res.data
               });
-              _context3.next = 10;
+              _context3.next = 11;
               break;
 
-            case 7:
-              _context3.prev = 7;
+            case 8:
+              _context3.prev = 8;
               _context3.t0 = _context3["catch"](1);
-              console.log(_context3.t0 + ":  Remove User Err");
+              console.log(_context3.t0.response.msg + "AddingUser");
 
-            case 10:
+            case 11:
             case "end":
               return _context3.stop();
           }
         }
-      }, _callee3, null, [[1, 7]]);
+      }, _callee3, null, [[1, 8]]);
+    }));
+
+    return function addItem(_x) {
+      return _ref3.apply(this, arguments);
+    };
+  }(); // Remove Item
+
+
+  var removeItem =
+  /*#__PURE__*/
+  function () {
+    var _ref4 = _asyncToGenerator(
+    /*#__PURE__*/
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4(id) {
+      var config;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+        while (1) {
+          switch (_context4.prev = _context4.next) {
+            case 0:
+              config = {
+                headers: {
+                  "Content-Type": "application/json"
+                }
+              };
+              _context4.prev = 1;
+              _context4.next = 4;
+              return axios__WEBPACK_IMPORTED_MODULE_5___default.a["delete"]("/api/item/" + id + "/delete");
+
+            case 4:
+              dispatch({
+                type: _Types__WEBPACK_IMPORTED_MODULE_6__["REMOVE_INVENTORY_ITEM"],
+                payload: id
+              });
+              _context4.next = 10;
+              break;
+
+            case 7:
+              _context4.prev = 7;
+              _context4.t0 = _context4["catch"](1);
+              console.log(_context4.t0.message + ":  Remove Item Err");
+
+            case 10:
+            case "end":
+              return _context4.stop();
+          }
+        }
+      }, _callee4, null, [[1, 7]]);
     }));
 
     return function removeItem(_x2) {
-      return _ref3.apply(this, arguments);
+      return _ref4.apply(this, arguments);
+    };
+  }(); // show modal
+
+
+  var showModalHandler = function showModalHandler(item) {
+    dispatch({
+      type: _Types__WEBPACK_IMPORTED_MODULE_6__["SHOW_MODAL"],
+      payload: item
+    });
+  }; // Create Invoice
+
+
+  var createInvoice =
+  /*#__PURE__*/
+  function () {
+    var _ref5 = _asyncToGenerator(
+    /*#__PURE__*/
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5(invoice) {
+      var config, res;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+        while (1) {
+          switch (_context5.prev = _context5.next) {
+            case 0:
+              config = {
+                headers: {
+                  "Content-Type": "application/json"
+                }
+              };
+              _context5.prev = 1;
+              _context5.next = 4;
+              return axios__WEBPACK_IMPORTED_MODULE_5___default.a.post("/api/invoices/create", invoice, config);
+
+            case 4:
+              res = _context5.sent;
+              dispatch({
+                type: _Types__WEBPACK_IMPORTED_MODULE_6__["ADD_INVOICE"],
+                payload: res.data
+              });
+              _context5.next = 11;
+              break;
+
+            case 8:
+              _context5.prev = 8;
+              _context5.t0 = _context5["catch"](1);
+              console.error(_context5.t0.message);
+
+            case 11:
+            case "end":
+              return _context5.stop();
+          }
+        }
+      }, _callee5, null, [[1, 8]]);
+    }));
+
+    return function createInvoice(_x3) {
+      return _ref5.apply(this, arguments);
     };
   }();
 
   return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_inventoryContext__WEBPACK_IMPORTED_MODULE_2__["default"].Provider, {
     value: {
       items: state.items,
+      arrived_items: state.arrived_items,
       current: state.current,
+      item: state.item,
+      showModal: state.showModal,
+      loading: state.loading,
       fetchAllItems: fetchAllItems,
       addItem: addItem,
-      removeItem: removeItem
+      removeItem: removeItem,
+      createInvoice: createInvoice,
+      showModalHandler: showModalHandler,
+      fetchAllArrivedItems: fetchAllArrivedItems
     }
   }, props.children);
 };
@@ -57120,7 +57853,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   switch (action.type) {
     case _Types__WEBPACK_IMPORTED_MODULE_0__["GET_ITEMS"]:
       return _objectSpread({}, state, {
-        items: action.payload
+        items: action.payload,
+        loading: false
       });
       break;
 
@@ -57136,6 +57870,24 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         })
       });
       break;
+
+    case _Types__WEBPACK_IMPORTED_MODULE_0__["SHOW_MODAL"]:
+      return _objectSpread({}, state, {
+        showModal: !state.showModal,
+        item: action.payload
+      });
+
+    case _Types__WEBPACK_IMPORTED_MODULE_0__["ADD_INVOICE"]:
+      return _objectSpread({}, state, {
+        invoices: [].concat(_toConsumableArray(state.invoices), [action.payload]),
+        item: {}
+      });
+
+    case _Types__WEBPACK_IMPORTED_MODULE_0__["ARRIVED_ITEMS"]:
+      return _objectSpread({}, state, {
+        arrived_items: action.payload,
+        loading: false
+      });
 
     default:
       break;
