@@ -4,6 +4,7 @@ import Navbar from "./layout/Navbar";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Inventory from "./inventory/Inventory";
 import Employee from "./employee/Employee";
+import SingleEmployeeView from "./employee/SingleEmployeeView";
 import EmployeeForm from "./employee/EmployeeForm";
 import ArrivedItems from "./inventory/ArrivedItems";
 import InventoryState from "../context/inventory/InventoryState";
@@ -36,6 +37,11 @@ export default class Index extends Component {
                                             exact
                                             path="/employees"
                                             component={Employee}
+                                        />
+                                        <Route
+                                            exact
+                                            path="/employees/:id"
+                                            component={SingleEmployeeView}
                                         />
                                         <Route
                                             exact

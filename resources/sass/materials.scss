@@ -78,11 +78,14 @@
 .form__group input,
 select {
     padding: 10px;
-    border-radius: 5px;
-    background-color: lightgray;
     color: #333;
+    border: 1px solid grey;
     font-size: 20px;
     font-weight: bold;
+
+    &:focus {
+        box-shadow: 0 0 5px #333 inset;
+    }
 }
 .form__group label {
     font-size: 20px;

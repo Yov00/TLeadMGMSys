@@ -55934,7 +55934,7 @@ module.exports = function(module) {
 /*!*******************************!*\
   !*** ./resources/js/Types.js ***!
   \*******************************/
-/*! exports provided: ADD_INVENTORY_ITEM, REMOVE_INVENTORY_ITEM, CHECKOUT_INVENTORY_ITEM, GET_ITEMS, SHOW_MODAL, ARRIVED_ITEMS, GET_EMPLOYEES, ADD_EMPLOYEE, GET_TOKENS, SET_LOADING, ADD_INVOICE, GET_BALANCE, UPDATE_BALANCE */
+/*! exports provided: ADD_INVENTORY_ITEM, REMOVE_INVENTORY_ITEM, CHECKOUT_INVENTORY_ITEM, GET_ITEMS, SHOW_MODAL, ARRIVED_ITEMS, GET_EMPLOYEES, ADD_EMPLOYEE, GET_SINGLE_EMPLOYEE, GET_TOKENS, SET_LOADING, ADD_INVOICE, GET_BALANCE, UPDATE_BALANCE */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -55947,6 +55947,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ARRIVED_ITEMS", function() { return ARRIVED_ITEMS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_EMPLOYEES", function() { return GET_EMPLOYEES; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADD_EMPLOYEE", function() { return ADD_EMPLOYEE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_SINGLE_EMPLOYEE", function() { return GET_SINGLE_EMPLOYEE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_TOKENS", function() { return GET_TOKENS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SET_LOADING", function() { return SET_LOADING; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADD_INVOICE", function() { return ADD_INVOICE; });
@@ -55961,7 +55962,8 @@ var SHOW_MODAL = "SHOW_MODAL";
 var ARRIVED_ITEMS = "ARRIVED_ITEMS"; // Employees
 
 var GET_EMPLOYEES = "GET_EMPLOYEES";
-var ADD_EMPLOYEE = "ADD_EMPLOYEE"; // Tokens
+var ADD_EMPLOYEE = "ADD_EMPLOYEE";
+var GET_SINGLE_EMPLOYEE = "GET_SINGLE_EMPLOYEE"; // Tokens
 
 var GET_TOKENS = "GET_TOKENS"; // Loading...
 
@@ -56048,11 +56050,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _inventory_Inventory__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./inventory/Inventory */ "./resources/js/components/inventory/Inventory.js");
 /* harmony import */ var _employee_Employee__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./employee/Employee */ "./resources/js/components/employee/Employee.js");
-/* harmony import */ var _employee_EmployeeForm__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./employee/EmployeeForm */ "./resources/js/components/employee/EmployeeForm.js");
-/* harmony import */ var _inventory_ArrivedItems__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./inventory/ArrivedItems */ "./resources/js/components/inventory/ArrivedItems.js");
-/* harmony import */ var _context_inventory_InventoryState__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../context/inventory/InventoryState */ "./resources/js/context/inventory/InventoryState.js");
-/* harmony import */ var _context_employee_EmployeeState__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../context/employee/EmployeeState */ "./resources/js/context/employee/EmployeeState.js");
-/* harmony import */ var _context_balance_BalanceState__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../context/balance/BalanceState */ "./resources/js/context/balance/BalanceState.js");
+/* harmony import */ var _employee_SingleEmployeeView__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./employee/SingleEmployeeView */ "./resources/js/components/employee/SingleEmployeeView.js");
+/* harmony import */ var _employee_EmployeeForm__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./employee/EmployeeForm */ "./resources/js/components/employee/EmployeeForm.js");
+/* harmony import */ var _inventory_ArrivedItems__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./inventory/ArrivedItems */ "./resources/js/components/inventory/ArrivedItems.js");
+/* harmony import */ var _context_inventory_InventoryState__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../context/inventory/InventoryState */ "./resources/js/context/inventory/InventoryState.js");
+/* harmony import */ var _context_employee_EmployeeState__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../context/employee/EmployeeState */ "./resources/js/context/employee/EmployeeState.js");
+/* harmony import */ var _context_balance_BalanceState__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../context/balance/BalanceState */ "./resources/js/context/balance/BalanceState.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -56083,6 +56086,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var Index =
 /*#__PURE__*/
 function (_Component) {
@@ -56097,7 +56101,7 @@ function (_Component) {
   _createClass(Index, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_context_inventory_InventoryState__WEBPACK_IMPORTED_MODULE_8__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_context_balance_BalanceState__WEBPACK_IMPORTED_MODULE_10__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_context_employee_EmployeeState__WEBPACK_IMPORTED_MODULE_9__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_context_inventory_InventoryState__WEBPACK_IMPORTED_MODULE_9__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_context_balance_BalanceState__WEBPACK_IMPORTED_MODULE_11__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_context_employee_EmployeeState__WEBPACK_IMPORTED_MODULE_10__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "main"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "main__navbar"
@@ -56110,15 +56114,19 @@ function (_Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
         exact: true,
         path: "/arrivedItems",
-        component: _inventory_ArrivedItems__WEBPACK_IMPORTED_MODULE_7__["default"]
+        component: _inventory_ArrivedItems__WEBPACK_IMPORTED_MODULE_8__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
         exact: true,
         path: "/employees",
         component: _employee_Employee__WEBPACK_IMPORTED_MODULE_5__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
         exact: true,
+        path: "/employees/:id",
+        component: _employee_SingleEmployeeView__WEBPACK_IMPORTED_MODULE_6__["default"]
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
+        exact: true,
         path: "/employeeForm",
-        component: _employee_EmployeeForm__WEBPACK_IMPORTED_MODULE_6__["default"]
+        component: _employee_EmployeeForm__WEBPACK_IMPORTED_MODULE_7__["default"]
       }))))))));
     }
   }]);
@@ -56197,9 +56205,12 @@ var Balance = function Balance() {
 
     var newBalance = _objectSpread({}, balance);
 
-    newBalance.ammount += parseFloat(addedAmount);
-    updateBalance(newBalance);
-    setAddedAmmount("");
+    if (addedAmount > 0) {
+      newBalance.ammount += parseFloat(addedAmount);
+      updateBalance(newBalance);
+      setAddedAmmount("");
+      setShowAddBlanace(false);
+    }
   };
 
   var addBalance = showAddBalance ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
@@ -56326,25 +56337,31 @@ var EmployeeForm = function EmployeeForm() {
       fetchTokens = employeeContext.fetchTokens,
       tokens = employeeContext.tokens;
 
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
+      _useState2 = _slicedToArray(_useState, 2),
+      validationErrors = _useState2[0],
+      setValidationErrors = _useState2[1];
+
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
     first_name: "",
     last_name: "",
     c_number: "",
     image: {},
-    job_title: "",
+    job_title: "Administrator",
     phone_number: "",
-    token_id: ""
+    token_id: 1
   }),
-      _useState2 = _slicedToArray(_useState, 2),
-      employee = _useState2[0],
-      setEmployee = _useState2[1];
+      _useState4 = _slicedToArray(_useState3, 2),
+      employee = _useState4[0],
+      setEmployee = _useState4[1];
 
   var first_name = employee.first_name,
       last_name = employee.last_name,
       c_number = employee.c_number,
       phone_number = employee.phone_number,
       image = employee.image,
-      job_title = employee.job_title;
+      job_title = employee.job_title,
+      token_id = employee.token_id;
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     fetchTokens();
   }, []); // Adding file to the state
@@ -56358,6 +56375,12 @@ var EmployeeForm = function EmployeeForm() {
 
   var onChange = function onChange(e) {
     setEmployee(_objectSpread({}, employee, _defineProperty({}, e.target.name, e.target.value)));
+  };
+
+  var validationHandler = function validationHandler(object) {
+    for (var key in object) {
+      console.log(object[key]);
+    }
   };
 
   var onSubmit = function onSubmit(e) {
@@ -56376,9 +56399,9 @@ var EmployeeForm = function EmployeeForm() {
       last_name: "",
       c_number: "",
       image: {},
-      job_title: "",
+      job_title: "Administrator",
       phone_number: "",
-      token_id: ""
+      token_id: 1
     });
   };
 
@@ -56387,20 +56410,28 @@ var EmployeeForm = function EmployeeForm() {
     className: "employeeForm ease_in",
     encType: "multipart/form-data"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "form__group"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Add Employee")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "d__flex"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "form__group"
+    className: "form__group",
+    style: {
+      width: "100%"
+    }
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Create New Employee")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form__group",
+    style: {
+      width: "100%"
+    }
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     htmlFor: "first_name"
   }, "First Name"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     onChange: onChange,
     name: "first_name",
     type: "text",
-    value: first_name
+    value: first_name,
+    required: true
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "form__group"
+    className: "form__group",
+    style: {
+      width: "100%"
+    }
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     htmlFor: "last_name"
   }, "Last Name"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
@@ -56408,8 +56439,9 @@ var EmployeeForm = function EmployeeForm() {
     id: "last_name",
     name: "last_name",
     type: "text",
-    value: last_name
-  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    value: last_name,
+    required: true
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "form__group",
     style: {
       width: "100%"
@@ -56446,7 +56478,8 @@ var EmployeeForm = function EmployeeForm() {
   }, "Job title"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
     onChange: onChange,
     id: "job_title",
-    name: "job_title"
+    name: "job_title",
+    value: job_title
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
     value: "Administrator"
   }, "Administrator"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
@@ -56465,7 +56498,8 @@ var EmployeeForm = function EmployeeForm() {
   }, "Token number"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
     onChange: onChange,
     id: "token_id",
-    name: "token_id"
+    name: "token_id",
+    value: token_id
   }, tokens.map(function (token) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
       key: token.id,
@@ -56491,7 +56525,12 @@ var EmployeeForm = function EmployeeForm() {
     }
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "submit",
-    value: "Add Employee"
+    value: "Add Employee",
+    style: {
+      backgroundColor: "#333",
+      color: "white",
+      cursor: "pointer"
+    }
   }))));
 };
 
@@ -56510,11 +56549,14 @@ var EmployeeForm = function EmployeeForm() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
 
 
 var EmployeeItem = function EmployeeItem(_ref) {
   var employee = _ref.employee;
-  var first_name = employee.first_name,
+  var id = employee.id,
+      first_name = employee.first_name,
       last_name = employee.last_name,
       c_number = employee.c_number,
       job_title = employee.job_title,
@@ -56532,10 +56574,42 @@ var EmployeeItem = function EmployeeItem(_ref) {
     className: "card__body"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, first_name + " " + last_name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, job_title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "C Number:"), " ", c_number), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Token:"), " 15")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "card__footer"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Manage")));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "/employees/".concat(id)
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "View more"))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (EmployeeItem);
+
+/***/ }),
+
+/***/ "./resources/js/components/employee/SingleEmployeeView.js":
+/*!****************************************************************!*\
+  !*** ./resources/js/components/employee/SingleEmployeeView.js ***!
+  \****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _context_employee_employeeContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../context/employee/employeeContext */ "./resources/js/context/employee/employeeContext.js");
+
+
+
+var SingleEmployeeView = function SingleEmployeeView(props) {
+  var employeeContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_employee_employeeContext__WEBPACK_IMPORTED_MODULE_1__["default"]);
+  var fetchSingleEmployee = employeeContext.fetchSingleEmployee,
+      singleEmployee = employeeContext.singleEmployee;
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    var userID = props.match.params.id;
+    fetchSingleEmployee(userID);
+  }, []);
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, console.log(singleEmployee), "Hi");
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (SingleEmployeeView);
 
 /***/ }),
 
@@ -56580,6 +56654,11 @@ var AddItemInput = function AddItemInput() {
       item = _useState2[0],
       setItem = _useState2[1];
 
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
+      _useState4 = _slicedToArray(_useState3, 2),
+      validationErrors = _useState4[0],
+      setValidationErrors = _useState4[1];
+
   var name = item.name,
       quantity = item.quantity;
 
@@ -56589,11 +56668,17 @@ var AddItemInput = function AddItemInput() {
 
   var onSubmit = function onSubmit(e) {
     e.preventDefault();
-    addItem(item);
-    setItem({
-      name: "",
-      quantity: 1
-    });
+
+    if (item.name) {
+      addItem(item);
+      setItem({
+        name: "",
+        quantity: 1
+      });
+      setValidationErrors("");
+    } else {
+      setValidationErrors("Please enter name for the product first");
+    }
   };
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
@@ -56616,7 +56701,9 @@ var AddItemInput = function AddItemInput() {
     type: "submit",
     className: "btn__dark",
     value: "Add"
-  }));
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "validation_errors"
+  }, validationErrors));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (AddItemInput);
@@ -56696,12 +56783,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _context_inventory_inventoryContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../context/inventory/inventoryContext */ "./resources/js/context/inventory/inventoryContext.js");
-/* harmony import */ var _AddItemForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AddItemForm */ "./resources/js/components/inventory/AddItemForm.js");
-/* harmony import */ var _InventoryItems__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./InventoryItems */ "./resources/js/components/inventory/InventoryItems.js");
-/* harmony import */ var _balance_Balance__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../balance/Balance */ "./resources/js/components/balance/Balance.js");
-/* harmony import */ var _invoice_InvoiceModal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../invoice/InvoiceModal */ "./resources/js/components/invoice/InvoiceModal.js");
-/* harmony import */ var _layout_Spinner__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../layout/Spinner */ "./resources/js/components/layout/Spinner.js");
-
+/* harmony import */ var _InventoryItems__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./InventoryItems */ "./resources/js/components/inventory/InventoryItems.js");
+/* harmony import */ var _balance_Balance__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../balance/Balance */ "./resources/js/components/balance/Balance.js");
+/* harmony import */ var _invoice_InvoiceModal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../invoice/InvoiceModal */ "./resources/js/components/invoice/InvoiceModal.js");
+/* harmony import */ var _layout_Spinner__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../layout/Spinner */ "./resources/js/components/layout/Spinner.js");
 
 
 
@@ -56722,18 +56807,18 @@ var Inventory = function Inventory() {
   }, []);
 
   if (loading) {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_layout_Spinner__WEBPACK_IMPORTED_MODULE_6__["default"], null);
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_layout_Spinner__WEBPACK_IMPORTED_MODULE_5__["default"], null);
   }
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "inventoryWrapper"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_invoice_InvoiceModal__WEBPACK_IMPORTED_MODULE_5__["default"], {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_invoice_InvoiceModal__WEBPACK_IMPORTED_MODULE_4__["default"], {
     item: item,
     show: showModal,
     showHandler: showModalHandler
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_InventoryItems__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_InventoryItems__WEBPACK_IMPORTED_MODULE_2__["default"], {
     items: items
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_balance_Balance__WEBPACK_IMPORTED_MODULE_4__["default"], null));
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_balance_Balance__WEBPACK_IMPORTED_MODULE_3__["default"], null));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Inventory);
@@ -56914,6 +56999,7 @@ var InvoiceModal = function InvoiceModal(props) {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Invoice Details")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "invoiceModal__body"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, id + ": " + name.toUpperCase())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Number"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    step: "any",
     name: "number",
     type: "number",
     onChange: onChange,
@@ -56985,7 +57071,7 @@ var Navbar = function Navbar() {
     className: "nav__link",
     to: "/employeeForm"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-    "class": "fas fa-user-plus"
+    className: "fas fa-user-plus"
   }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     className: "nav__link",
     to: "/employees"
@@ -57267,6 +57353,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var EmployeeState = function EmployeeState(props) {
   var initialState = {
     employees: [],
+    singleEmployee: {},
     tokens: [],
     loading: true
   };
@@ -57409,12 +57496,55 @@ var EmployeeState = function EmployeeState(props) {
     };
   }();
 
+  var fetchSingleEmployee =
+  /*#__PURE__*/
+  function () {
+    var _ref4 = _asyncToGenerator(
+    /*#__PURE__*/
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4(id) {
+      var res;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+        while (1) {
+          switch (_context4.prev = _context4.next) {
+            case 0:
+              _context4.prev = 0;
+              _context4.next = 3;
+              return axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("/api/employees/".concat(id));
+
+            case 3:
+              res = _context4.sent;
+              dispatch({
+                type: _Types__WEBPACK_IMPORTED_MODULE_5__["GET_SINGLE_EMPLOYEE"],
+                payload: res.data
+              });
+              _context4.next = 9;
+              break;
+
+            case 7:
+              _context4.prev = 7;
+              _context4.t0 = _context4["catch"](0);
+
+            case 9:
+            case "end":
+              return _context4.stop();
+          }
+        }
+      }, _callee4, null, [[0, 7]]);
+    }));
+
+    return function fetchSingleEmployee(_x2) {
+      return _ref4.apply(this, arguments);
+    };
+  }();
+
   return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_employeeContext__WEBPACK_IMPORTED_MODULE_2__["default"].Provider, {
     value: {
       employees: state.employees,
+      singleEmployee: state.singleEmployee,
       loading: state.loading,
       tokens: state.tokens,
       fetchAllEmployees: fetchAllEmployees,
+      fetchSingleEmployee: fetchSingleEmployee,
       fetchTokens: fetchTokens,
       addEmployee: addEmployee
     }
@@ -57483,6 +57613,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     case _Types__WEBPACK_IMPORTED_MODULE_0__["ADD_EMPLOYEE"]:
       return _objectSpread({}, state, {
         employees: [].concat(_toConsumableArray(state.employees), [action.payload])
+      });
+
+    case _Types__WEBPACK_IMPORTED_MODULE_0__["GET_SINGLE_EMPLOYEE"]:
+      return _objectSpread({}, state, {
+        singleEmployee: action.payload,
+        loading: false
       });
 
     default:

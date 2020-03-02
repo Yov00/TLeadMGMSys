@@ -26,6 +26,7 @@ Route::get('/arrivedItems','ItemsController@arrived');
 
 // Employees
 Route::get('/employees','EmployeesController@index');
+Route::get('/employees/{id}','EmployeesController@edit');
 Route::post('/employees/create','EmployeesController@create');
 
 // Tokens

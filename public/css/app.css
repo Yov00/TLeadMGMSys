@@ -1,4 +1,4 @@
-.navbar {
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,600,700&display=swap);.navbar {
   list-style: none;
   padding: 0;
   width: 100%;
@@ -104,7 +104,6 @@
 }
 
 .inventoryWrapper {
-  margin-top: 200px;
   width: 100%;
 }
 
@@ -117,6 +116,7 @@
           flex-direction: column;
   border-spacing: 5px;
   width: 60%;
+  min-width: 800px;
 }
 
 .inventory td,
@@ -172,6 +172,10 @@ th {
 .AddItemInput input[type=number] {
   width: 20%;
   margin-left: 5px;
+}
+
+.validation_errors {
+  padding: 10px;
 }
 
 .btn__dark {
@@ -280,11 +284,15 @@ th {
 .form__group input,
 select {
   padding: 10px;
-  border-radius: 5px;
-  background-color: lightgray;
   color: #333;
+  border: 1px solid grey;
   font-size: 20px;
   font-weight: bold;
+}
+
+.form__group input:focus,
+select:focus {
+  box-shadow: 0 0 5px #333 inset;
 }
 
 .form__group label {
@@ -407,7 +415,7 @@ select {
   height: 50px;
   background-color: #1f1c1c;
   opacity: 0.6;
-  margin: 300px auto;
+  margin: 100px auto;
   -webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;
   animation: sk-rotateplane 1.2s infinite ease-in-out;
 }
@@ -445,7 +453,7 @@ select {
 
 .employees {
   width: 60%;
-  margin: 200px auto 0 auto;
+  margin: 0px auto;
 }
 
 .employeeWrapepr {
@@ -461,8 +469,8 @@ select {
 }
 
 .employeeForm {
-  width: 30%;
-  padding: 200px 20px 20px 20px;
+  width: 40%;
+  padding: 20px;
   box-sizing: border-box;
   display: -webkit-box;
   display: flex;
@@ -472,6 +480,10 @@ select {
   -webkit-box-pack: start;
           justify-content: flex-start;
   margin-bottom: 10px;
+  min-width: 800px;
+  box-shadow: 0 35px 20px #777;
+  -webkit-transform: rotate(-8deg);
+  transform: rotate(-8deg);
 }
 
 body,
@@ -488,6 +500,7 @@ html {
 .main {
   display: -webkit-box;
   display: flex;
+  padding-top: 10%;
 }
 
 .main__content {
@@ -581,7 +594,8 @@ html {
 .add_invoice_button {
   width: 100%;
   border: none;
-  padding: 10px 0;
+  font-size: 20px;
+  padding: 10px;
   font-weight: bold;
   background-color: #333;
   color: white;

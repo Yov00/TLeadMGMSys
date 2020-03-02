@@ -67,6 +67,7 @@ const InvoiceModal = props => {
                     <div>
                         <label>Number</label>
                         <input
+                            step="any"
                             name="number"
                             type="number"
                             onChange={onChange}

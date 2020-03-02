@@ -26,7 +26,7 @@ const Navbar = () => {
 
             <li>
                 <Link className="nav__link" to="/employeeForm">
-                    <i class="fas fa-user-plus"></i>
+                    <i className="fas fa-user-plus"></i>
                 </Link>
             </li>
             <li>

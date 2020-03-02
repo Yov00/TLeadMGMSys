@@ -1,5 +1,4 @@
 .inventoryWrapper {
-    margin-top: 200px;
     width: 100%;
 }
 
@@ -9,6 +8,7 @@
     flex-direction: column;
     border-spacing: 5px;
     width: 60%;
+    min-width: 800px;
     //@extend
 }
 .inventory td,

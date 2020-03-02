@@ -1,9 +1,18 @@
 .employeeForm {
-    width: 30%;
-    padding: 200px 20px 20px 20px;
+    width: 40%;
+    padding: 20px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     margin-bottom: 10px;
+    min-width: 800px;
+    -webkit-box-shadow: 0 35px 20px #777;
+    -moz-box-shadow: 0 35px 20px #777;
+    box-shadow: 0 35px 20px #777;
+    -webkit-transform: rotate(-8deg);
+    -moz-transform: rotate(-8deg);
+    -o-transform: rotate(-8deg);
+    -ms-transform: rotate(-8deg);
+    transform: rotate(-8deg);
 }

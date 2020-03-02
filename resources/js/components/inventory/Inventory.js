@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import InventoryContext from "../../context/inventory/inventoryContext";
-import AddItemForm from "./AddItemForm";
+
 import InventoryItems from "./InventoryItems";
 import Balance from "../balance/Balance";
 import InvoiceModal from "../invoice/InvoiceModal";

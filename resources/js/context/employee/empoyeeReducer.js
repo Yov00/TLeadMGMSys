@@ -1,4 +1,9 @@
-import { GET_EMPLOYEES, ADD_EMPLOYEE, GET_TOKENS } from "../../Types";
+import {
+    GET_EMPLOYEES,
+    ADD_EMPLOYEE,
+    GET_TOKENS,
+    GET_SINGLE_EMPLOYEE
+} from "../../Types";
 
 export default (state, action) => {
     switch (action.type) {
@@ -17,6 +22,12 @@ export default (state, action) => {
             return {
                 ...state,
                 employees: [...state.employees, action.payload]
+            };
+        case GET_SINGLE_EMPLOYEE:
+            return {
+                ...state,
+                singleEmployee: action.payload,
+                loading: false
             };
 
         default:

@@ -23,5 +23,7 @@ Route::get('/employeeForm', function () {
 Route::get('/arrivedItems', function () {
     return view('welcome');
 });
-
+Route::get('/employees/{$id}', function () {
+    return view('welcome');
+});
 Route::get('/arrived','ItemsController@arrived');

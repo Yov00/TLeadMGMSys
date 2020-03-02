@@ -1,7 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const EmployeeItem = ({ employee }) => {
-    const { first_name, last_name, c_number, job_title, image } = employee;
+    const { id, first_name, last_name, c_number, job_title, image } = employee;
     return (
         <div className="card">
             <div className="card__header">
@@ -24,7 +25,9 @@ const EmployeeItem = ({ employee }) => {
                 </p>
             </div>
             <div className="card__footer">
-                <button>Manage</button>
+                <Link to={`/employees/${id}`}>
+                    <button>View more</button>
+                </Link>
             </div>
         </div>
     );

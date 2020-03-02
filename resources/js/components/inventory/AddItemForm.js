@@ -8,16 +8,22 @@ const AddItemInput = () => {
         name: "",
         quantity: 1
     });
+    const [validationErrors, setValidationErrors] = useState("");
     const { name, quantity } = item;
     const onChange = e => setItem({ ...item, [e.target.name]: e.target.value });
 
     const onSubmit = e => {
         e.preventDefault();
-        addItem(item);
-        setItem({
-            name: "",
-            quantity: 1
-        });
+        if (item.name) {
+            addItem(item);
+            setItem({
+                name: "",
+                quantity: 1
+            });
+            setValidationErrors("");
+        } else {
+            setValidationErrors("Please enter name for the product first");
+        }
     };
     return (
         <form onSubmit={onSubmit} className="AddItemInput ease_in">
@@ -37,6 +43,7 @@ const AddItemInput = () => {
                 onChange={onChange}
             />
             <input type="submit" className="btn__dark" value="Add" />
+            <div className="validation_errors">{validationErrors}</div>
         </form>
     );
 };

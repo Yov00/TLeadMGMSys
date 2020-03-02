@@ -5,14 +5,15 @@ const EmployeeForm = () => {
     const employeeContext = useContext(EmployeeContext);
     const { addEmployee, fetchTokens, tokens } = employeeContext;
 
+    const [validationErrors, setValidationErrors] = useState("");
     const [employee, setEmployee] = useState({
         first_name: "",
         last_name: "",
         c_number: "",
         image: {},
-        job_title: "",
+        job_title: "Administrator",
         phone_number: "",
-        token_id: ""
+        token_id: 1
     });
 
     const {
@@ -21,7 +22,8 @@ const EmployeeForm = () => {
         c_number,
         phone_number,
         image,
-        job_title
+        job_title,
+        token_id
     } = employee;
 
     useEffect(() => {
@@ -37,6 +39,11 @@ const EmployeeForm = () => {
         setEmployee({ ...employee, [e.target.name]: e.target.value });
     };
 
+    const validationHandler = object => {
+        for (var key in object) {
+            console.log(object[key]);
+        }
+    };
     const onSubmit = e => {
         e.preventDefault();
         const employeeInfo = new FormData();
@@ -55,9 +62,9 @@ const EmployeeForm = () => {
             last_name: "",
             c_number: "",
             image: {},
-            job_title: "",
+            job_title: "Administrator",
             phone_number: "",
-            token_id: ""
+            token_id: 1
         });
     };
     return (
@@ -66,30 +73,30 @@ const EmployeeForm = () => {
             className="employeeForm ease_in"
             encType="multipart/form-data"
         >
-            <div className="form__group">
-                <h1>Add Employee</h1>
+            <div className="form__group" style={{ width: "100%" }}>
+                <h1>Create New Employee</h1>
             </div>
 
-            <div className="d__flex">
-                <div className="form__group">
-                    <label htmlFor="first_name">First Name</label>
-                    <input
-                        onChange={onChange}
-                        name="first_name"
-                        type="text"
-                        value={first_name}
-                    />
-                </div>
-                <div className="form__group">
-                    <label htmlFor="last_name">Last Name</label>
-                    <input
-                        onChange={onChange}
-                        id="last_name"
-                        name="last_name"
-                        type="text"
-                        value={last_name}
-                    />
-                </div>
+            <div className="form__group" style={{ width: "100%" }}>
+                <label htmlFor="first_name">First Name</label>
+                <input
+                    onChange={onChange}
+                    name="first_name"
+                    type="text"
+                    value={first_name}
+                    required
+                />
+            </div>
+            <div className="form__group" style={{ width: "100%" }}>
+                <label htmlFor="last_name">Last Name</label>
+                <input
+                    onChange={onChange}
+                    id="last_name"
+                    name="last_name"
+                    type="text"
+                    value={last_name}
+                    required
+                />
             </div>
 
             <div>
@@ -118,7 +125,12 @@ const EmployeeForm = () => {
             <div>
                 <div className="form__group" style={{ width: "100%" }}>
                     <label htmlFor="job_title">Job title</label>
-                    <select onChange={onChange} id="job_title" name="job_title">
+                    <select
+                        onChange={onChange}
+                        id="job_title"
+                        name="job_title"
+                        value={job_title}
+                    >
                         <option value="Administrator">Administrator</option>
                         <option value="Developer">Developer</option>
                         <option value="Cleaner">Cleaner</option>
@@ -129,7 +141,12 @@ const EmployeeForm = () => {
             <div>
                 <div className="form__group" style={{ width: "100%" }}>
                     <label htmlFor="token_number">Token number</label>
-                    <select onChange={onChange} id="token_id" name="token_id">
+                    <select
+                        onChange={onChange}
+                        id="token_id"
+                        name="token_id"
+                        value={token_id}
+                    >
                         {tokens.map(token => (
                             <option key={token.id} value={token.token_number}>
                                 {token.token_number}
@@ -154,7 +171,15 @@ const EmployeeForm = () => {
 
             <div>
                 <div className="form__group" style={{ width: "100%" }}>
-                    <input type="submit" value="Add Employee" />
+                    <input
+                        type="submit"
+                        value="Add Employee"
+                        style={{
+                            backgroundColor: "#333",
+                            color: "white",
+                            cursor: "pointer"
+                        }}
+                    />
                 </div>
             </div>
         </form>

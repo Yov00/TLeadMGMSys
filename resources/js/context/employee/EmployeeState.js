@@ -3,10 +3,17 @@ import EmployeeContext from "./employeeContext";
 import EmployeeReducer from "./empoyeeReducer";
 import axios from "axios";
 
-import { GET_EMPLOYEES, ADD_EMPLOYEE, GET_TOKENS } from "../../Types";
+import {
+    GET_EMPLOYEES,
+    ADD_EMPLOYEE,
+    GET_TOKENS,
+    GET_SINGLE_EMPLOYEE
+} from "../../Types";
+
 const EmployeeState = props => {
     const initialState = {
         employees: [],
+        singleEmployee: {},
         tokens: [],
         loading: true
     };
@@ -56,13 +63,26 @@ const EmployeeState = props => {
             console.log(JSON.stringify(err.response));
         }
     };
+
+    const fetchSingleEmployee = async id => {
+        try {
+            const res = await axios.get(`/api/employees/${id}`);
+
+            dispatch({
+                type: GET_SINGLE_EMPLOYEE,
+                payload: res.data
+            });
+        } catch (err) {}
+    };
     return (
         <EmployeeContext.Provider
             value={{
                 employees: state.employees,
+                singleEmployee: state.singleEmployee,
                 loading: state.loading,
                 tokens: state.tokens,
                 fetchAllEmployees,
+                fetchSingleEmployee,
                 fetchTokens,
                 addEmployee
             }}

@@ -23,12 +23,14 @@ const Balance = () => {
 
     const onSubmit = e => {
         e.preventDefault();
-
         let newBalance = { ...balance };
-        newBalance.ammount += parseFloat(addedAmount);
-        updateBalance(newBalance);
 
-        setAddedAmmount("");
+        if (addedAmount > 0) {
+            newBalance.ammount += parseFloat(addedAmount);
+            updateBalance(newBalance);
+            setAddedAmmount("");
+            setShowAddBlanace(false);
+        }
     };
 
     const addBalance = showAddBalance ? (

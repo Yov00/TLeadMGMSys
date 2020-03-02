@@ -27,7 +27,7 @@ class EmployeesController extends Controller
             'job_title'=>$request->job_title,
             'c_number'=>$request->c_number,
             'image'=>$image,
-            'token_id'=>1,
+            'token_id'=>$request->token_id,
         ]);
 
         return response()->json($Employee);
@@ -48,6 +48,7 @@ class EmployeesController extends Controller
 
         return response()->json($Employee);
     }
+
 
     public function delete($id)
     {
