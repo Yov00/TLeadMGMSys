@@ -2,9 +2,18 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const EmployeeItem = ({ employee }) => {
-    const { id, first_name, last_name, c_number, job_title, image } = employee;
+    const {
+        id,
+        first_name,
+        last_name,
+        c_number,
+        job_title,
+        image,
+        token
+    } = employee;
     return (
         <div className="card">
+            {console.log("storage/" + image)}
             <div className="card__header">
                 {image ? (
                     <img className="employee_image" src={"storage/" + image} />
@@ -21,7 +30,7 @@ const EmployeeItem = ({ employee }) => {
                     <b>C Number:</b> {c_number}
                 </p>
                 <p>
-                    <b>Token:</b> 15
+                    <b>Token:</b> {token.token_number}
                 </p>
             </div>
             <div className="card__footer">

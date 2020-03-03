@@ -56560,10 +56560,11 @@ var EmployeeItem = function EmployeeItem(_ref) {
       last_name = employee.last_name,
       c_number = employee.c_number,
       job_title = employee.job_title,
-      image = employee.image;
+      image = employee.image,
+      token = employee.token;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "card"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, console.log("storage/" + image), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "card__header"
   }, image ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     className: "employee_image",
@@ -56572,7 +56573,7 @@ var EmployeeItem = function EmployeeItem(_ref) {
     src: "https://www.journalofaccountancy.com/content/dam/jofa/issues/2015/jul/shaylynn-fuller.jpg"
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "card__body"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, first_name + " " + last_name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, job_title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "C Number:"), " ", c_number), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Token:"), " 15")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, first_name + " " + last_name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, job_title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "C Number:"), " ", c_number), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Token:"), " ", token.token_number)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "card__footer"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/employees/".concat(id)
@@ -56602,11 +56603,48 @@ var SingleEmployeeView = function SingleEmployeeView(props) {
   var employeeContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_employee_employeeContext__WEBPACK_IMPORTED_MODULE_1__["default"]);
   var fetchSingleEmployee = employeeContext.fetchSingleEmployee,
       singleEmployee = employeeContext.singleEmployee;
+  var id = singleEmployee.id,
+      first_name = singleEmployee.first_name,
+      last_name = singleEmployee.last_name,
+      c_number = singleEmployee.c_number,
+      job_title = singleEmployee.job_title,
+      image = singleEmployee.image,
+      token = singleEmployee.token,
+      phone = singleEmployee.phone;
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     var userID = props.match.params.id;
     fetchSingleEmployee(userID);
   }, []);
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, console.log(singleEmployee), "Hi");
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "singleEmployee"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "singleEmployee_body"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "singleEmployee_left"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "singleEmployee_image_container"
+  }, image ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "singleEmployee_image",
+    src: "../../storage/" + image
+  }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: "https://www.journalofaccountancy.com/content/dam/jofa/issues/2015/jul/shaylynn-fuller.jpg"
+  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "singleEmployee__right"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "singleEmployee_information"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "singleEmployee_fullName"
+  }, "".concat(first_name, ", ").concat(last_name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "".concat(job_title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "C Number: ".concat(c_number)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Token:".concat(token ? token.token_number : "no token")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Phone: ".concat(phone))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "singleEmployee_footer"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "singleEmployee_email"
+  }, "".concat(first_name, ".").concat(last_name, "@outcons.com")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "singleEmployee_socialNetworks"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fab fa-facebook-square"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fab fa-facebook-square"
+  })))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (SingleEmployeeView);

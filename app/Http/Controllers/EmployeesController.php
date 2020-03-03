@@ -8,7 +8,7 @@ class EmployeesController extends Controller
 {
     public function index()
     {
-        $Employees = Employee::all();
+        $Employees = Employee::with('token')->get();
         return response()->json($Employees);
     }
 
@@ -35,7 +35,7 @@ class EmployeesController extends Controller
 
     public function edit($id)
     {
-        $Employee = Employee::find($id);
+        $Employee = Employee::with('token')->find($id);
         return response()->json($Employee);
     }
 

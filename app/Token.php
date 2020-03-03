@@ -8,8 +8,8 @@ class Token extends Model
 {
     protected $guarded = [];
 
-    public function getEmployee()
+    public function employee()
     {
-        return $this->belongsTo(Employee::class);
+        return $this->hasOne(Employee::class);
     }
 }

@@ -17,13 +17,16 @@ Route::get('/', function () {
 Route::get('/employees', function () {
     return view('welcome');
 });
+
+Route::get('/employees/{id}',  function () {
+    return view('welcome');
+});
+
 Route::get('/employeeForm', function () {
     return view('welcome');
 });
 Route::get('/arrivedItems', function () {
     return view('welcome');
 });
-Route::get('/employees/{$id}', function () {
-    return view('welcome');
-});
+
 Route::get('/arrived','ItemsController@arrived');
