@@ -1,22 +1,21 @@
 import React, { useState, useContext, useEffect } from "react";
 import EmployeeContext from "../../context/employee/employeeContext";
-import { Redirect } from 'react-router';
-
+import Spinner from "../layout/Spinner";
 const EmployeeForm = props => {
     const employeeContext = useContext(EmployeeContext);
-    const { addEmployee, fetchTokens, tokens } = employeeContext;
+    const { addEmployee, fetchTokens, tokens,fetchSingleEmployee,singleEmployee,loading } = employeeContext;
 
     const [validationErrors, setValidationErrors] = useState("");
+    const [displayedImage,setDisplayedImage] = useState('/storage/'+singleEmployee.image)
     const [employee, setEmployee] = useState({
-        first_name: "",
-        last_name: "",
-        c_number: "",
-        image: {},
-        job_title: "Administrator",
-        phone_number: "",
-        token_id: 1
+        first_name: singleEmployee.first_name,
+        last_name: singleEmployee.last_name,
+        c_number: singleEmployee.c_number,
+        image: singleEmployee.image,
+        job_title: singleEmployee.job_title,
+        phone_number: singleEmployee.phone_number,
+        token_id: singleEmployee.token.id
     });
-
     const {
         first_name,
         last_name,
@@ -27,23 +26,46 @@ const EmployeeForm = props => {
         token_id
     } = employee;
 
+    const {
+        sE_first_name,
+        sE_last_name,
+        sE_c_number,
+        sE_phone_number,
+        sE_image,
+        sE_job_title,
+        sE_token_id
+    } =singleEmployee;
+
     useEffect(() => {
-        fetchTokens();
         const userID = props.match.params.id;
-     
-      
+        fetchSingleEmployee(userID);
+        fetchTokens();
+        
+    
     }, []);
     // Adding file to the state
     const imageUploadHandler = e => {
         const file = e.target.files[0];
         setEmployee({ ...employee, image: file });
+        console.log(e.target.value);
+
+        imageDisplayHandler(e);
     };
 
     const onChange = e => {
         setEmployee({ ...employee, [e.target.name]: e.target.value });
-        console.log(e.target.value)
+    
     };
+    function imageDisplayHandler(image) {
+        var file = image.target.files[0];
+        var reader  = new FileReader();
+        reader.onload = function(e)  {
+            image.src = e.target.result;
 
+            setDisplayedImage(image.src);
+         }
+         reader.readAsDataURL(file);
+     }
     const onSubmit = e => {
         e.preventDefault();
         const employeeInfo = new FormData();
@@ -66,18 +88,20 @@ const EmployeeForm = props => {
             phone_number: "",
             token_id: 1
         });
-
-      return  <Redirect to="/employees"/>
     };
+    if(loading){
+        return <Spinner/>
+    }
     return (
         <form
             onSubmit={onSubmit}
             className="employeeForm ease_in"
             encType="multipart/form-data"
         >
-      
+     
+         
             <div className="form__group" style={{ width: "100%" }}>
-                <h1>Create New Employee</h1>
+                <h1>Edit: {first_name+', '+last_name}</h1>
             </div>
 
             <div className="form__group" style={{ width: "100%" }}>
@@ -114,9 +138,13 @@ const EmployeeForm = props => {
                     />
                 </div>
             </div>
-
             <div className="form__group" style={{ width: "100%" }}>
-                <label htmlFor="image">Add Image</label>
+                <label>Avatar:</label>
+                <img className="edit_employee_image" src={displayedImage} alt=""/>
+              
+            </div>
+            <div className="form__group" style={{ width: "100%" }}>
+                <label htmlFor="image">Update Image</label>
                 <input
                     name="image"
                     id="image"
@@ -146,9 +174,11 @@ const EmployeeForm = props => {
                     <label htmlFor="token_number">Token number</label>
                     <select
                         onChange={onChange}
+                        multiple={false}
                         id="token_id"
                         name="token_id"
                         value={token_id}
+
                     >
                         {tokens.map(token => (
                             <option key={token.id} value={token.id}>
@@ -176,7 +206,7 @@ const EmployeeForm = props => {
                 <div className="form__group" style={{ width: "100%" }}>
                     <input
                         type="submit"
-                        value="Add Employee"
+                        value="Update Employee"
                         style={{
                             backgroundColor: "#333",
                             color: "white",

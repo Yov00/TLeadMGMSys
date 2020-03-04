@@ -18,13 +18,12 @@ Route::get('/employees', function () {
     return view('welcome');
 });
 
-Route::get('/employees/{id}',  function () {
+Route::get('/employees/{id?}',  function () {
     return view('welcome');
 });
 Route::get('/employees/edit/{id}',  function () {
     return view('welcome');
 });
-
 
 Route::get('/employeeForm', function () {
     return view('welcome');
@@ -33,4 +32,12 @@ Route::get('/arrivedItems', function () {
     return view('welcome');
 });
 
-Route::get('/arrived','ItemsController@arrived');
+// Route::get('/arrived','ItemsController@arrived');
+// Route::get('{all?}', function(){
+//     return view('welcome');
+// })->where('all', '([A-z\d-\/_.]+)?');
+
+// Route::view('{path?}', 'welcome');
+
+
+

@@ -10,6 +10,8 @@ import ArrivedItems from "./inventory/ArrivedItems";
 import InventoryState from "../context/inventory/InventoryState";
 import EmployeeState from "../context/employee/EmployeeState";
 import BalanceState from "../context/balance/BalanceState";
+import EditEmployee from "../components/employee/EditEmployee";
+import MultiSport from "../components/multisport/MultiSport";
 export default class Index extends Component {
     render() {
         return (
@@ -50,8 +52,13 @@ export default class Index extends Component {
                                         />
                                         <Route
                                             exact
-                                            path="/employeeForm/edit/:id"
-                                            component={EmployeeForm}
+                                            path="/employees/edit/:id"
+                                            component={EditEmployee}
+                                        />
+                                          <Route
+                                            exact
+                                            path="/multi-sport"
+                                            component={MultiSport}
                                         />
                                     </Switch>
                                 </div>

@@ -1,10 +1,10 @@
 import React, { useContext, useEffect } from "react";
 import EmployeeContext from "../../context/employee/employeeContext";
 import { Link } from "react-router-dom";
-
+import Spinner from '../layout/Spinner';
 const SingleEmployeeView = props => {
     const employeeContext = useContext(EmployeeContext);
-    const { fetchSingleEmployee, singleEmployee } = employeeContext;
+    const { fetchSingleEmployee, singleEmployee,loading } = employeeContext;
 
     const {
         id,
@@ -21,6 +21,11 @@ const SingleEmployeeView = props => {
         const userID = props.match.params.id;
         fetchSingleEmployee(userID);
     }, []);
+
+    if(loading)
+    {
+        return <Spinner/>
+    }
     return (
         <div className="singleEmployee ease_in">
             <div className="singleEmployee_body">
@@ -63,7 +68,7 @@ const SingleEmployeeView = props => {
             <div className="singleEmployee_footer">
                 <div></div>
                 <div>
-                    <Link to={`/employees/edit/${id}`}>
+                <Link to={`/employees/edit/${id}`}>
                         <button className="singleEmployeee_editButton">
                             Edit
                         </button>
