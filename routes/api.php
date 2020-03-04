@@ -28,6 +28,7 @@ Route::get('/arrivedItems','ItemsController@arrived');
 Route::get('/employees','EmployeesController@index');
 Route::get('/employees/{id}','EmployeesController@edit');
 Route::post('/employees/create','EmployeesController@create');
+Route::post('/employees/{id}/update','EmployeesController@update');
 
 // Tokens
 Route::get('/tokens','TokensController@index');

@@ -52,7 +52,7 @@ export default class Index extends Component {
                                         />
                                         <Route
                                             exact
-                                            path="/employees/edit/:id"
+                                            path="/employees/:id/edit"
                                             component={EditEmployee}
                                         />
                                           <Route

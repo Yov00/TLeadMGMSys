@@ -68,7 +68,7 @@ const SingleEmployeeView = props => {
             <div className="singleEmployee_footer">
                 <div></div>
                 <div>
-                <Link to={`/employees/edit/${id}`}>
+                <Link to={`/employees/${id}/edit`}>
                         <button className="singleEmployeee_editButton">
                             Edit
                         </button>

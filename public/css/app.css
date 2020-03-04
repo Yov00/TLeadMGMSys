@@ -759,7 +759,8 @@ html {
 }
 
 .singleEmployee {
-  width: 700px;
+  width: 30%;
+  min-width: 700px;
   margin: 0px auto;
   padding: 40px;
   box-shadow: 0 1px 14px rgba(0, 0, 0, 0.3), 0 0 20px rgba(0, 0, 0, 0.1) inset;

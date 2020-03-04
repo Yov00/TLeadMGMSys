@@ -41,7 +41,7 @@ const EmployeeForm = props => {
 
     const onChange = e => {
         setEmployee({ ...employee, [e.target.name]: e.target.value });
-        console.log(e.target.value)
+        
     };
 
     const onSubmit = e => {
@@ -55,6 +55,7 @@ const EmployeeForm = props => {
         employeeInfo.append("job_title", job_title);
         employeeInfo.append("phone_number", phone_number);
         employeeInfo.append("token_id", token_id);
+        
         addEmployee(employeeInfo);
 
         setEmployee({
@@ -66,8 +67,7 @@ const EmployeeForm = props => {
             phone_number: "",
             token_id: 1
         });
-
-      return  <Redirect to="/employees"/>
+      
     };
     return (
         <form

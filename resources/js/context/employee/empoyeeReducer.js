@@ -2,7 +2,8 @@ import {
     GET_EMPLOYEES,
     ADD_EMPLOYEE,
     GET_TOKENS,
-    GET_SINGLE_EMPLOYEE
+    GET_SINGLE_EMPLOYEE,
+    UPDATE_EMPLOYEE
 } from "../../Types";
 
 export default (state, action) => {
@@ -22,6 +23,13 @@ export default (state, action) => {
             return {
                 ...state,
                 employees: [...state.employees, action.payload]
+            };
+        
+        case UPDATE_EMPLOYEE:
+            return{
+                ...state,
+                employees: [...state.employees, action.payload]
+
             };
         case GET_SINGLE_EMPLOYEE:
             return {

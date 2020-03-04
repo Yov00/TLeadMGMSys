@@ -55934,7 +55934,7 @@ module.exports = function(module) {
 /*!*******************************!*\
   !*** ./resources/js/Types.js ***!
   \*******************************/
-/*! exports provided: ADD_INVENTORY_ITEM, REMOVE_INVENTORY_ITEM, CHECKOUT_INVENTORY_ITEM, GET_ITEMS, SHOW_MODAL, ARRIVED_ITEMS, GET_EMPLOYEES, ADD_EMPLOYEE, GET_SINGLE_EMPLOYEE, GET_TOKENS, SET_LOADING, ADD_INVOICE, GET_BALANCE, UPDATE_BALANCE */
+/*! exports provided: ADD_INVENTORY_ITEM, REMOVE_INVENTORY_ITEM, CHECKOUT_INVENTORY_ITEM, GET_ITEMS, SHOW_MODAL, ARRIVED_ITEMS, GET_EMPLOYEES, ADD_EMPLOYEE, GET_SINGLE_EMPLOYEE, UPDATE_EMPLOYEE, GET_TOKENS, SET_LOADING, ADD_INVOICE, GET_BALANCE, UPDATE_BALANCE */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -55948,6 +55948,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_EMPLOYEES", function() { return GET_EMPLOYEES; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADD_EMPLOYEE", function() { return ADD_EMPLOYEE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_SINGLE_EMPLOYEE", function() { return GET_SINGLE_EMPLOYEE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPDATE_EMPLOYEE", function() { return UPDATE_EMPLOYEE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_TOKENS", function() { return GET_TOKENS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SET_LOADING", function() { return SET_LOADING; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADD_INVOICE", function() { return ADD_INVOICE; });
@@ -55963,7 +55964,8 @@ var ARRIVED_ITEMS = "ARRIVED_ITEMS"; // Employees
 
 var GET_EMPLOYEES = "GET_EMPLOYEES";
 var ADD_EMPLOYEE = "ADD_EMPLOYEE";
-var GET_SINGLE_EMPLOYEE = "GET_SINGLE_EMPLOYEE"; // Tokens
+var GET_SINGLE_EMPLOYEE = "GET_SINGLE_EMPLOYEE";
+var UPDATE_EMPLOYEE = "UPDATE_EMPLOYEE"; // Tokens
 
 var GET_TOKENS = "GET_TOKENS"; // Loading...
 
@@ -56133,7 +56135,7 @@ function (_Component) {
         component: _employee_EmployeeForm__WEBPACK_IMPORTED_MODULE_7__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
         exact: true,
-        path: "/employees/edit/:id",
+        path: "/employees/:id/edit",
         component: _components_employee_EditEmployee__WEBPACK_IMPORTED_MODULE_12__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
         exact: true,
@@ -56297,6 +56299,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var EmployeeForm = function EmployeeForm(props) {
   var employeeContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_employee_employeeContext__WEBPACK_IMPORTED_MODULE_1__["default"]);
   var addEmployee = employeeContext.addEmployee,
+      udpateEmployee = employeeContext.udpateEmployee,
       fetchTokens = employeeContext.fetchTokens,
       tokens = employeeContext.tokens,
       fetchSingleEmployee = employeeContext.fetchSingleEmployee,
@@ -56314,6 +56317,7 @@ var EmployeeForm = function EmployeeForm(props) {
       setDisplayedImage = _useState4[1];
 
   var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
+    id: singleEmployee.id,
     first_name: singleEmployee.first_name,
     last_name: singleEmployee.last_name,
     c_number: singleEmployee.c_number,
@@ -56326,7 +56330,8 @@ var EmployeeForm = function EmployeeForm(props) {
       employee = _useState6[0],
       setEmployee = _useState6[1];
 
-  var first_name = employee.first_name,
+  var id = employee.id,
+      first_name = employee.first_name,
       last_name = employee.last_name,
       c_number = employee.c_number,
       phone_number = employee.phone_number,
@@ -56351,7 +56356,6 @@ var EmployeeForm = function EmployeeForm(props) {
     setEmployee(_objectSpread({}, employee, {
       image: file
     }));
-    console.log(e.target.value);
     imageDisplayHandler(e);
   };
 
@@ -56381,16 +56385,15 @@ var EmployeeForm = function EmployeeForm(props) {
     employeeInfo.append("job_title", job_title);
     employeeInfo.append("phone_number", phone_number);
     employeeInfo.append("token_id", token_id);
-    addEmployee(employeeInfo);
-    setEmployee({
-      first_name: "",
-      last_name: "",
-      c_number: "",
-      image: {},
-      job_title: "Administrator",
-      phone_number: "",
-      token_id: 1
-    });
+    udpateEmployee(employeeInfo, id); // setEmployee({
+    //     first_name: "",
+    //     last_name: "",
+    //     c_number: "",
+    //     image: {},
+    //     job_title: "Administrator",
+    //     phone_number: "",
+    //     token_id: 1
+    // });
   };
 
   if (loading) {
@@ -56672,7 +56675,6 @@ var EmployeeForm = function EmployeeForm(props) {
 
   var onChange = function onChange(e) {
     setEmployee(_objectSpread({}, employee, _defineProperty({}, e.target.name, e.target.value)));
-    console.log(e.target.value);
   };
 
   var onSubmit = function onSubmit(e) {
@@ -56694,9 +56696,6 @@ var EmployeeForm = function EmployeeForm(props) {
       job_title: "Administrator",
       phone_number: "",
       token_id: 1
-    });
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router__WEBPACK_IMPORTED_MODULE_2__["Redirect"], {
-      to: "/employees"
     });
   };
 
@@ -56950,7 +56949,7 @@ var SingleEmployeeView = function SingleEmployeeView(props) {
   }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "singleEmployee_footer"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-    to: "/employees/edit/".concat(id)
+    to: "/employees/".concat(id, "/edit")
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "singleEmployeee_editButton"
   }, "Edit")))));
@@ -57474,7 +57473,9 @@ var MultiSport = function MultiSport() {
       width: '50%',
       margin: '0px auto'
     }
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Under Development"));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Under Development ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fas fa-wrench"
+  })));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (MultiSport);
@@ -57835,7 +57836,7 @@ var EmployeeState = function EmployeeState(props) {
         while (1) {
           switch (_context3.prev = _context3.next) {
             case 0:
-              console.log(employee.image);
+              console.log(employee);
               config = {
                 "Content-Type": "application/json"
               };
@@ -57868,47 +57869,94 @@ var EmployeeState = function EmployeeState(props) {
     return function addEmployee(_x) {
       return _ref3.apply(this, arguments);
     };
+  }(); // Update existing employe
+
+
+  var udpateEmployee =
+  /*#__PURE__*/
+  function () {
+    var _ref4 = _asyncToGenerator(
+    /*#__PURE__*/
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4(employee, id) {
+      var config, res;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+        while (1) {
+          switch (_context4.prev = _context4.next) {
+            case 0:
+              console.log(employee);
+              config = {
+                "Content-Type": "application/json"
+              };
+              _context4.prev = 2;
+              _context4.next = 5;
+              return axios__WEBPACK_IMPORTED_MODULE_4___default.a.post("/api/employees/" + id + "/update", employee, config);
+
+            case 5:
+              res = _context4.sent;
+              dispatch({
+                type: _Types__WEBPACK_IMPORTED_MODULE_5__["UPDATE_EMPLOYEE"],
+                payload: res.data
+              });
+              _context4.next = 12;
+              break;
+
+            case 9:
+              _context4.prev = 9;
+              _context4.t0 = _context4["catch"](2);
+              console.log(_context4.t0.response.data.message);
+
+            case 12:
+            case "end":
+              return _context4.stop();
+          }
+        }
+      }, _callee4, null, [[2, 9]]);
+    }));
+
+    return function udpateEmployee(_x2, _x3) {
+      return _ref4.apply(this, arguments);
+    };
   }();
 
   var fetchSingleEmployee =
   /*#__PURE__*/
   function () {
-    var _ref4 = _asyncToGenerator(
+    var _ref5 = _asyncToGenerator(
     /*#__PURE__*/
-    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4(id) {
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5(id) {
       var res;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
         while (1) {
-          switch (_context4.prev = _context4.next) {
+          switch (_context5.prev = _context5.next) {
             case 0:
-              _context4.prev = 0;
-              _context4.next = 3;
+              _context5.prev = 0;
+              _context5.next = 3;
               return axios__WEBPACK_IMPORTED_MODULE_4___default.a.get("/api/employees/".concat(id));
 
             case 3:
-              res = _context4.sent;
+              res = _context5.sent;
               dispatch({
                 type: _Types__WEBPACK_IMPORTED_MODULE_5__["GET_SINGLE_EMPLOYEE"],
                 payload: res.data
               });
-              _context4.next = 10;
+              _context5.next = 10;
               break;
 
             case 7:
-              _context4.prev = 7;
-              _context4.t0 = _context4["catch"](0);
-              console.error(_context4.t0);
+              _context5.prev = 7;
+              _context5.t0 = _context5["catch"](0);
+              console.error(_context5.t0);
 
             case 10:
             case "end":
-              return _context4.stop();
+              return _context5.stop();
           }
         }
-      }, _callee4, null, [[0, 7]]);
+      }, _callee5, null, [[0, 7]]);
     }));
 
-    return function fetchSingleEmployee(_x2) {
-      return _ref4.apply(this, arguments);
+    return function fetchSingleEmployee(_x4) {
+      return _ref5.apply(this, arguments);
     };
   }();
 
@@ -57921,7 +57969,8 @@ var EmployeeState = function EmployeeState(props) {
       fetchAllEmployees: fetchAllEmployees,
       fetchSingleEmployee: fetchSingleEmployee,
       fetchTokens: fetchTokens,
-      addEmployee: addEmployee
+      addEmployee: addEmployee,
+      udpateEmployee: udpateEmployee
     }
   }, props.children);
 };
@@ -57986,6 +58035,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       });
 
     case _Types__WEBPACK_IMPORTED_MODULE_0__["ADD_EMPLOYEE"]:
+      return _objectSpread({}, state, {
+        employees: [].concat(_toConsumableArray(state.employees), [action.payload])
+      });
+
+    case _Types__WEBPACK_IMPORTED_MODULE_0__["UPDATE_EMPLOYEE"]:
       return _objectSpread({}, state, {
         employees: [].concat(_toConsumableArray(state.employees), [action.payload])
       });

@@ -3,11 +3,13 @@ import EmployeeContext from "../../context/employee/employeeContext";
 import Spinner from "../layout/Spinner";
 const EmployeeForm = props => {
     const employeeContext = useContext(EmployeeContext);
-    const { addEmployee, fetchTokens, tokens,fetchSingleEmployee,singleEmployee,loading } = employeeContext;
+    const { addEmployee, udpateEmployee,fetchTokens, tokens,fetchSingleEmployee,singleEmployee,loading } = employeeContext;
 
     const [validationErrors, setValidationErrors] = useState("");
     const [displayedImage,setDisplayedImage] = useState('/storage/'+singleEmployee.image)
+
     const [employee, setEmployee] = useState({
+        id:singleEmployee.id,
         first_name: singleEmployee.first_name,
         last_name: singleEmployee.last_name,
         c_number: singleEmployee.c_number,
@@ -16,7 +18,9 @@ const EmployeeForm = props => {
         phone_number: singleEmployee.phone_number,
         token_id: singleEmployee.token.id
     });
+
     const {
+        id,
         first_name,
         last_name,
         c_number,
@@ -47,7 +51,7 @@ const EmployeeForm = props => {
     const imageUploadHandler = e => {
         const file = e.target.files[0];
         setEmployee({ ...employee, image: file });
-        console.log(e.target.value);
+       
 
         imageDisplayHandler(e);
     };
@@ -66,10 +70,11 @@ const EmployeeForm = props => {
          }
          reader.readAsDataURL(file);
      }
+
+
     const onSubmit = e => {
         e.preventDefault();
         const employeeInfo = new FormData();
-
         employeeInfo.append("first_name", first_name);
         employeeInfo.append("last_name", last_name);
         employeeInfo.append("c_number", c_number);
@@ -77,17 +82,18 @@ const EmployeeForm = props => {
         employeeInfo.append("job_title", job_title);
         employeeInfo.append("phone_number", phone_number);
         employeeInfo.append("token_id", token_id);
-        addEmployee(employeeInfo);
+       
+        udpateEmployee(employeeInfo,id);
 
-        setEmployee({
-            first_name: "",
-            last_name: "",
-            c_number: "",
-            image: {},
-            job_title: "Administrator",
-            phone_number: "",
-            token_id: 1
-        });
+        // setEmployee({
+        //     first_name: "",
+        //     last_name: "",
+        //     c_number: "",
+        //     image: {},
+        //     job_title: "Administrator",
+        //     phone_number: "",
+        //     token_id: 1
+        // });
     };
     if(loading){
         return <Spinner/>
@@ -98,6 +104,7 @@ const EmployeeForm = props => {
             className="employeeForm ease_in"
             encType="multipart/form-data"
         >
+     
      
          
             <div className="form__group" style={{ width: "100%" }}>
