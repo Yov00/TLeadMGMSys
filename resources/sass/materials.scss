@@ -14,8 +14,8 @@
 }
 .card {
     border: 1px solid black;
-    background-color: #333;
-    color: white;
+
+    color: #333;
     display: flex;
     width: 200px;
     flex-direction: column;
@@ -30,12 +30,19 @@
     display: flex;
     justify-content: space-around;
 }
-.card__header img {
-    width: 100%;
-    border-radius: 5px;
+
+.card__header {
+    display: flex;
+    align-items: flex-start;
+    height: 150px;
+    img {
+        width: 100%;
+        border-radius: 5px;
+        object-fit: cover;
+    }
 }
 .card__body {
-    font-size: 12px;
+    font-size: 15px;
     width: 100%;
 }
 .card__footer {

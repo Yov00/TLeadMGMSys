@@ -21,6 +21,10 @@ Route::get('/employees', function () {
 Route::get('/employees/{id}',  function () {
     return view('welcome');
 });
+Route::get('/employees/edit/{id}',  function () {
+    return view('welcome');
+});
+
 
 Route::get('/employeeForm', function () {
     return view('welcome');

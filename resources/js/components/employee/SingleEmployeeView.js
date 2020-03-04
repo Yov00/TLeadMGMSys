@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import EmployeeContext from "../../context/employee/employeeContext";
+import { Link } from "react-router-dom";
 
 const SingleEmployeeView = props => {
     const employeeContext = useContext(EmployeeContext);
@@ -13,7 +14,7 @@ const SingleEmployeeView = props => {
         job_title,
         image,
         token,
-        phone
+        phone_number
     } = singleEmployee;
 
     useEffect(() => {
@@ -21,7 +22,7 @@ const SingleEmployeeView = props => {
         fetchSingleEmployee(userID);
     }, []);
     return (
-        <div className="singleEmployee">
+        <div className="singleEmployee ease_in">
             <div className="singleEmployee_body">
                 <div className="singleEmployee_left">
                     <div className="singleEmployee_image_container">
@@ -44,21 +45,29 @@ const SingleEmployeeView = props => {
                             token ? token.token_number : "no token"
                         }`}</div>
 
-                        <div>{`Phone: ${phone}`}</div>
+                        <div>{`Phone: ${phone_number}`}</div>
+                    </div>
+                    <div className="singleEmployee_email">
+                        {`${first_name}.${last_name}@outcons.com`}
+                    </div>
+                    <div className="singleEmployee_socialNetworks">
+                        <span>
+                            <i className="fab fa-facebook-square"></i>
+                        </span>
+                        <span>
+                            <i className="fab fa-linkedin"></i>
+                        </span>
                     </div>
                 </div>
             </div>
             <div className="singleEmployee_footer">
-                <div className="singleEmployee_email">
-                    {`${first_name}.${last_name}@outcons.com`}
-                </div>
-                <div className="singleEmployee_socialNetworks">
-                    <span>
-                        <i className="fab fa-facebook-square"></i>
-                    </span>
-                    <span>
-                        <i className="fab fa-facebook-square"></i>
-                    </span>
+                <div></div>
+                <div>
+                    <Link to={`/employees/edit/${id}`}>
+                        <button className="singleEmployeee_editButton">
+                            Edit
+                        </button>
+                    </Link>
                 </div>
             </div>
         </div>

@@ -72,7 +72,9 @@ const EmployeeState = props => {
                 type: GET_SINGLE_EMPLOYEE,
                 payload: res.data
             });
-        } catch (err) {}
+        } catch (err) {
+            console.error(err);
+        }
     };
     return (
         <EmployeeContext.Provider

@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import EmployeeContext from "../../context/employee/employeeContext";
 
-const EmployeeForm = () => {
+const EmployeeForm = props => {
     const employeeContext = useContext(EmployeeContext);
     const { addEmployee, fetchTokens, tokens } = employeeContext;
 
@@ -39,11 +39,6 @@ const EmployeeForm = () => {
         setEmployee({ ...employee, [e.target.name]: e.target.value });
     };
 
-    const validationHandler = object => {
-        for (var key in object) {
-            console.log(object[key]);
-        }
-    };
     const onSubmit = e => {
         e.preventDefault();
         const employeeInfo = new FormData();

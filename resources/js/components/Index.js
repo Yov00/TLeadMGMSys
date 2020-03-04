@@ -48,6 +48,11 @@ export default class Index extends Component {
                                             path="/employeeForm"
                                             component={EmployeeForm}
                                         />
+                                        <Route
+                                            exact
+                                            path="/employeeForm/edit/:id"
+                                            component={EmployeeForm}
+                                        />
                                     </Switch>
                                 </div>
                             </div>

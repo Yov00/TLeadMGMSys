@@ -13,7 +13,6 @@ const EmployeeItem = ({ employee }) => {
     } = employee;
     return (
         <div className="card">
-            {console.log("storage/" + image)}
             <div className="card__header">
                 {image ? (
                     <img className="employee_image" src={"storage/" + image} />
