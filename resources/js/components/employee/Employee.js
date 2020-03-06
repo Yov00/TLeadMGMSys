@@ -30,7 +30,11 @@ const Employee = () => {
 
     return (
         <div className="employees ease_in">
-            <h1 style={{ color:'#333',fontSize:'40px' }}>EMPLOYEES</h1>
+            <h1
+                style={{ color: "#333", fontSize: "40px", textAlign: "center" }}
+            >
+                EMPLOYEES
+            </h1>
             <div className="employeeWrapepr">{allEmployees}</div>
         </div>
     );

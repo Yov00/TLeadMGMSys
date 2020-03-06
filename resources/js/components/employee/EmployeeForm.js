@@ -1,6 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
 import EmployeeContext from "../../context/employee/employeeContext";
-import { Redirect } from 'react-router';
 
 const EmployeeForm = props => {
     const employeeContext = useContext(EmployeeContext);
@@ -29,9 +28,6 @@ const EmployeeForm = props => {
 
     useEffect(() => {
         fetchTokens();
-        const userID = props.match.params.id;
-     
-      
     }, []);
     // Adding file to the state
     const imageUploadHandler = e => {
@@ -41,7 +37,6 @@ const EmployeeForm = props => {
 
     const onChange = e => {
         setEmployee({ ...employee, [e.target.name]: e.target.value });
-        
     };
 
     const onSubmit = e => {
@@ -55,7 +50,6 @@ const EmployeeForm = props => {
         employeeInfo.append("job_title", job_title);
         employeeInfo.append("phone_number", phone_number);
         employeeInfo.append("token_id", token_id);
-        
         addEmployee(employeeInfo);
 
         setEmployee({
@@ -67,7 +61,6 @@ const EmployeeForm = props => {
             phone_number: "",
             token_id: 1
         });
-      
     };
     return (
         <form
@@ -75,7 +68,6 @@ const EmployeeForm = props => {
             className="employeeForm ease_in"
             encType="multipart/form-data"
         >
-      
             <div className="form__group" style={{ width: "100%" }}>
                 <h1>Create New Employee</h1>
             </div>
@@ -151,7 +143,7 @@ const EmployeeForm = props => {
                         value={token_id}
                     >
                         {tokens.map(token => (
-                            <option key={token.id} value={token.id}>
+                            <option key={token.id} value={token.token_number}>
                                 {token.token_number}
                             </option>
                         ))}
@@ -175,6 +167,7 @@ const EmployeeForm = props => {
             <div>
                 <div className="form__group" style={{ width: "100%" }}>
                     <input
+                        className="employeeForm_button"
                         type="submit"
                         value="Add Employee"
                         style={{

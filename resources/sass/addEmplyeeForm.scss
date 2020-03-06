@@ -16,7 +16,16 @@
     -ms-transform: rotate(-8deg);
     transform: rotate(-8deg);
 }
-.edit_employee_image{ 
+.edit_employee_image {
     height: 200px;
     object-fit: cover;
+}
+.employeeForm_button {
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s;
+    &:active {
+        opacity: 0.8;
+    }
 }

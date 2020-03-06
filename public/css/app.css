@@ -197,7 +197,6 @@ th {
 }
 
 .card {
-  border: 1px solid black;
   color: #333;
   display: -webkit-box;
   display: flex;
@@ -228,10 +227,12 @@ th {
   -webkit-box-align: start;
           align-items: flex-start;
   height: 150px;
+  width: 100%;
 }
 
 .card__header img {
   width: 100%;
+  height: 150px;
   border-radius: 5px;
   -o-object-fit: cover;
      object-fit: cover;
@@ -248,7 +249,7 @@ th {
 
 .card__footer button {
   width: 100%;
-  background-color: tomato;
+  background-color: #333;
   border: none;
   color: white;
   padding: 5px 10px;
@@ -461,7 +462,7 @@ select:focus {
 }
 
 .employees {
-  width: 60%;
+  width: 50%;
   margin: 0px auto;
 }
 
@@ -499,6 +500,18 @@ select:focus {
   height: 200px;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.employeeForm_button {
+  background-color: #333;
+  color: white;
+  cursor: pointer;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.employeeForm_button:active {
+  opacity: 0.8;
 }
 
 body,
