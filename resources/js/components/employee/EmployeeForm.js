@@ -1,11 +1,12 @@
 import React, { useState, useContext, useEffect } from "react";
 import EmployeeContext from "../../context/employee/employeeContext";
+import { BrowserRouter as Router, Redirect } from "react-router-dom";
 
 const EmployeeForm = props => {
     const employeeContext = useContext(EmployeeContext);
     const { addEmployee, fetchTokens, tokens } = employeeContext;
 
-    const [validationErrors, setValidationErrors] = useState("");
+    const [userCreated, setUserCreated] = useState(false);
     const [employee, setEmployee] = useState({
         first_name: "",
         last_name: "",
@@ -61,7 +62,13 @@ const EmployeeForm = props => {
             phone_number: "",
             token_id: 1
         });
+
+        setUserCreated(true);
     };
+
+    if (userCreated) {
+        return <Redirect to="/employees" />;
+    }
     return (
         <form
             onSubmit={onSubmit}
@@ -170,11 +177,6 @@ const EmployeeForm = props => {
                         className="employeeForm_button"
                         type="submit"
                         value="Add Employee"
-                        style={{
-                            backgroundColor: "#333",
-                            color: "white",
-                            cursor: "pointer"
-                        }}
                     />
                 </div>
             </div>

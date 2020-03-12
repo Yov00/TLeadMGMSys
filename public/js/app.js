@@ -56277,7 +56277,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _context_employee_employeeContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../context/employee/employeeContext */ "./resources/js/context/employee/employeeContext.js");
-/* harmony import */ var _layout_Spinner__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../layout/Spinner */ "./resources/js/components/layout/Spinner.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _layout_Spinner__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../layout/Spinner */ "./resources/js/components/layout/Spinner.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -56296,6 +56297,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var EmployeeForm = function EmployeeForm(props) {
   var employeeContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_employee_employeeContext__WEBPACK_IMPORTED_MODULE_1__["default"]);
   var addEmployee = employeeContext.addEmployee,
@@ -56306,12 +56308,12 @@ var EmployeeForm = function EmployeeForm(props) {
       singleEmployee = employeeContext.singleEmployee,
       loading = employeeContext.loading;
 
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
       _useState2 = _slicedToArray(_useState, 2),
-      validationErrors = _useState2[0],
-      setValidationErrors = _useState2[1];
+      userUpdated = _useState2[0],
+      setUserUpdated = _useState2[1];
 
-  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])('/storage/' + singleEmployee.image),
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])("/storage/" + singleEmployee.image),
       _useState4 = _slicedToArray(_useState3, 2),
       displayedImage = _useState4[0],
       setDisplayedImage = _useState4[1];
@@ -56385,19 +56387,18 @@ var EmployeeForm = function EmployeeForm(props) {
     employeeInfo.append("job_title", job_title);
     employeeInfo.append("phone_number", phone_number);
     employeeInfo.append("token_id", token_id);
-    udpateEmployee(employeeInfo, id); // setEmployee({
-    //     first_name: "",
-    //     last_name: "",
-    //     c_number: "",
-    //     image: {},
-    //     job_title: "Administrator",
-    //     phone_number: "",
-    //     token_id: 1
-    // });
+    udpateEmployee(employeeInfo, id);
+    setUserUpdated(true);
   };
 
   if (loading) {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_layout_Spinner__WEBPACK_IMPORTED_MODULE_2__["default"], null);
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_layout_Spinner__WEBPACK_IMPORTED_MODULE_3__["default"], null);
+  }
+
+  if (userUpdated) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Redirect"], {
+      to: "/employees"
+    });
   }
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
@@ -56409,7 +56410,7 @@ var EmployeeForm = function EmployeeForm(props) {
     style: {
       width: "100%"
     }
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Edit: ", first_name + ', ' + last_name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Edit: ", first_name + ", " + last_name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "form__group",
     style: {
       width: "100%"
@@ -56530,6 +56531,7 @@ var EmployeeForm = function EmployeeForm(props) {
     }
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "submit",
+    className: "employeeForm_button",
     value: "Update Employee",
     style: {
       backgroundColor: "#333",
@@ -56612,6 +56614,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _context_employee_employeeContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../context/employee/employeeContext */ "./resources/js/context/employee/employeeContext.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -56629,16 +56632,17 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var EmployeeForm = function EmployeeForm(props) {
   var employeeContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_employee_employeeContext__WEBPACK_IMPORTED_MODULE_1__["default"]);
   var addEmployee = employeeContext.addEmployee,
       fetchTokens = employeeContext.fetchTokens,
       tokens = employeeContext.tokens;
 
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
       _useState2 = _slicedToArray(_useState, 2),
-      validationErrors = _useState2[0],
-      setValidationErrors = _useState2[1];
+      userCreated = _useState2[0],
+      setUserCreated = _useState2[1];
 
   var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
     first_name: "",
@@ -56695,7 +56699,14 @@ var EmployeeForm = function EmployeeForm(props) {
       phone_number: "",
       token_id: 1
     });
+    setUserCreated(true);
   };
+
+  if (userCreated) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Redirect"], {
+      to: "/employees"
+    });
+  }
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
     onSubmit: onSubmit,
@@ -56818,12 +56829,7 @@ var EmployeeForm = function EmployeeForm(props) {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     className: "employeeForm_button",
     type: "submit",
-    value: "Add Employee",
-    style: {
-      backgroundColor: "#333",
-      color: "white",
-      cursor: "pointer"
-    }
+    value: "Add Employee"
   }))));
 };
 
