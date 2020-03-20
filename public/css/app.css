@@ -742,7 +742,9 @@ html {
   cursor: pointer;
   border: none;
   border-radius: 10px;
-  background-color: orange;
+  background-color: #dfb15b;
+  display: -webkit-box;
+  display: flex;
   color: white;
   font-weight: bold;
 }
@@ -858,5 +860,11 @@ html {
   background-color: white;
   color: #333;
   cursor: pointer;
+}
+
+.multis-port-card {
+  width: 500px;
+  height: 200px;
+  border: 1px solid black;
 }
 

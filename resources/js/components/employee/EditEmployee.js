@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import EmployeeContext from "../../context/employee/employeeContext";
-import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Redirect } from "react-router-dom";
 import Spinner from "../layout/Spinner";
 const EmployeeForm = props => {
     const employeeContext = useContext(EmployeeContext);

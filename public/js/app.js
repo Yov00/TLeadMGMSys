@@ -55934,7 +55934,7 @@ module.exports = function(module) {
 /*!*******************************!*\
   !*** ./resources/js/Types.js ***!
   \*******************************/
-/*! exports provided: ADD_INVENTORY_ITEM, REMOVE_INVENTORY_ITEM, CHECKOUT_INVENTORY_ITEM, GET_ITEMS, SHOW_MODAL, ARRIVED_ITEMS, GET_EMPLOYEES, ADD_EMPLOYEE, GET_SINGLE_EMPLOYEE, UPDATE_EMPLOYEE, GET_TOKENS, SET_LOADING, ADD_INVOICE, GET_BALANCE, UPDATE_BALANCE */
+/*! exports provided: ADD_INVENTORY_ITEM, REMOVE_INVENTORY_ITEM, CHECKOUT_INVENTORY_ITEM, GET_ITEMS, SHOW_MODAL, ARRIVED_ITEMS, GET_EMPLOYEES, ADD_EMPLOYEE, GET_SINGLE_EMPLOYEE, UPDATE_EMPLOYEE, GET_TOKENS, SET_LOADING, ADD_INVOICE, GET_BALANCE, UPDATE_BALANCE, ADD_MULTISPORT_CARD, PAY_MULTISPORT_CARD */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -55954,6 +55954,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADD_INVOICE", function() { return ADD_INVOICE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_BALANCE", function() { return GET_BALANCE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPDATE_BALANCE", function() { return UPDATE_BALANCE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADD_MULTISPORT_CARD", function() { return ADD_MULTISPORT_CARD; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PAY_MULTISPORT_CARD", function() { return PAY_MULTISPORT_CARD; });
 // Inventory
 var ADD_INVENTORY_ITEM = "ADD_INVENTORY_ITEM";
 var REMOVE_INVENTORY_ITEM = "REMOVE_INVENTORY_ITEM";
@@ -55974,7 +55976,10 @@ var SET_LOADING = "SET_LOADING"; // Invoice
 var ADD_INVOICE = "ADD_INVOICE"; // Balance
 
 var GET_BALANCE = "GET_BALANCE";
-var UPDATE_BALANCE = "UPDATE_BALACNE";
+var UPDATE_BALANCE = "UPDATE_BALACNE"; //  Multisport
+
+var ADD_MULTISPORT_CARD = "ADD_MULTISPORT_CARD";
+var PAY_MULTISPORT_CARD = "PAY_MULTISPORT_CARD";
 
 /***/ }),
 
@@ -57469,21 +57474,46 @@ var Spinner = function Spinner() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _MultisportItem__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MultisportItem */ "./resources/js/components/multisport/MultisportItem.js");
+
 
 
 var MultiSport = function MultiSport() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "ease_in",
     style: {
-      width: '50%',
-      margin: '0px auto'
+      width: "50%",
+      margin: "0px auto"
     }
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Under Development ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Multisport"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Under Development ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
     className: "fas fa-wrench"
-  })));
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_MultisportItem__WEBPACK_IMPORTED_MODULE_1__["default"], null)));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (MultiSport);
+
+/***/ }),
+
+/***/ "./resources/js/components/multisport/MultisportItem.js":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/multisport/MultisportItem.js ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var MultisportItem = function MultisportItem() {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "multis-port-card"
+  });
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (MultisportItem);
 
 /***/ }),
 
