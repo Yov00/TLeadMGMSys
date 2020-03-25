@@ -57889,7 +57889,7 @@ var EmployeeState = function EmployeeState(props) {
               };
               _context4.prev = 2;
               _context4.next = 5;
-              return axios__WEBPACK_IMPORTED_MODULE_4___default.a.post("/api/employees/" + id + "/update", employee, config);
+              return axios__WEBPACK_IMPORTED_MODULE_4___default.a.patch("/api/employees/" + id + "/update", employee, config);
 
             case 5:
               res = _context4.sent;

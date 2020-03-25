@@ -18,7 +18,7 @@ Route::get('/employees', function () {
     return view('welcome');
 });
 
-Route::get('/employees/{id?}',  function () {
+Route::get('/employees/{id}',  function () {
     return view('welcome');
 });
 Route::get('/employees/{employee?}/edit',  function () {

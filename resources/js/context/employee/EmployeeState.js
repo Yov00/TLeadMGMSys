@@ -74,11 +74,12 @@ const EmployeeState = props => {
         };
 
         try {
-            const res = await axios.post(
+            const res = await axios.patch(
                 "/api/employees/"+id+"/update",
                 employee,
                 config
             );
+            
             dispatch({
                 type: UPDATE_EMPLOYEE,
                 payload: res.data
