@@ -3,6 +3,7 @@
 namespace App;
 use App\Token;
 use Illuminate\Database\Eloquent\Model;
+use App\Multisport;
 
 class Employee extends Model
 {
@@ -11,5 +12,10 @@ class Employee extends Model
    public function token()
    {
       return $this->belongsTo(Token::class);
+   }
+   
+   public function mulrisport()
+   {
+      return $this->hasOne(Multisport::class);
    }
 }
