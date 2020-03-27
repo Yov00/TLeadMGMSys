@@ -1,0 +1,26 @@
+.table_black_and_gray{
+    align-items: center;
+    font-size: 20px;
+    flex-direction: column;
+    border-spacing: 5px;
+    width: 60%;
+    min-width: 800px;
+}
+
+.table_black_and_gray td,
+th {
+    padding: 5px 0;
+    text-align: center;
+    border-radius: 5px;
+}
+.table_black_and_gray td {
+    background-color: lightgray;
+}
+.table_black_and_gray th {
+    background-color: #251e21;
+    color: white;
+}
+.tr__hoverable:hover {
+    opacity: 0.5;
+    cursor: pointer;
+}

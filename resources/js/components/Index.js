@@ -12,12 +12,15 @@ import EmployeeState from "../context/employee/EmployeeState";
 import BalanceState from "../context/balance/BalanceState";
 import EditEmployee from "../components/employee/EditEmployee";
 import MultiSport from "../components/multisport/MultiSport";
+import MultiSportState from "../context/multisport/MultisportState";
+
 export default class Index extends Component {
     render() {
         return (
             <InventoryState>
                 <BalanceState>
                     <EmployeeState>
+                    <MultiSportState>
                         <Router>
                             <div className="main">
                                 <div className="main__navbar">
@@ -64,6 +67,7 @@ export default class Index extends Component {
                                 </div>
                             </div>
                         </Router>
+                        </MultiSportState>
                     </EmployeeState>
                 </BalanceState>
             </InventoryState>
