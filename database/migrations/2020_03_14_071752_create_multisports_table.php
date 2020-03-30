@@ -16,9 +16,9 @@ class CreateMultisportsTable extends Migration
         Schema::create('multisports', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
-            $table->boolean('ative')->default(false);
+            $table->boolean('active')->default(false);
             $table->integer('card_number');
-             $table->integer('employee_id');
+                $table->integer('employee_id');
         });
     }
 

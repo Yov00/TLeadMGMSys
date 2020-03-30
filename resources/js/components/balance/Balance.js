@@ -40,6 +40,7 @@ const Balance = () => {
                 type="number"
                 name="add_ammount"
                 value={addedAmount}
+                step="any"
                 placeholder="0"
             />
             <button type="submit">+</button>
