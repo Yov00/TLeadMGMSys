@@ -14,7 +14,7 @@ class Employee extends Model
       return $this->belongsTo(Token::class);
    }
    
-   public function mulrisport()
+   public function multisport()
    {
       return $this->hasOne(Multisport::class);
    }

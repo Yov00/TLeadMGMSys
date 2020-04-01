@@ -6,7 +6,7 @@ const InventoryItems = ({ items }) => {
     const inventoryContext = useContext(InventoryContext);
     const { showModalHandler } = inventoryContext;
     return (
-        <table className="inventory ease_in">
+        <table className="table_black_and_gray ease_in">
             <thead>
                 <tr>
                     <th

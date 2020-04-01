@@ -67,6 +67,7 @@ const EmployeeForm = props => {
     };
 
     if (userCreated) {
+       
         return <Redirect to="/employees" />;
     }
     return (
@@ -75,6 +76,7 @@ const EmployeeForm = props => {
             className="employeeForm ease_in"
             encType="multipart/form-data"
         >
+        {console.log(employee.token_id)}
             <div className="form__group" style={{ width: "100%" }}>
                 <h1>Create New Employee</h1>
             </div>
@@ -150,7 +152,7 @@ const EmployeeForm = props => {
                         value={token_id}
                     >
                         {tokens.map(token => (
-                            <option key={token.id} value={token.token_number}>
+                            <option key={token.id} value={token.id}>
                                 {token.token_number}
                             </option>
                         ))}
@@ -178,6 +180,8 @@ const EmployeeForm = props => {
                         type="submit"
                         value="Add Employee"
                     />
+                 
+                   
                 </div>
             </div>
         </form>

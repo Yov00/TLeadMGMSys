@@ -1,14 +1,14 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import MultisportItem from "./MultisportItem";
-
+import MultisportContext from "../../context/multisport/multisportContext";
 const MultiSport = () => {
+    const multisportContext = useContext(MultisportContext);
+    const { multisportCards, fetchAllMultisportCards } = multisportContext;
+
+
     return (
-        <div className="ease_in" style={{ width: "50%", margin: "0px auto" }}>
-            <h2>Multisport</h2>
-            <h3>
-                Under Development <i className="fas fa-wrench"></i>
-                <MultisportItem />
-            </h3>
+        <div>
+            <MultisportItem  />
         </div>
     );
 };

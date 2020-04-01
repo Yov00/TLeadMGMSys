@@ -14,7 +14,7 @@ const ArrivedItems = () => {
     }
 
     return (
-        <table className="inventory ease_in inventoryWrapper">
+        <table className="table_black_and_gray ease_in">
             <thead>
                 <tr>
                     <th
