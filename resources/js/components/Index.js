@@ -13,6 +13,7 @@ import BalanceState from "../context/balance/BalanceState";
 import EditEmployee from "../components/employee/EditEmployee";
 import MultiSport from "../components/multisport/MultiSport";
 import MultiSportState from "../context/multisport/MultisportState";
+import CreateMultisportCard from "../components/multisport/CreateMultisportCard";
 
 export default class Index extends Component {
     render() {
@@ -62,6 +63,11 @@ export default class Index extends Component {
                                             exact
                                             path="/multi-sport"
                                             component={MultiSport}
+                                        />
+                                        <Route
+                                            exact
+                                            path="/multi-sport-create"
+                                            component={CreateMultisportCard}
                                         />
                                     </Switch>
                                 </div>

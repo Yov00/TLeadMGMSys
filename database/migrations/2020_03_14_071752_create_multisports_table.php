@@ -18,7 +18,7 @@ class CreateMultisportsTable extends Migration
             $table->timestamps();
             $table->boolean('active')->default(false);
             $table->integer('card_number');
-                $table->integer('employee_id');
+            $table->integer('employee_id');
         });
     }
 

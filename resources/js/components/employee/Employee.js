@@ -8,10 +8,9 @@ const Employee = () => {
     const { employees, fetchAllEmployees, loading } = employeeContext;
 
     useEffect(() => {
-       
        fetchAllEmployees();
-        
-        // eslint-disable-next-line
+
+       // eslint-disable-next-line
     }, []);
 
     const allEmployees =

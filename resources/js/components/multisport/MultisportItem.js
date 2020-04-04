@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import MultisportContext from "../../context/multisport/multisportContext";
+import { Link } from "react-router-dom";
 import moment from "moment";
 
 const MultisportItem = () => {
@@ -15,17 +16,20 @@ const MultisportItem = () => {
         <table className="table_black_and_gray ease_in">
             <thead>
                 <tr>
-                    <th
-                        style={{
-                            backgroundColor: "white",
-                            color: "#333",
-                            fontSize: "40px",
-                            padding: "20px 0",
-                            textAlign: "left"
-                        }}
+                    <th className="multisport_header"
                         colSpan="4"
                     >
+                    <div>
                         Multisport
+                    </div>
+
+                    <div>
+                        <Link className="creat_new_multisport_link" to="/multi-sport-create">
+                         Create New<i class="fas fa-id-card"></i>
+                        </Link>
+                    </div>
+                    
+
                     </th>
                 </tr>
                 <tr>

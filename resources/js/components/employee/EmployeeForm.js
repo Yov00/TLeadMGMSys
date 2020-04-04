@@ -67,7 +67,6 @@ const EmployeeForm = props => {
     };
 
     if (userCreated) {
-       
         return <Redirect to="/employees" />;
     }
     return (

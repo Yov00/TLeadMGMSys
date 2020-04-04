@@ -34,6 +34,11 @@ Route::get('/arrivedItems', function () {
 Route::get('/multi-sport', function () {
     return view('welcome');
 });
+Route::get('/multi-sport-create', function () {
+    return view('welcome');
+});
+
+
 // Route::get('/arrived','ItemsController@arrived');
 // Route::get('{all?}', function(){
 //     return view('welcome');

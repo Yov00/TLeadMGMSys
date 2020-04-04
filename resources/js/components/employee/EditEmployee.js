@@ -97,8 +97,9 @@ const EmployeeForm = props => {
     }
 
     if (userUpdated) {
-        return <Redirect to="/employees" />;
+        return  <Redirect to="/employees"/>
     }
+    
     return (
         <form
             onSubmit={onSubmit}

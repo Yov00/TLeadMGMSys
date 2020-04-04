@@ -3,3 +3,32 @@
     height: 200px;
     border: 1px solid black;
 }
+.multisport_header{
+    background-color: white!important;
+    color: #333!important;
+    font-size: 40px;
+    text-align: left;
+    display:flex;
+    width:200%;
+    align-items:flex-end;
+    >div{
+        flex:1;
+    }
+    :last-child{
+       display: flex;
+       justify-content: flex-end; 
+       align-items: flex-end;
+       a{
+           color:#333;
+       }
+    }
+}
+.multisport_form{
+    width: 600px;
+    border:1px solid black;
+}
+
+.creat_new_multisport_link{
+    font-size:20px;
+
+}

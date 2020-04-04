@@ -833,6 +833,45 @@ html {
   border: 1px solid black;
 }
 
+.multisport_header {
+  background-color: white !important;
+  color: #333 !important;
+  font-size: 40px;
+  text-align: left;
+  display: -webkit-box;
+  display: flex;
+  width: 200%;
+  -webkit-box-align: end;
+          align-items: flex-end;
+}
+
+.multisport_header > div {
+  -webkit-box-flex: 1;
+          flex: 1;
+}
+
+.multisport_header :last-child {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: end;
+          align-items: flex-end;
+}
+
+.multisport_header :last-child a {
+  color: #333;
+}
+
+.multisport_form {
+  width: 600px;
+  border: 1px solid black;
+}
+
+.creat_new_multisport_link {
+  font-size: 20px;
+}
+
 .table_black_and_gray {
   -webkit-box-align: center;
           align-items: center;
