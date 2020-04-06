@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Redirect } from "react-router-dom";
 
 const EmployeeForm = props => {
     const employeeContext = useContext(EmployeeContext);
-    const { addEmployee, fetchTokens, tokens } = employeeContext;
+    const { addEmployee, fetchTokens, tokens,fetchAllEmployees } = employeeContext;
 
     const [userCreated, setUserCreated] = useState(false);
     const [employee, setEmployee] = useState({
@@ -67,7 +67,10 @@ const EmployeeForm = props => {
     };
 
     if (userCreated) {
-        return <Redirect to="/employees" />;
+       
+        
+          return <Redirect to="/employees" />;
+       
     }
     return (
         <form

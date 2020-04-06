@@ -13,7 +13,7 @@ const CreateMultisportCard = () => {
     const [card,setCard] = useState({
         card_number:null,
         employee_id:0,
-        active:false
+        active:true
     });
     
     useEffect(()=>{
@@ -32,7 +32,7 @@ const CreateMultisportCard = () => {
         }
 
        setCard({...card,[e.target.name]:targetValue});
-       console.log(e.target.value);
+     
     }
 
     const onSubmit = (e)=>{
@@ -40,10 +40,17 @@ const CreateMultisportCard = () => {
         createMultisportCard(card);
     }
   
-   if(loading){
-       return <Spinner/>;
-   }
-    const employeeOptions = employees.map(employee=>(
+    if(loading){
+        return <Spinner/>;
+    }
+
+    const emplyeesWithNoMultisportCards = ()=>{
+       let $filteredEmployees = employees.filter(employee=>{
+        return employee.multisport == null;
+        });
+        return $filteredEmployees;
+    }
+    const employeeOptions = emplyeesWithNoMultisportCards().map(employee=>(
         <option key={employee.id} value={employee.id}>
             {`${employee.first_name}, ${ employee.last_name}`}
         </option>
@@ -51,30 +58,29 @@ const CreateMultisportCard = () => {
 
     return (
         <form onSubmit={(e)=>onSubmit(e)} className="ease_in multisport_form">
-        {console.log(card)}
-        <div className="d__flex">
+            <div className="d__flex">
+                <div className="form__group">
+                        <label htmlFor="">Card Number</label>
+                    <input onChange={(e)=>onChange(e)} name="card_number" type="text"/>
+                </div>  
+                <div className="form__group">
+                    <label htmlFor="active">Active</label>
+                    <select defaultValue={card.active} onChange={(e)=>onChange(e)} name="active" id="active" style={{ width:'fit-content' }}>
+                        <option value={true}>Yes</option>
+                        <option value={false}>No</option>
+                    </select>
+                        
+                </div>  
+            </div>
             <div className="form__group">
-                    <label htmlFor="">Card Number</label>
-                <input onChange={(e)=>onChange(e)} name="card_number" type="text"/>
-            </div>  
-            <div className="form__group">
-                <label htmlFor="active">Active</label>
-                <select onChange={(e)=>onChange(e)} name="active" id="active" style={{ width:'fit-content' }}>
-                    <option value={true}>Yes</option>
-                    <option value={false}>No</option>
-                </select>
-                    
-            </div>  
-        </div>
-        
-            <div className="form__group">
-                <select name="employee_id" id="employee_id" onChange={(e)=>onChange(e)}> 
+                <select defaultValue="yes" name="employee_id" id="employee_id" onChange={(e)=>onChange(e)}> \
+                    <option>select employee</option>
                     {employeeOptions}
                 </select>
             </div>
 
             <div className="form__group ">
-                <button type="submit">
+                <button className='btn__dark' type="submit">
                     Create
                 </button>
             </div>

@@ -3,12 +3,14 @@ import axios from 'axios';
 import MultisportContext from './multisportContext';
 import multisportReducer from './multisportReducer';
 
-import { ADD_MULTISPORT_CARD,GET_ALL_MULTISPORT_CARDS } from "../../Types";
+import { ADD_MULTISPORT_CARD,GET_ALL_MULTISPORT_CARDS,UPDATE_MULTISPORT_CARD, TOGGLE_MULTISPORTCARD_MODAL } from "../../Types";
 
 
 const MultisportState = props => {
     const initialState = {
         multisportCards:[],
+        selectedCard:null,
+        showModal:false,
         loading:true
     }
     const [state,dispatch] = useReducer(multisportReducer,initialState);
@@ -39,12 +41,38 @@ const MultisportState = props => {
            throw new Error(err.message);
         }
     }
+    const updateMultisportCard = async(card)=>{
+        const config = {
+            'Content-Type':'application/json'
+        }
+        try{
+            const res = await axios.put(`/api/multisport-card/${card.id}/update`,card,config);
+            dispatch({
+                type:UPDATE_MULTISPORT_CARD,
+                payload:res.data
+            })
+            fetchAllMultisportCards();
+        }catch(err){
+            console.error(err.message);
+        }
+    }
+
+    const toggleModal=(card = null)=>{
+        dispatch({
+            type:TOGGLE_MULTISPORTCARD_MODAL,
+            payload:card
+        });
+    }
     return (
         <MultisportContext.Provider value={{ 
                  multisportCards: state.multisportCards,
+                 showModal:state.showModal,
                  loading:state.loading,
+                 selectedCard:state.selectedCard,
                  fetchAllMultisportCards,
-                 createMultisportCard
+                 createMultisportCard,
+                 updateMultisportCard,
+                 toggleModal
          }}>
             {props.children}
         </MultisportContext.Provider>

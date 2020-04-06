@@ -73539,7 +73539,7 @@ module.exports = function(module) {
 /*!*******************************!*\
   !*** ./resources/js/Types.js ***!
   \*******************************/
-/*! exports provided: ADD_INVENTORY_ITEM, REMOVE_INVENTORY_ITEM, CHECKOUT_INVENTORY_ITEM, GET_ITEMS, SHOW_MODAL, ARRIVED_ITEMS, GET_EMPLOYEES, ADD_EMPLOYEE, GET_SINGLE_EMPLOYEE, UPDATE_EMPLOYEE, GET_TOKENS, SET_LOADING, ADD_INVOICE, GET_BALANCE, UPDATE_BALANCE, GET_ALL_MULTISPORT_CARDS, ADD_MULTISPORT_CARD, PAY_MULTISPORT_CARD */
+/*! exports provided: ADD_INVENTORY_ITEM, REMOVE_INVENTORY_ITEM, CHECKOUT_INVENTORY_ITEM, GET_ITEMS, SHOW_MODAL, ARRIVED_ITEMS, GET_EMPLOYEES, ADD_EMPLOYEE, GET_SINGLE_EMPLOYEE, UPDATE_EMPLOYEE, GET_TOKENS, SET_LOADING, ADD_INVOICE, GET_BALANCE, UPDATE_BALANCE, GET_ALL_MULTISPORT_CARDS, ADD_MULTISPORT_CARD, PAY_MULTISPORT_CARD, UPDATE_MULTISPORT_CARD, TOGGLE_MULTISPORTCARD_MODAL */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -73562,6 +73562,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_ALL_MULTISPORT_CARDS", function() { return GET_ALL_MULTISPORT_CARDS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADD_MULTISPORT_CARD", function() { return ADD_MULTISPORT_CARD; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PAY_MULTISPORT_CARD", function() { return PAY_MULTISPORT_CARD; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPDATE_MULTISPORT_CARD", function() { return UPDATE_MULTISPORT_CARD; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TOGGLE_MULTISPORTCARD_MODAL", function() { return TOGGLE_MULTISPORTCARD_MODAL; });
 // Inventory
 var ADD_INVENTORY_ITEM = "ADD_INVENTORY_ITEM";
 var REMOVE_INVENTORY_ITEM = "REMOVE_INVENTORY_ITEM";
@@ -73587,6 +73589,8 @@ var UPDATE_BALANCE = "UPDATE_BALACNE"; //  Multisport
 var GET_ALL_MULTISPORT_CARDS = "GET_ALL_MULTISPORT_CARDS";
 var ADD_MULTISPORT_CARD = "ADD_MULTISPORT_CARD";
 var PAY_MULTISPORT_CARD = "PAY_MULTISPORT_CARD";
+var UPDATE_MULTISPORT_CARD = "UPDATE_MULTISPORT_CARD";
+var TOGGLE_MULTISPORTCARD_MODAL = "TOGGLE_MULTISPORTCARD_MODAL";
 
 /***/ }),
 
@@ -74256,7 +74260,8 @@ var EmployeeForm = function EmployeeForm(props) {
   var employeeContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_employee_employeeContext__WEBPACK_IMPORTED_MODULE_1__["default"]);
   var addEmployee = employeeContext.addEmployee,
       fetchTokens = employeeContext.fetchTokens,
-      tokens = employeeContext.tokens;
+      tokens = employeeContext.tokens,
+      fetchAllEmployees = employeeContext.fetchAllEmployees;
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
       _useState2 = _slicedToArray(_useState, 2),
@@ -75121,7 +75126,7 @@ var CreateMultisportCard = function CreateMultisportCard() {
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
     card_number: null,
     employee_id: 0,
-    active: false
+    active: true
   }),
       _useState2 = _slicedToArray(_useState, 2),
       card = _useState2[0],
@@ -75143,7 +75148,6 @@ var CreateMultisportCard = function CreateMultisportCard() {
     }
 
     setCard(_objectSpread({}, card, _defineProperty({}, e.target.name, targetValue)));
-    console.log(e.target.value);
   };
 
   var _onSubmit = function onSubmit(e) {
@@ -75155,7 +75159,14 @@ var CreateMultisportCard = function CreateMultisportCard() {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_layout_Spinner__WEBPACK_IMPORTED_MODULE_3__["default"], null);
   }
 
-  var employeeOptions = employees.map(function (employee) {
+  var emplyeesWithNoMultisportCards = function emplyeesWithNoMultisportCards() {
+    var $filteredEmployees = employees.filter(function (employee) {
+      return employee.multisport == null;
+    });
+    return $filteredEmployees;
+  };
+
+  var employeeOptions = emplyeesWithNoMultisportCards().map(function (employee) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
       key: employee.id,
       value: employee.id
@@ -75166,7 +75177,7 @@ var CreateMultisportCard = function CreateMultisportCard() {
       return _onSubmit(e);
     },
     className: "ease_in multisport_form"
-  }, console.log(card), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "d__flex"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "form__group"
@@ -75183,6 +75194,7 @@ var CreateMultisportCard = function CreateMultisportCard() {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     htmlFor: "active"
   }, "Active"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+    defaultValue: card.active,
     onChange: function onChange(e) {
       return _onChange(e);
     },
@@ -75198,14 +75210,16 @@ var CreateMultisportCard = function CreateMultisportCard() {
   }, "No")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "form__group"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+    defaultValue: "yes",
     name: "employee_id",
     id: "employee_id",
     onChange: function onChange(e) {
       return _onChange(e);
     }
-  }, employeeOptions)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, " \\", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "select employee"), employeeOptions)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "form__group "
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "btn__dark",
     type: "submit"
   }, "Create")));
 };
@@ -75228,6 +75242,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _MultisportItem__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MultisportItem */ "./resources/js/components/multisport/MultisportItem.js");
 /* harmony import */ var _layout_Spinner__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../layout/Spinner */ "./resources/js/components/layout/Spinner.js");
 /* harmony import */ var _context_multisport_multisportContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../context/multisport/multisportContext */ "./resources/js/context/multisport/multisportContext.js");
+/* harmony import */ var _MultisportCardModal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./MultisportCardModal */ "./resources/js/components/multisport/MultisportCardModal.js");
+
 
 
 
@@ -75235,9 +75251,11 @@ __webpack_require__.r(__webpack_exports__);
 
 var MultiSport = function MultiSport() {
   var multisportContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_multisport_multisportContext__WEBPACK_IMPORTED_MODULE_3__["default"]);
-  var multisportCards = multisportContext.multisportCards,
+  var selectedCard = multisportContext.selectedCard,
+      multisportCards = multisportContext.multisportCards,
       fetchAllMultisportCards = multisportContext.fetchAllMultisportCards,
-      loading = multisportContext.loading;
+      loading = multisportContext.loading,
+      showModal = multisportContext.showModal;
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     fetchAllMultisportCards();
   }, []);
@@ -75246,10 +75264,70 @@ var MultiSport = function MultiSport() {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_layout_Spinner__WEBPACK_IMPORTED_MODULE_2__["default"], null);
   }
 
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_MultisportItem__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+  var modal = showModal ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_MultisportCardModal__WEBPACK_IMPORTED_MODULE_4__["default"], null) : null;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_MultisportItem__WEBPACK_IMPORTED_MODULE_1__["default"], null), modal);
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (MultiSport);
+
+/***/ }),
+
+/***/ "./resources/js/components/multisport/MultisportCardModal.js":
+/*!*******************************************************************!*\
+  !*** ./resources/js/components/multisport/MultisportCardModal.js ***!
+  \*******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _context_multisport_multisportContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../context/multisport/multisportContext */ "./resources/js/context/multisport/multisportContext.js");
+
+
+
+var MultisportCardModal = function MultisportCardModal() {
+  var multisportContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_multisport_multisportContext__WEBPACK_IMPORTED_MODULE_1__["default"]);
+  var selectedCard = multisportContext.selectedCard,
+      toggleModal = multisportContext.toggleModal,
+      updateMultisportCard = multisportContext.updateMultisportCard;
+  var card_number = selectedCard.card_number,
+      active = selectedCard.active,
+      employee = selectedCard.employee;
+  var first_name = employee.first_name,
+      last_name = employee.last_name;
+
+  var _onSubmit = function onSubmit(e) {
+    e.preventDefault();
+    updateMultisportCard(selectedCard);
+  };
+
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-wrapper"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    onSubmit: function onSubmit(e) {
+      return _onSubmit(e);
+    },
+    className: "multisport-modal-form"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form__group"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, card_number)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form__group"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, card_number)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form__group"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    type: "submit",
+    className: "btn__dark"
+  }, active ? 'Deactivate' : 'Activate'))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "overlay",
+    onClick: function onClick() {
+      return toggleModal();
+    }
+  }));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (MultisportCardModal);
 
 /***/ }),
 
@@ -75276,7 +75354,8 @@ __webpack_require__.r(__webpack_exports__);
 var MultisportItem = function MultisportItem() {
   var multisportContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_multisport_multisportContext__WEBPACK_IMPORTED_MODULE_1__["default"]);
   var loading = multisportContext.loading,
-      multisportCards = multisportContext.multisportCards;
+      multisportCards = multisportContext.multisportCards,
+      toggleModal = multisportContext.toggleModal;
 
   var multisport_date_format = function multisport_date_format(card) {
     var formatedDate = new moment__WEBPACK_IMPORTED_MODULE_3___default.a(card.updated_at);
@@ -75293,11 +75372,14 @@ var MultisportItem = function MultisportItem() {
     to: "/multi-sport-create"
   }, "Create New", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
     className: "fas fa-id-card"
-  }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Employee"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Card Number"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Last Last Paid"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Active"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, multisportCards.length > 0 ? multisportCards.map(function (card, index) {
+  }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Employee"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Card Number"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Last Update"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Active"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, multisportCards.length > 0 ? multisportCards.map(function (card, index) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-      key: index,
+      key: card.id,
       className: "tr__hoverable"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, card.employee.first_name + ", " + card.employee.last_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, card.card_number), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, multisport_date_format(card)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+      onClick: function onClick() {
+        return toggleModal(card);
+      },
       className: "flex__space_evenly"
     }, card.active ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
       className: "fas fa-check-double",
@@ -76340,6 +76422,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var MultisportState = function MultisportState(props) {
   var initialState = {
     multisportCards: [],
+    selectedCard: null,
+    showModal: false,
     loading: true
   };
 
@@ -76435,12 +76519,70 @@ var MultisportState = function MultisportState(props) {
     };
   }();
 
+  var updateMultisportCard =
+  /*#__PURE__*/
+  function () {
+    var _ref3 = _asyncToGenerator(
+    /*#__PURE__*/
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(card) {
+      var config, res;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              config = {
+                'Content-Type': 'application/json'
+              };
+              _context3.prev = 1;
+              _context3.next = 4;
+              return axios__WEBPACK_IMPORTED_MODULE_2___default.a.put("/api/multisport-card/".concat(card.id, "/update"), card, config);
+
+            case 4:
+              res = _context3.sent;
+              dispatch({
+                type: _Types__WEBPACK_IMPORTED_MODULE_5__["UPDATE_MULTISPORT_CARD"],
+                payload: res.data
+              });
+              fetchAllMultisportCards();
+              _context3.next = 12;
+              break;
+
+            case 9:
+              _context3.prev = 9;
+              _context3.t0 = _context3["catch"](1);
+              console.error(_context3.t0.message);
+
+            case 12:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, _callee3, null, [[1, 9]]);
+    }));
+
+    return function updateMultisportCard(_x2) {
+      return _ref3.apply(this, arguments);
+    };
+  }();
+
+  var toggleModal = function toggleModal() {
+    var card = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+    dispatch({
+      type: _Types__WEBPACK_IMPORTED_MODULE_5__["TOGGLE_MULTISPORTCARD_MODAL"],
+      payload: card
+    });
+  };
+
   return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_multisportContext__WEBPACK_IMPORTED_MODULE_3__["default"].Provider, {
     value: {
       multisportCards: state.multisportCards,
+      showModal: state.showModal,
       loading: state.loading,
+      selectedCard: state.selectedCard,
       fetchAllMultisportCards: fetchAllMultisportCards,
-      createMultisportCard: createMultisportCard
+      createMultisportCard: createMultisportCard,
+      updateMultisportCard: updateMultisportCard,
+      toggleModal: toggleModal
     }
   }, props.children);
 };
@@ -76494,9 +76636,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     case _Types__WEBPACK_IMPORTED_MODULE_0__["ADD_MULTISPORT_CARD"]:
       return _objectSpread({}, state);
 
-    case UPDATE_BALANCE:
+    case _Types__WEBPACK_IMPORTED_MODULE_0__["UPDATE_MULTISPORT_CARD"]:
       return _objectSpread({}, state, {
-        balance: action.payload
+        selectedCard: null,
+        showModal: false
+      });
+
+    case _Types__WEBPACK_IMPORTED_MODULE_0__["TOGGLE_MULTISPORTCARD_MODAL"]:
+      return _objectSpread({}, state, {
+        showModal: !state.showModal,
+        selectedCard: action.payload
       });
 
     default:
@@ -76524,8 +76673,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\TL_MANAGE\TLeadMGMSys\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\TL_MANAGE\TLeadMGMSys\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/mylittlebaby/CODE/TL MANAGE/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/mylittlebaby/CODE/TL MANAGE/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -8,7 +8,7 @@ class EmployeesController extends Controller
 {
     public function index()
     {
-        $Employees = Employee::with('token')->get();
+        $Employees = Employee::with(['token','multisport'])->get();
         return response()->json($Employees);
     }
 

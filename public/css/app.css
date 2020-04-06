@@ -276,6 +276,15 @@ select:focus {
   font-size: 20px;
 }
 
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
 .ease_in {
   -webkit-animation-name: fly_in;
           animation-name: fly_in;
@@ -521,7 +530,6 @@ html {
 .invoiceModal {
   width: 60%;
   position: relative;
-  margin-top: -300px;
   max-width: 800px;
   background-color: white;
   padding: 60px;
@@ -865,7 +873,13 @@ html {
 
 .multisport_form {
   width: 600px;
-  border: 1px solid black;
+  box-shadow: 0 15px 20px #777;
+  -webkit-transform: rotate(-8deg);
+  transform: rotate(-8deg);
+}
+
+.multisport_form * {
+  font-size: 18px !important;
 }
 
 .creat_new_multisport_link {
@@ -903,5 +917,26 @@ th {
 .tr__hoverable:hover {
   opacity: 0.5;
   cursor: pointer;
+}
+
+.modal-wrapper {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+          justify-content: center;
+}
+
+.multisport-modal-form {
+  width: 500px;
+  height: 300px;
+  background-color: white;
+  z-index: 200;
 }
 

@@ -1,4 +1,4 @@
-import { ADD_MULTISPORT_CARD,GET_ALL_MULTISPORT_CARDS } from "../../Types";
+import { ADD_MULTISPORT_CARD,GET_ALL_MULTISPORT_CARDS,UPDATE_MULTISPORT_CARD,TOGGLE_MULTISPORTCARD_MODAL } from "../../Types";
 
 export default (state, action) => {
     switch (action.type) {
@@ -13,11 +13,18 @@ export default (state, action) => {
                 ...state,
                 
             };
-        case UPDATE_BALANCE:
+        case UPDATE_MULTISPORT_CARD:
             return {
                 ...state,
-                balance: action.payload
+                selectedCard: null,
+                showModal:false
             };
+        case TOGGLE_MULTISPORTCARD_MODAL:
+            return{
+                ...state,
+                showModal:!state.showModal,
+                selectedCard:action.payload
+            }
         default:
             break;
     }

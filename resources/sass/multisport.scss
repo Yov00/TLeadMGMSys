@@ -25,7 +25,20 @@
 }
 .multisport_form{
     width: 600px;
-    border:1px solid black;
+    
+    *{
+        font-size: 18px!important;
+    }
+
+    -webkit-box-shadow: 0 15px 20px #777;
+    -moz-box-shadow: 0 15px 20px #777;
+    box-shadow: 0 15px 20px #777;
+    -webkit-transform: rotate(-8deg);
+    -moz-transform: rotate(-8deg);
+    -o-transform: rotate(-8deg);
+    -ms-transform: rotate(-8deg);
+    transform: rotate(-8deg);
+    
 }
 
 .creat_new_multisport_link{

@@ -45,3 +45,4 @@ Route::put('/balance/{id}/update','BalanceController@update');
 // Multisport cards
 Route::get('/get-multisport-cards','MultisportController@index');
 Route::post('/create-multisport-card','MultisportController@store');
+Route::put('/multisport-card/{id}/update','MultisportController@edit');

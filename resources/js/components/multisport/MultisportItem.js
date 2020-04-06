@@ -5,7 +5,7 @@ import moment from "moment";
 
 const MultisportItem = () => {
     const multisportContext = useContext(MultisportContext);
-    const { loading, multisportCards } = multisportContext;
+    const { loading, multisportCards,toggleModal} = multisportContext;
 
     const multisport_date_format = card => {
         const formatedDate = new moment(card.updated_at);
@@ -35,14 +35,14 @@ const MultisportItem = () => {
                 <tr>
                     <th>Employee</th>
                     <th>Card Number</th>
-                    <th>Last Last Paid</th>
+                    <th>Last Update</th>
                     <th>Active</th>
                 </tr>
             </thead>
             <tbody>
                 {multisportCards.length > 0 ? (
                     multisportCards.map((card, index) => (
-                        <tr key={index} className="tr__hoverable">
+                        <tr key={card.id} className="tr__hoverable">
                             <td>
                                 {card.employee.first_name +
                                     ", " +
@@ -51,7 +51,7 @@ const MultisportItem = () => {
                             <td>{card.card_number}</td>
                             <td>{multisport_date_format(card)}</td>
 
-                            <td className="flex__space_evenly">
+                            <td onClick={()=>toggleModal(card)} className="flex__space_evenly">
                                 {card.active ? (
                                     <i
                                         className="fas fa-check-double"

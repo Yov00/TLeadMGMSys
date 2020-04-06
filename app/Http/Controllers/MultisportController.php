@@ -25,4 +25,22 @@ class MultisportController extends Controller
 
         return response()->json($msCard);
     }
+
+    public function edit(Request $request)
+    {
+        $msCard = Multisport::find($request->id);
+        if($msCard)
+        {
+            $active = !$request->active;
+            $msCard->update([
+                'active'=>$active
+            ]);
+
+            $msCard->save();
+        }
+        else{
+            $msCard = null;
+        }
+        return response()->json($msCard);
+    }
 }
