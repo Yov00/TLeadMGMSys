@@ -17,6 +17,7 @@ use Illuminate\Http\Request;
 //     return $request->user();
 // });
 
+// Inventory items
 Route::get('/items','ItemsController@index');
 Route::post('/items/create','ItemsController@create');
 Route::get('/items/{id}/edit','ItemsController@edit');
@@ -43,3 +44,4 @@ Route::put('/balance/{id}/update','BalanceController@update');
 
 // Multisport cards
 Route::get('/get-multisport-cards','MultisportController@index');
+Route::post('/create-multisport-card','MultisportController@store');

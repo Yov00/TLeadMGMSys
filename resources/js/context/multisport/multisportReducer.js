@@ -7,11 +7,11 @@ export default (state, action) => {
             ...state,
             multisportCards: action.payload,
             loading:false
-        }
+        }   
         case ADD_MULTISPORT_CARD:
             return {
                 ...state,
-                balance: action.payload
+                
             };
         case UPDATE_BALANCE:
             return {

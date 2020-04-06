@@ -25,7 +25,7 @@ const MultisportItem = () => {
 
                     <div>
                         <Link className="creat_new_multisport_link" to="/multi-sport-create">
-                         Create New<i class="fas fa-id-card"></i>
+                         Create New<i className="fas fa-id-card"></i>
                         </Link>
                     </div>
                     

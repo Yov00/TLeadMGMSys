@@ -12,4 +12,17 @@ class MultisportController extends Controller
         $multisportCards = Multisport::with('employee')->get();
         return response()->json($multisportCards);
     }
+
+    public function store(Request $request)
+    {
+        $msCard = Multisport::create([
+            'card_number'=>$request->card_number,
+            'employee_id'=>$request->employee_id,
+            'active'=>$request->active
+        ]);
+
+        $msCard->save();
+
+        return response()->json($msCard);
+    }
 }

@@ -75086,16 +75086,16 @@ var Spinner = function Spinner() {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _context_employee_employeeContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../context/employee/employeeContext */ "./resources/js/context/employee/employeeContext.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _context_employee_employeeContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../context/employee/employeeContext */ "./resources/js/context/employee/employeeContext.js");
+/* harmony import */ var _context_multisport_multisportContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../context/multisport/multisportContext */ "./resources/js/context/multisport/multisportContext.js");
+/* harmony import */ var _layout_Spinner__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../layout/Spinner */ "./resources/js/components/layout/Spinner.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
@@ -75108,73 +75108,106 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
+
 var CreateMultisportCard = function CreateMultisportCard() {
-  var employeeContext = Object(react__WEBPACK_IMPORTED_MODULE_1__["useContext"])(_context_employee_employeeContext__WEBPACK_IMPORTED_MODULE_2__["default"]);
+  var employeeContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_employee_employeeContext__WEBPACK_IMPORTED_MODULE_1__["default"]);
+  var multisportContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_multisport_multisportContext__WEBPACK_IMPORTED_MODULE_2__["default"]);
+  var createMultisportCard = multisportContext.createMultisportCard;
   var fetchAllEmployees = employeeContext.fetchAllEmployees,
-      employees = employeeContext.employees;
+      employees = employeeContext.employees,
+      loading = employeeContext.loading;
 
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])([]),
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
+    card_number: null,
+    employee_id: 0,
+    active: false
+  }),
       _useState2 = _slicedToArray(_useState, 2),
-      allEmployees = _useState2[0],
-      setAllEmployees = _useState2[1];
+      card = _useState2[0],
+      setCard = _useState2[1];
 
-  Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
-    (
-    /*#__PURE__*/
-    _asyncToGenerator(
-    /*#__PURE__*/
-    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              _context.next = 2;
-              return fetchAllEmployees();
-
-            case 2:
-            case "end":
-              return _context.stop();
-          }
-        }
-      }, _callee);
-    })), setAllEmployees(employees))();
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    fetchAllEmployees();
   }, []);
+
+  var _onChange = function onChange(e) {
+    var targetValue = e.target.value;
+
+    if (targetValue == 'true') {
+      targetValue = true;
+    }
+
+    if (targetValue == 'false') {
+      targetValue = false;
+    }
+
+    setCard(_objectSpread({}, card, _defineProperty({}, e.target.name, targetValue)));
+    console.log(e.target.value);
+  };
+
+  var _onSubmit = function onSubmit(e) {
+    e.preventDefault();
+    createMultisportCard(card);
+  };
+
+  if (loading) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_layout_Spinner__WEBPACK_IMPORTED_MODULE_3__["default"], null);
+  }
+
   var employeeOptions = employees.map(function (employee) {
-    react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+      key: employee.id,
       value: employee.id
-    }, employee.first_name + " " + employee.last_name);
+    }, "".concat(employee.first_name, ", ").concat(employee.last_name));
   });
-  console.log(allEmployees.current);
-  return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("form", {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    onSubmit: function onSubmit(e) {
+      return _onSubmit(e);
+    },
     className: "ease_in multisport_form"
-  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+  }, console.log(card), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "d__flex"
-  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "form__group"
-  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     htmlFor: ""
-  }, "Card Number"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
+  }, "Card Number"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    onChange: function onChange(e) {
+      return _onChange(e);
+    },
+    name: "card_number",
     type: "text"
-  })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "form__group"
-  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
-    htmlFor: ""
-  }, "Active"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("select", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "active"
+  }, "Active"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+    onChange: function onChange(e) {
+      return _onChange(e);
+    },
     name: "active",
     id: "active",
     style: {
       width: 'fit-content'
     }
-  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-    value: "yes"
-  }, "Yes"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("option", {
-    value: "yes"
-  }, "No")))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: true
+  }, "Yes"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: false
+  }, "No")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "form__group"
-  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("select", {
-    name: "active",
-    id: "active"
-  }, employeeOptions)));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+    name: "employee_id",
+    id: "employee_id",
+    onChange: function onChange(e) {
+      return _onChange(e);
+    }
+  }, employeeOptions)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form__group "
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    type: "submit"
+  }, "Create")));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (CreateMultisportCard);
@@ -75193,15 +75226,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _MultisportItem__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MultisportItem */ "./resources/js/components/multisport/MultisportItem.js");
-/* harmony import */ var _context_multisport_multisportContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../context/multisport/multisportContext */ "./resources/js/context/multisport/multisportContext.js");
+/* harmony import */ var _layout_Spinner__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../layout/Spinner */ "./resources/js/components/layout/Spinner.js");
+/* harmony import */ var _context_multisport_multisportContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../context/multisport/multisportContext */ "./resources/js/context/multisport/multisportContext.js");
+
 
 
 
 
 var MultiSport = function MultiSport() {
-  var multisportContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_multisport_multisportContext__WEBPACK_IMPORTED_MODULE_2__["default"]);
+  var multisportContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_multisport_multisportContext__WEBPACK_IMPORTED_MODULE_3__["default"]);
   var multisportCards = multisportContext.multisportCards,
-      fetchAllMultisportCards = multisportContext.fetchAllMultisportCards;
+      fetchAllMultisportCards = multisportContext.fetchAllMultisportCards,
+      loading = multisportContext.loading;
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    fetchAllMultisportCards();
+  }, []);
+
+  if (loading) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_layout_Spinner__WEBPACK_IMPORTED_MODULE_2__["default"], null);
+  }
+
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_MultisportItem__WEBPACK_IMPORTED_MODULE_1__["default"], null));
 };
 
@@ -75248,7 +75292,7 @@ var MultisportItem = function MultisportItem() {
     className: "creat_new_multisport_link",
     to: "/multi-sport-create"
   }, "Create New", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-    "class": "fas fa-id-card"
+    className: "fas fa-id-card"
   }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Employee"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Card Number"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Last Last Paid"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Active"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, multisportCards.length > 0 ? multisportCards.map(function (card, index) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
       key: index,
@@ -76346,11 +76390,57 @@ var MultisportState = function MultisportState(props) {
     };
   }();
 
+  var createMultisportCard =
+  /*#__PURE__*/
+  function () {
+    var _ref2 = _asyncToGenerator(
+    /*#__PURE__*/
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(card) {
+      var config, res;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              config = {
+                'Content-type': 'application/json'
+              };
+              _context2.prev = 1;
+              _context2.next = 4;
+              return axios__WEBPACK_IMPORTED_MODULE_2___default.a.post('/api/create-multisport-card', card, config);
+
+            case 4:
+              res = _context2.sent;
+              dispatch({
+                type: _Types__WEBPACK_IMPORTED_MODULE_5__["ADD_MULTISPORT_CARD"],
+                payload: res.data
+              });
+              _context2.next = 11;
+              break;
+
+            case 8:
+              _context2.prev = 8;
+              _context2.t0 = _context2["catch"](1);
+              throw new Error(_context2.t0.message);
+
+            case 11:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2, null, [[1, 8]]);
+    }));
+
+    return function createMultisportCard(_x) {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+
   return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_multisportContext__WEBPACK_IMPORTED_MODULE_3__["default"].Provider, {
     value: {
       multisportCards: state.multisportCards,
       loading: state.loading,
-      fetchAllMultisportCards: fetchAllMultisportCards
+      fetchAllMultisportCards: fetchAllMultisportCards,
+      createMultisportCard: createMultisportCard
     }
   }, props.children);
 };
@@ -76402,9 +76492,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       });
 
     case _Types__WEBPACK_IMPORTED_MODULE_0__["ADD_MULTISPORT_CARD"]:
-      return _objectSpread({}, state, {
-        balance: action.payload
-      });
+      return _objectSpread({}, state);
 
     case UPDATE_BALANCE:
       return _objectSpread({}, state, {
@@ -76436,8 +76524,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/mylittlebaby/CODE/TL MANAGE/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/mylittlebaby/CODE/TL MANAGE/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\TL_MANAGE\TLeadMGMSys\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\TL_MANAGE\TLeadMGMSys\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

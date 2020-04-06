@@ -25,11 +25,26 @@ const MultisportState = props => {
         }
     }
 
+    const createMultisportCard = async (card)=>{
+        const config = {
+            'Content-type':'application/json'
+        }
+        try{
+            const res = await axios.post('/api/create-multisport-card',card,config);
+            dispatch({
+                type: ADD_MULTISPORT_CARD,
+                payload:res.data
+            });
+        }catch(err){
+           throw new Error(err.message);
+        }
+    }
     return (
         <MultisportContext.Provider value={{ 
                  multisportCards: state.multisportCards,
                  loading:state.loading,
-                 fetchAllMultisportCards
+                 fetchAllMultisportCards,
+                 createMultisportCard
          }}>
             {props.children}
         </MultisportContext.Provider>
