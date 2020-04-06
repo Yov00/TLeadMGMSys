@@ -241,6 +241,14 @@
   cursor: pointer;
 }
 
+.danger {
+  background-color: #c93737;
+}
+
+.success {
+  background-color: #47a547;
+}
+
 .flex__space_evenly {
   display: -webkit-box;
   display: flex;
@@ -276,13 +284,77 @@ select:focus {
   font-size: 20px;
 }
 
+.modal-wrapper {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+          justify-content: center;
+}
+
+.modal-form {
+  width: 250px;
+  background-color: white;
+  z-index: 202;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.modal-header {
+  width: 100% !important;
+  padding: 20px;
+  background-color: #333;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  z-index: 202;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.modal-body {
+  padding: 5px 20px 40px 20px;
+  z-index: 202;
+}
+
+.modal-footer {
+  width: 100%;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+          align-items: center;
+}
+
+.modal-footer-button {
+  width: 100%;
+  color: white;
+  padding: 10px;
+  font-size: 16px;
+}
+
 .overlay {
   width: 100vw;
   height: 100vh;
   position: fixed;
   top: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.4);
+  z-index: -1;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.close-modal {
+  float: right;
+  font-size: 20px;
+  border-radius: 10px;
+  padding: 0px !important;
 }
 
 .ease_in {
@@ -917,26 +989,5 @@ th {
 .tr__hoverable:hover {
   opacity: 0.5;
   cursor: pointer;
-}
-
-.modal-wrapper {
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  display: -webkit-box;
-  display: flex;
-  -webkit-box-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-          justify-content: center;
-}
-
-.multisport-modal-form {
-  width: 500px;
-  height: 300px;
-  background-color: white;
-  z-index: 200;
 }
 

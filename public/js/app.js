@@ -75309,17 +75309,34 @@ var MultisportCardModal = function MultisportCardModal() {
     onSubmit: function onSubmit(e) {
       return _onSubmit(e);
     },
-    className: "multisport-modal-form"
+    className: "modal-form"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "form__group"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, card_number)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "form__group"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, card_number)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "form__group"
+    className: "modal-header"
+  }, "Card manager", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "btn__dark close-modal ",
+    onClick: function onClick() {
+      return toggleModal();
+    }
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    "class": "fas fa-times-circle"
+  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-body"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+    style: {
+      textAlign: 'center'
+    }
+  }, " ", "".concat(first_name, ", ").concat(last_name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+    style: {
+      textAlign: 'center'
+    }
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fas fa-id-card"
+  }), card_number)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-footer"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     type: "submit",
-    className: "btn__dark"
-  }, active ? 'Deactivate' : 'Activate'))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: !active ? 'modal-footer-button success' : 'modal-footer-button danger'
+  }, active ? "Deactivate" : "Activate"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "overlay",
     onClick: function onClick() {
       return toggleModal();
@@ -76673,8 +76690,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/mylittlebaby/CODE/TL MANAGE/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/mylittlebaby/CODE/TL MANAGE/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/yovelinski/CODE/TL_Manage/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/yovelinski/CODE/TL_Manage/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

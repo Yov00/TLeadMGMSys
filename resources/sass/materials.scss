@@ -72,6 +72,12 @@
     cursor: pointer;
 }
 
+.danger{
+    background-color:rgb(201, 55, 55);
+}
+.success{
+    background-color: rgb(71, 165, 71);
+}
 .flex__space_evenly {
     display: flex;
     justify-content: center;
@@ -97,11 +103,72 @@ select {
 .form__group label {
     font-size: 20px;
 }
-.overlay{
-    width:100vw;
-    height: 100vh;
+
+// MODAL 
+.modal-wrapper {
+    width: 100vw;
+    height:100vh;
     position: fixed;
     top:0;
     left:0;
-    background-color:rgba(0,0,0,.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.modal-form{
+    width: 250px;
+   
+   background-color: white;
+   z-index: 202;
+   border-top-left-radius: 5px;
+   border-top-right-radius: 5px;
+}
+
+.modal-header{
+    width: 100%!important;
+    padding:20px ;
+    background-color: #333;
+    color:white;
+    font-weight: bold;
+    font-size: 20px;
+    z-index: 202;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.modal-body{
+    padding:5px 20px 40px 20px;
+    z-index: 202;
+    
+}
+
+.modal-footer{
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-footer-button{
+    width:100%;
+    color:white;
+    padding:10px;
+    font-size:16px;
+}
+
+.overlay {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.close-modal {
+    float:right;
+    font-size: 20px;
+    border-radius: 10px;
+    padding:0px!important;
 }
