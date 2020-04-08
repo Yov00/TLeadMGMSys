@@ -32,14 +32,16 @@ const MultisportCardModal = () => {
                 </div>
                 <div className="modal-body">
 
-                    <h2 style={{ textAlign: 'center' }}> {`${first_name}, ${last_name}`}</h2>
-                    <h1 style={{ textAlign: 'center' }}>
+                    <h3> {`${first_name}, ${last_name}`}</h3>
+                    <h3>
                         <i className="fas fa-id-card"></i>
                         {card_number}
-                    </h1>
+                    </h3>
 
                 </div>
                 <div className="modal-footer" >
+                    <button onClick={()=>toggleModal()} className="btn-modal-close" type="button">Cancel</button>
+
                     <button type="submit" className={!active ? 'modal-footer-button success' : 'modal-footer-button danger'}>
                         {active ? "Deactivate" : "Activate"}
                     </button>

@@ -42,3 +42,16 @@
         transform: rotate(-360deg);
     }
 }
+
+
+// Modal Drop in 
+@keyframes drop_in{
+    from{
+        margin-top:-200px;
+        opacity: 0;
+    }
+    to{
+        margin-top:50px;
+        opacity: 1;
+    }
+}

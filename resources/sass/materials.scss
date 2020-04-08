@@ -85,8 +85,8 @@
 .form__group {
     display: flex;
     flex-direction: column;
-    padding: 20px;
-    width: 50%;
+    padding: 20px 0;
+    width: 100%;
 }
 .form__group input,
 select {
@@ -112,17 +112,27 @@ select {
     top:0;
     left:0;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
+    
 }
 .modal-form{
-    width: 250px;
-   
-   background-color: white;
-   z-index: 202;
-   border-top-left-radius: 5px;
-   border-top-right-radius: 5px;
+    width: 400px;
+    background-color: white;
+    z-index: 202;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius:5px;
+    border-bottom-right-radius:5px;
+    box-shadow: 3px 5px 30px black;
+    
+    // Drop in animation
+    animation-name: drop_in;
+    animation-duration: .3s;
+    animation-fill-mode: forwards;
+
 }
+
 
 .modal-header{
     width: 100%!important;
@@ -139,21 +149,46 @@ select {
 .modal-body{
     padding:5px 20px 40px 20px;
     z-index: 202;
-    
+    *{
+        z-index:202;
+    }
 }
 
 .modal-footer{
     width:100%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
+    padding:10px;
+    border-top:1px solid lightgray;
+ 
+   
 }
 
 .modal-footer-button{
-    width:100%;
+    // width:100%;
     color:white;
     padding:10px;
-    font-size:16px;
+    // font-size:16px;
+    border:none;
+    font-weight: bold;
+    border-radius: 4px;
+    font-size:15px!important;
+    cursor: pointer;
+}
+
+.btn-modal-close{
+    background-color: lightgray;
+    //  #AA66CC
+    color:#333;
+    // text-transform: uppercase;
+    font-weight: bold;
+    border:none;
+    padding:10px;
+    font-size:15px!important;
+    margin-right:20px;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
 .overlay {
@@ -165,6 +200,7 @@ select {
     z-index: -1;
     background-color: rgba(0, 0, 0, 0.2);
 }
+
 
 .close-modal {
     float:right;

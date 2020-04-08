@@ -10,7 +10,6 @@ const Balance = () => {
     const [addedAmount, setAddedAmmount] = useState("");
     useEffect(() => {
         fetchBalance();
-        console.log(balance);
     }, []);
 
     const showAddBalanceHandler = () => {

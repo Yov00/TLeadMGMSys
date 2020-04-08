@@ -28,8 +28,6 @@ const MultisportItem = () => {
                          Create New<i className="fas fa-id-card"></i>
                         </Link>
                     </div>
-                    
-
                     </th>
                 </tr>
                 <tr>

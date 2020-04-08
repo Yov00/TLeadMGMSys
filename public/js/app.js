@@ -73827,7 +73827,6 @@ var Balance = function Balance() {
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     fetchBalance();
-    console.log(balance);
   }, []);
 
   var showAddBalanceHandler = function showAddBalanceHandler() {
@@ -74961,25 +74960,31 @@ var InvoiceModal = function InvoiceModal(props) {
   }
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "invoiceModal__wrapper"
+    className: "modal-wrapper invoice__modal"
   }, setInvoiceIdOnLoad(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "invoiceModal"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "close_modal",
+    className: "modal-form"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-header"
+  }, "Invoice Details", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "btn__dark close-modal",
     onClick: function onClick() {
       return showHandler({});
     }
-  }, "X"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "invoiceModal__header"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Invoice Details")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "invoiceModal__body"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, id + ": " + name.toUpperCase())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Number"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    "class": "fas fa-times-circle"
+  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-body"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, name.toUpperCase())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form__group"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Number"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     step: "any",
     name: "number",
     type: "number",
     onChange: onChange,
     placeholder: "Invoice number..."
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Ammount"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form__group"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Ammount"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "number",
     name: "ammount",
     min: "1",
@@ -74990,13 +74995,24 @@ var InvoiceModal = function InvoiceModal(props) {
   })), validation_errors && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "validationError"
   }, validation_errors)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "invoiceModal__footer"
+    className: "modal-footer"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
     onSubmit: onSubmit
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    onClick: function onClick() {
+      return showHandler({});
+    },
+    className: "btn-modal-close",
+    type: "button"
+  }, "Cancel"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     type: "submit",
-    className: "add_invoice_button"
-  }, "Add Invoice")))));
+    className: "modal-footer-button success"
+  }, "Add Invoice")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "overlay",
+    onClick: function onClick() {
+      return showHandler({});
+    }
+  }));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (InvoiceModal);
@@ -75321,19 +75337,17 @@ var MultisportCardModal = function MultisportCardModal() {
     "class": "fas fa-times-circle"
   }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "modal-body"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
-    style: {
-      textAlign: 'center'
-    }
-  }, " ", "".concat(first_name, ", ").concat(last_name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-    style: {
-      textAlign: 'center'
-    }
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, " ", "".concat(first_name, ", ").concat(last_name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
     className: "fas fa-id-card"
   }), card_number)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "modal-footer"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    onClick: function onClick() {
+      return toggleModal();
+    },
+    className: "btn-modal-close",
+    type: "button"
+  }, "Cancel"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     type: "submit",
     className: !active ? 'modal-footer-button success' : 'modal-footer-button danger'
   }, active ? "Deactivate" : "Activate"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -76690,8 +76704,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/yovelinski/CODE/TL_Manage/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/yovelinski/CODE/TL_Manage/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\TL_MANAGE\TLeadMGMSys\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\TL_MANAGE\TLeadMGMSys\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

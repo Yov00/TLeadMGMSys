@@ -51,20 +51,20 @@ const InvoiceModal = props => {
         return <div></div>;
     }
     return (
-        <div className="invoiceModal__wrapper">
+        <div className="modal-wrapper invoice__modal">
             {setInvoiceIdOnLoad()}
-            <div className="invoiceModal">
-                <button className="close_modal" onClick={() => showHandler({})}>
-                    X
+            <div className="modal-form">
+                <div className="modal-header">
+                    Invoice Details
+                    <button className="btn__dark close-modal" onClick={() => showHandler({})}>
+                <i class="fas fa-times-circle"></i>
                 </button>
-                <div className="invoiceModal__header">
-                    <h3>Invoice Details</h3>
                 </div>
-                <div className="invoiceModal__body">
+                <div className="modal-body">
                     <div>
-                        <label>{id + ": " + name.toUpperCase()}</label>
+                        <h2>{name.toUpperCase()}</h2>
                     </div>
-                    <div>
+                    <div className="form__group">
                         <label>Number</label>
                         <input
                             step="any"
@@ -74,7 +74,7 @@ const InvoiceModal = props => {
                             placeholder="Invoice number..."
                         />
                     </div>
-                    <div>
+                    <div className="form__group">
                         <label>Ammount</label>
                         <input
                             type="number"
@@ -92,14 +92,17 @@ const InvoiceModal = props => {
                         </div>
                     )}
                 </div>
-                <div className="invoiceModal__footer">
+                <div className="modal-footer">
                     <form onSubmit={onSubmit}>
-                        <button type="submit" className="add_invoice_button">
+                    <button  onClick={() => showHandler({})} className="btn-modal-close" type="button">Cancel</button>
+                        <button type="submit" className="modal-footer-button success">
                             Add Invoice
                         </button>
                     </form>
                 </div>
+               
             </div>
+            <div className="overlay" onClick={() => showHandler({})}></div>
         </div>
     );
 };

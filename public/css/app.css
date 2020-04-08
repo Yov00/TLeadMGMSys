@@ -107,6 +107,10 @@
   width: 100%;
 }
 
+.inventoryWrapper * {
+  z-index: 1;
+}
+
 .AddItemInput {
   width: 100%;
   margin: 0px auto;
@@ -262,8 +266,8 @@
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
           flex-direction: column;
-  padding: 20px;
-  width: 50%;
+  padding: 20px 0;
+  width: 100%;
 }
 
 .form__group input,
@@ -292,18 +296,27 @@ select:focus {
   left: 0;
   display: -webkit-box;
   display: flex;
-  -webkit-box-align: center;
-          align-items: center;
+  -webkit-box-align: start;
+          align-items: flex-start;
   -webkit-box-pack: center;
           justify-content: center;
 }
 
 .modal-form {
-  width: 250px;
+  width: 400px;
   background-color: white;
   z-index: 202;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  box-shadow: 3px 5px 30px black;
+  -webkit-animation-name: drop_in;
+          animation-name: drop_in;
+  -webkit-animation-duration: 0.3s;
+          animation-duration: 0.3s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
 }
 
 .modal-header {
@@ -323,21 +336,42 @@ select:focus {
   z-index: 202;
 }
 
+.modal-body * {
+  z-index: 202;
+}
+
 .modal-footer {
   width: 100%;
   display: -webkit-box;
   display: flex;
-  -webkit-box-pack: center;
-          justify-content: center;
+  -webkit-box-pack: end;
+          justify-content: flex-end;
   -webkit-box-align: center;
           align-items: center;
+  padding: 10px;
+  border-top: 1px solid lightgray;
 }
 
 .modal-footer-button {
-  width: 100%;
   color: white;
   padding: 10px;
-  font-size: 16px;
+  border: none;
+  font-weight: bold;
+  border-radius: 4px;
+  font-size: 15px !important;
+  cursor: pointer;
+}
+
+.btn-modal-close {
+  background-color: lightgray;
+  color: #333;
+  font-weight: bold;
+  border: none;
+  padding: 10px;
+  font-size: 15px !important;
+  margin-right: 20px;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 .overlay {
@@ -468,6 +502,30 @@ select:focus {
   }
 }
 
+@-webkit-keyframes drop_in {
+  from {
+    margin-top: -200px;
+    opacity: 0;
+  }
+
+  to {
+    margin-top: 50px;
+    opacity: 1;
+  }
+}
+
+@keyframes drop_in {
+  from {
+    margin-top: -200px;
+    opacity: 0;
+  }
+
+  to {
+    margin-top: 50px;
+    opacity: 1;
+  }
+}
+
 .spinner {
   width: 50px;
   height: 50px;
@@ -583,113 +641,6 @@ html {
   width: 100%;
 }
 
-.invoiceModal__wrapper {
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.8);
-  position: fixed;
-  top: 0;
-  left: 0;
-  display: -webkit-box;
-  display: flex;
-  -webkit-box-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-          align-items: center;
-  z-index: 200;
-}
-
-.invoiceModal {
-  width: 60%;
-  position: relative;
-  max-width: 800px;
-  background-color: white;
-  padding: 60px;
-  border-radius: 10px;
-}
-
-.invoiceModal__header {
-  text-align: center;
-  font-size: 30px;
-  border-bottom: 1px solid gray;
-}
-
-.invoiceModal__body {
-  padding: 20px 0;
-  display: -webkit-box;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-          flex-direction: column;
-  -webkit-box-align: center;
-          align-items: center;
-}
-
-.invoiceModal__body div {
-  display: -webkit-box;
-  display: flex;
-  margin: 10px 0;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-          flex-direction: column;
-  font-size: 20px;
-  width: 80%;
-}
-
-.invoiceModal__body div label {
-  font-weight: bold;
-}
-
-.invoiceModal__body div input {
-  padding: 10px;
-  font-size: 20px;
-  width: 100%;
-  border: 1px solid gray;
-}
-
-.invoiceModal__body div input:focus {
-  box-shadow: 0 0 5px #666 inset;
-}
-
-.invoiceModal__footer {
-  display: -webkit-box;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-          flex-direction: column;
-  -webkit-box-align: center;
-          align-items: center;
-  padding-top: 40px;
-}
-
-.invoiceModal__footer form {
-  width: 80%;
-}
-
-.add_invoice_button {
-  width: 100%;
-  border: none;
-  font-size: 20px;
-  padding: 10px;
-  font-weight: bold;
-  background-color: #333;
-  color: white;
-  cursor: pointer;
-}
-
-.close_modal {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 30px;
-  height: 30px;
-  border-radius: 10px;
-  font-weight: bold;
-  background-color: #333;
-  color: white;
-  cursor: pointer;
-}
-
 .validationError {
   background-color: tomato;
   color: white;
@@ -707,26 +658,16 @@ html {
           animation-fill-mode: forwards;
 }
 
-@-webkit-keyframes fade_in {
-  0% {
-    opacity: 0;
-    height: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
+.invoice__modal .modal-form .modal-body .form__group {
+  padding: 5px 0;
 }
 
-@keyframes fade_in {
-  0% {
-    opacity: 0;
-    height: 0;
-  }
+.invoice__modal .modal-form .modal-body .form__group label {
+  font-size: 18px !important;
+}
 
-  100% {
-    opacity: 1;
-  }
+.invoice__modal .modal-form .modal-body .form__group input {
+  font-size: 15px !important;
 }
 
 .bance_wrapper {

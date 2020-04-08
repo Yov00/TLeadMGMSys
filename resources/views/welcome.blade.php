@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Team Lead MGS</title>
     
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
