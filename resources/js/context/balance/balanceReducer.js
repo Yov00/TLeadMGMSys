@@ -5,7 +5,8 @@ export default (state, action) => {
         case GET_BALANCE:
             return {
                 ...state,
-                balance: action.payload
+                balance: action.payload,
+                loading:false
             };
         case UPDATE_BALANCE:
             return {

@@ -73813,7 +73813,8 @@ var Balance = function Balance() {
   var balanceContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_balance_balanceContext__WEBPACK_IMPORTED_MODULE_1__["default"]);
   var balance = balanceContext.balance,
       fetchBalance = balanceContext.fetchBalance,
-      updateBalance = balanceContext.updateBalance; // STATE
+      updateBalance = balanceContext.updateBalance,
+      loading = balanceContext.loading; // STATE
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
       _useState2 = _slicedToArray(_useState, 2),
@@ -73876,6 +73877,11 @@ var Balance = function Balance() {
     },
     className: "fas fa-minus-circle"
   });
+
+  if (loading) {
+    return null;
+  }
+
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "bance_wrapper"
   }, addBalance, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -74971,7 +74977,7 @@ var InvoiceModal = function InvoiceModal(props) {
       return showHandler({});
     }
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-    "class": "fas fa-times-circle"
+    className: "fas fa-times-circle"
   }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "modal-body"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, name.toUpperCase())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -75334,7 +75340,7 @@ var MultisportCardModal = function MultisportCardModal() {
       return toggleModal();
     }
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-    "class": "fas fa-times-circle"
+    className: "fas fa-times-circle"
   }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "modal-body"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, " ", "".concat(first_name, ", ").concat(last_name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
@@ -75473,7 +75479,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var BalanceState = function BalanceState(props) {
   var initialState = {
-    balance: 0
+    balance: 0,
+    loading: true
   };
 
   var _useReducer = Object(react__WEBPACK_IMPORTED_MODULE_1__["useReducer"])(_balanceReducer__WEBPACK_IMPORTED_MODULE_3__["default"], initialState),
@@ -75575,6 +75582,7 @@ var BalanceState = function BalanceState(props) {
   return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_balanceContext__WEBPACK_IMPORTED_MODULE_2__["default"].Provider, {
     value: {
       balance: state.balance,
+      loading: state.loading,
       fetchBalance: fetchBalance,
       updateBalance: updateBalance
     }
@@ -75623,7 +75631,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   switch (action.type) {
     case _Types__WEBPACK_IMPORTED_MODULE_0__["GET_BALANCE"]:
       return _objectSpread({}, state, {
-        balance: action.payload
+        balance: action.payload,
+        loading: false
       });
 
     case _Types__WEBPACK_IMPORTED_MODULE_0__["UPDATE_BALANCE"]:

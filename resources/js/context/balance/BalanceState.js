@@ -6,12 +6,14 @@ import axios from "axios";
 import { GET_BALANCE, UPDATE_BALANCE } from "../../Types";
 const BalanceState = props => {
     const initialState = {
-        balance: 0
+        balance: 0,
+        loading:true,
     };
     const [state, dispatch] = useReducer(BalanceReducer, initialState);
 
     const fetchBalance = async () => {
         try {
+            
             const res = await axios.get("/api/balance");
             dispatch({
                 type: GET_BALANCE,
@@ -49,6 +51,7 @@ const BalanceState = props => {
         <BalanceContext.Provider
             value={{
                 balance: state.balance,
+                loading:state.loading,
                 fetchBalance,
                 updateBalance
             }}

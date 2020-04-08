@@ -57,7 +57,7 @@ const InvoiceModal = props => {
                 <div className="modal-header">
                     Invoice Details
                     <button className="btn__dark close-modal" onClick={() => showHandler({})}>
-                <i class="fas fa-times-circle"></i>
+                <i className="fas fa-times-circle"></i>
                 </button>
                 </div>
                 <div className="modal-body">

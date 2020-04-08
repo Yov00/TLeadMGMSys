@@ -3,7 +3,7 @@ import BalanceContext from "../../context/balance/balanceContext";
 
 const Balance = () => {
     const balanceContext = useContext(BalanceContext);
-    const { balance, fetchBalance, updateBalance } = balanceContext;
+    const { balance, fetchBalance, updateBalance,loading } = balanceContext;
 
     // STATE
     const [showAddBalance, setShowAddBlanace] = useState(false);
@@ -60,6 +60,9 @@ const Balance = () => {
         ></i>
     );
 
+    if(loading){
+        return null;
+    }
     return (
         <div className="bance_wrapper">
             {addBalance}

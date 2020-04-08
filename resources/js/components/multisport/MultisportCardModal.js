@@ -27,7 +27,7 @@ const MultisportCardModal = () => {
                         className="btn__dark close-modal "
                         onClick={() => toggleModal()}
                     >
-                        <i class="fas fa-times-circle"></i>
+                        <i className="fas fa-times-circle"></i>
                     </button>
                 </div>
                 <div className="modal-body">
