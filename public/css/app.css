@@ -266,8 +266,8 @@
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
           flex-direction: column;
-  padding: 20px 0;
-  width: 100%;
+  padding: 20px;
+  width: 50%;
 }
 
 .form__group input,
@@ -389,6 +389,29 @@ select:focus {
   font-size: 20px;
   border-radius: 10px;
   padding: 0px !important;
+}
+
+.toast-close {
+  display: block;
+  cursor: pointer;
+  float: right;
+}
+
+.message-toast {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  padding: 10px 20px;
+  color: white;
+  border-radius: 5px;
+  -webkit-animation-name: showMessage;
+          animation-name: showMessage;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-duration: 0.3s;
+          animation-duration: 0.3s;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
 }
 
 .ease_in {
@@ -526,6 +549,30 @@ select:focus {
   }
 }
 
+@-webkit-keyframes showMessage {
+  from {
+    opacity: 0;
+    bottom: -200px;
+  }
+
+  to {
+    opacity: 1;
+    bottom: 20;
+  }
+}
+
+@keyframes showMessage {
+  from {
+    opacity: 0;
+    bottom: -200px;
+  }
+
+  to {
+    opacity: 1;
+    bottom: 20;
+  }
+}
+
 .spinner {
   width: 50px;
   height: 50px;
@@ -568,7 +615,7 @@ select:focus {
 }
 
 .employees {
-  width: 50%;
+  width: 80%;
   margin: 0px auto;
 }
 
@@ -897,6 +944,7 @@ html {
 
 .creat_new_multisport_link {
   font-size: 20px;
+  margin-left: -15px;
 }
 
 .table_black_and_gray {

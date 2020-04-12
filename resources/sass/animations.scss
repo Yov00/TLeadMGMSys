@@ -55,3 +55,15 @@
         opacity: 1;
     }
 }
+
+// Message-toast
+@keyframes showMessage{
+    from{
+        opacity:0;
+        bottom:-200px;
+    }
+    to{
+        opacity: 1;
+        bottom: 20;
+    }
+}

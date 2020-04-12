@@ -21,7 +21,7 @@ const InvoiceModal = props => {
 
     const onSubmit = e => {
         e.preventDefault();
-        let valRegex = /^[0-9]+(\.[0-9]+)+$/;
+
         if (invoice.ammount) {
             createInvoice(invoice);
             removeItem(invoice.item_id);
@@ -57,14 +57,14 @@ const InvoiceModal = props => {
                 <div className="modal-header">
                     Invoice Details
                     <button className="btn__dark close-modal" onClick={() => showHandler({})}>
-                <i className="fas fa-times-circle"></i>
-                </button>
+                        <i className="fas fa-times-circle"></i>
+                    </button>
                 </div>
                 <div className="modal-body">
                     <div>
                         <h2>{name.toUpperCase()}</h2>
                     </div>
-                    <div className="form__group">
+                    <div className="form__group" style={{ width: '100%' }}>
                         <label>Number</label>
                         <input
                             step="any"
@@ -74,7 +74,7 @@ const InvoiceModal = props => {
                             placeholder="Invoice number..."
                         />
                     </div>
-                    <div className="form__group">
+                    <div className="form__group" style={{ width: '100%' }}>
                         <label>Ammount</label>
                         <input
                             type="number"
@@ -94,13 +94,13 @@ const InvoiceModal = props => {
                 </div>
                 <div className="modal-footer">
                     <form onSubmit={onSubmit}>
-                    <button  onClick={() => showHandler({})} className="btn-modal-close" type="button">Cancel</button>
+                        <button onClick={() => showHandler({})} className="btn-modal-close" type="button">Cancel</button>
                         <button type="submit" className="modal-footer-button success">
                             Add Invoice
                         </button>
                     </form>
                 </div>
-               
+
             </div>
             <div className="overlay" onClick={() => showHandler({})}></div>
         </div>

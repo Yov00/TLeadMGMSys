@@ -40,8 +40,7 @@ const MultisportCardModal = () => {
 
                 </div>
                 <div className="modal-footer" >
-                    <button onClick={()=>toggleModal()} className="btn-modal-close" type="button">Cancel</button>
-
+                    <button onClick={() => toggleModal()} className="btn-modal-close" type="button">Cancel</button>
                     <button type="submit" className={!active ? 'modal-footer-button success' : 'modal-footer-button danger'}>
                         {active ? "Deactivate" : "Activate"}
                     </button>

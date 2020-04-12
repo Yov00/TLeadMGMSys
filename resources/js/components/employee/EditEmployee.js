@@ -70,7 +70,7 @@ const EmployeeForm = props => {
     function imageDisplayHandler(image) {
         var file = image.target.files[0];
         var reader = new FileReader();
-        reader.onload = function(e) {
+        reader.onload = function (e) {
             image.src = e.target.result;
 
             setDisplayedImage(image.src);
@@ -97,9 +97,9 @@ const EmployeeForm = props => {
     }
 
     if (userUpdated) {
-        return  <Redirect to="/employees"/>
+        window.location.href = '/employees';
     }
-    
+
     return (
         <form
             onSubmit={onSubmit}

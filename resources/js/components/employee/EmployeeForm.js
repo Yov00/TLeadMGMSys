@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Redirect } from "react-router-dom";
 
 const EmployeeForm = props => {
     const employeeContext = useContext(EmployeeContext);
-    const { addEmployee, fetchTokens, tokens,fetchAllEmployees } = employeeContext;
+    const { addEmployee, fetchTokens, tokens, fetchAllEmployees } = employeeContext;
 
     const [userCreated, setUserCreated] = useState(false);
     const [employee, setEmployee] = useState({
@@ -67,10 +67,8 @@ const EmployeeForm = props => {
     };
 
     if (userCreated) {
-       
-        
-          return <Redirect to="/employees" />;
-       
+        // redirect 
+        window.location.href = '/employees';
     }
     return (
         <form
@@ -78,7 +76,7 @@ const EmployeeForm = props => {
             className="employeeForm ease_in"
             encType="multipart/form-data"
         >
-        {console.log(employee.token_id)}
+            {console.log(employee.token_id)}
             <div className="form__group" style={{ width: "100%" }}>
                 <h1>Create New Employee</h1>
             </div>
@@ -182,8 +180,8 @@ const EmployeeForm = props => {
                         type="submit"
                         value="Add Employee"
                     />
-                 
-                   
+
+
                 </div>
             </div>
         </form>

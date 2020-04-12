@@ -74026,9 +74026,7 @@ var EmployeeForm = function EmployeeForm(props) {
   }
 
   if (userUpdated) {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Redirect"], {
-      to: "/employees"
-    });
+    window.location.href = '/employees';
   }
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
@@ -74332,9 +74330,8 @@ var EmployeeForm = function EmployeeForm(props) {
   };
 
   if (userCreated) {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Redirect"], {
-      to: "/employees"
-    });
+    // redirect 
+    window.location.href = '/employees';
   }
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
@@ -74931,7 +74928,6 @@ var InvoiceModal = function InvoiceModal(props) {
 
   var onSubmit = function onSubmit(e) {
     e.preventDefault();
-    var valRegex = /^[0-9]+(\.[0-9]+)+$/;
 
     if (invoice.ammount) {
       createInvoice(invoice);
@@ -74981,7 +74977,10 @@ var InvoiceModal = function InvoiceModal(props) {
   }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "modal-body"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, name.toUpperCase())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "form__group"
+    className: "form__group",
+    style: {
+      width: '100%'
+    }
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Number"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     step: "any",
     name: "number",
@@ -74989,7 +74988,10 @@ var InvoiceModal = function InvoiceModal(props) {
     onChange: onChange,
     placeholder: "Invoice number..."
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "form__group"
+    className: "form__group",
+    style: {
+      width: '100%'
+    }
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Ammount"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "number",
     name: "ammount",
@@ -75104,6 +75106,29 @@ var Spinner = function Spinner() {
 
 /***/ }),
 
+/***/ "./resources/js/components/materials/message-toast/MessageToats.js":
+/*!*************************************************************************!*\
+  !*** ./resources/js/components/materials/message-toast/MessageToats.js ***!
+  \*************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var MessageToats = function MessageToats(props) {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "message-toast ".concat(props.className)
+  }, props.message);
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (MessageToats);
+
+/***/ }),
+
 /***/ "./resources/js/components/multisport/CreateMultisportCard.js":
 /*!********************************************************************!*\
   !*** ./resources/js/components/multisport/CreateMultisportCard.js ***!
@@ -75117,7 +75142,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _context_employee_employeeContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../context/employee/employeeContext */ "./resources/js/context/employee/employeeContext.js");
 /* harmony import */ var _context_multisport_multisportContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../context/multisport/multisportContext */ "./resources/js/context/multisport/multisportContext.js");
-/* harmony import */ var _layout_Spinner__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../layout/Spinner */ "./resources/js/components/layout/Spinner.js");
+/* harmony import */ var _materials_message_toast_MessageToats__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../materials/message-toast/MessageToats */ "./resources/js/components/materials/message-toast/MessageToats.js");
+/* harmony import */ var _layout_Spinner__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../layout/Spinner */ "./resources/js/components/layout/Spinner.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -75137,6 +75163,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var CreateMultisportCard = function CreateMultisportCard() {
   var employeeContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_employee_employeeContext__WEBPACK_IMPORTED_MODULE_1__["default"]);
   var multisportContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_multisport_multisportContext__WEBPACK_IMPORTED_MODULE_2__["default"]);
@@ -75146,13 +75173,39 @@ var CreateMultisportCard = function CreateMultisportCard() {
       loading = employeeContext.loading;
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
-    card_number: null,
+    card_number: '',
     employee_id: 0,
     active: true
   }),
       _useState2 = _slicedToArray(_useState, 2),
       card = _useState2[0],
       setCard = _useState2[1];
+
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState4 = _slicedToArray(_useState3, 2),
+      showMessage = _useState4[0],
+      setShowMessage = _useState4[1];
+
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState6 = _slicedToArray(_useState5, 2),
+      cardCreated = _useState6[0],
+      setCardCreated = _useState6[1]; // Validation
+
+
+  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(),
+      _useState8 = _slicedToArray(_useState7, 2),
+      validation_errors = _useState8[0],
+      setValidation_errors = _useState8[1];
+
+  var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState10 = _slicedToArray(_useState9, 2),
+      employeeNotFilled = _useState10[0],
+      setEmployeeNotFilled = _useState10[1];
+
+  var _useState11 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState12 = _slicedToArray(_useState11, 2),
+      cardNumberNotFilled = _useState12[0],
+      setCardNumberNotFilled = _useState12[1];
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     fetchAllEmployees();
@@ -75174,11 +75227,48 @@ var CreateMultisportCard = function CreateMultisportCard() {
 
   var _onSubmit = function onSubmit(e) {
     e.preventDefault();
-    createMultisportCard(card);
+
+    if (card.card_number && card.employee_id > 0) {
+      createMultisportCard(card);
+      setCard({
+        card_number: '',
+        employee_id: -1,
+        active: true
+      });
+      setEmployeeNotFilled(false);
+      setCardNumberNotFilled(false);
+      setShowMessage(true);
+      setValidation_errors('');
+      setCardCreated(true);
+    }
+
+    if (!card.card_number) {
+      setValidation_errors('Please enter a card number');
+      setCardNumberNotFilled(true);
+      setEmployeeNotFilled(false);
+    }
+
+    if (card.employee_id <= 0) {
+      setValidation_errors('Please select employee');
+      setEmployeeNotFilled(true);
+      setCardNumberNotFilled(false);
+    }
+
+    if (card.employee_id <= 0 && !card.card_number) {
+      setValidation_errors('Please fill the below fields accordingly');
+      setEmployeeNotFilled(true);
+      setCardNumberNotFilled(true);
+    }
   };
 
   if (loading) {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_layout_Spinner__WEBPACK_IMPORTED_MODULE_3__["default"], null);
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_layout_Spinner__WEBPACK_IMPORTED_MODULE_4__["default"], null);
+  }
+
+  if (cardCreated) {
+    setTimeout(function () {
+      window.location.href = '/multi-sport';
+    }, 1000);
   }
 
   var emplyeesWithNoMultisportCards = function emplyeesWithNoMultisportCards() {
@@ -75194,23 +75284,37 @@ var CreateMultisportCard = function CreateMultisportCard() {
       value: employee.id
     }, "".concat(employee.first_name, ", ").concat(employee.last_name));
   });
+  var employee_validation = employeeNotFilled ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    style: {
+      color: 'tomato'
+    }
+  }, " * ") : '';
+  var cardNumber_validation = cardNumberNotFilled ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    style: {
+      color: 'tomato'
+    }
+  }, " * ") : '';
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
     onSubmit: function onSubmit(e) {
       return _onSubmit(e);
     },
     className: "ease_in multisport_form"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-header"
+  }, "Create Multisport Card"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "d__flex"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "form__group"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-    htmlFor: ""
-  }, "Card Number"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    htmlFor: "card_number"
+  }, cardNumber_validation, "    Card Number"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    value: card.card_number,
     onChange: function onChange(e) {
       return _onChange(e);
     },
     name: "card_number",
-    type: "text"
+    type: "text",
+    id: "card_number"
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "form__group"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
@@ -75231,19 +75335,33 @@ var CreateMultisportCard = function CreateMultisportCard() {
     value: false
   }, "No")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "form__group"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
-    defaultValue: "yes",
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "employee_id"
+  }, employee_validation, "  Employee"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+    defaultValue: card.employee_id,
     name: "employee_id",
     id: "employee_id",
     onChange: function onChange(e) {
       return _onChange(e);
     }
-  }, " \\", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null, "select employee"), employeeOptions)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, " \\", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: -1
+  }, "select employee"), employeeOptions)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "form__group "
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "btn__dark",
     type: "submit"
-  }, "Create")));
+  }, "Create")), showMessage ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_materials_message_toast_MessageToats__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    className: "success",
+    message: 'Card created successfully!'
+  }) : '', validation_errors && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "validationError"
+  }, validation_errors, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fas fa-times toast-close",
+    onClick: function onClick() {
+      return setValidation_errors(null);
+    }
+  })));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (CreateMultisportCard);
@@ -76713,8 +76831,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\TL_MANAGE\TLeadMGMSys\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\TL_MANAGE\TLeadMGMSys\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/yovelinski/CODE/TL_Manage/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/yovelinski/CODE/TL_Manage/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
